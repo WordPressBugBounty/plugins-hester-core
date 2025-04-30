@@ -112,7 +112,7 @@ final class Hester_Demo_Library {
 	 * @return void
 	 */
 	public function admin_enqueue( $hook = '' ) {
-
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$theme_name =  hester_core()->theme_name;
 
 		if ( 'hester_page_'.$theme_name.'-demo-library' !== $hook ) {
@@ -121,17 +121,22 @@ final class Hester_Demo_Library {
 
 		wp_enqueue_script(
 			'hester-demo-library',
-			plugin_dir_url( __FILE__ ) . 'assets/js/demo-library.min.js',
+			plugin_dir_url( __FILE__ ) . 'assets/js/demo-library'.$suffix.'.js',
 			array( 'jquery', 'wp-util', 'updates' ),
 			$this->version,
 			true
 		);
-		
+
 		$theme  = wp_get_theme(); // gets the current theme
 		if ( stripos( strtolower( $theme->name ), 'pro' ) ) {
 			$this->is_pro = true;
 		}
-				
+
+ 		$pro_plugin_name = '';
+		if( is_array( $this->get_templates() ) && ! empty( $this->get_templates() ) ) {
+			$pro_plugin_name = $this->find_key_recursive($this->get_templates(), 'pro_plugin');
+		}
+
 		$localized = array(
 			'strings'            => array(
 				'closeWindowWarning'  => __( 'Warning! Demo import process is not complete. Don\'t close the window until import process is complete. Do you still want to leave the window?', 'hester-core' ),
@@ -157,6 +162,10 @@ final class Hester_Demo_Library {
 			'upgrade_to_pro_url' => sprintf('https://peregrine-themes.com/%s/?utm_medium=dashboard&utm_source=demos&utm_campaign=upgradeToPro', $theme_name),
 		);
 
+		if( $pro_plugin_name ) {
+			$localized['pro_plugin_active'] = $this->is_plugin_active($pro_plugin_name);
+		}
+
 		$localized = apply_filters( 'hester_core_demo_library_localized', $localized );
 
 		wp_localize_script(
@@ -174,6 +183,50 @@ final class Hester_Demo_Library {
 	}
 
 	/**
+	 * Check if a plugin is active.
+	 *
+	 * @since 1.0.9
+	 *
+	 * @param string $plugin_name Plugin name.
+	 * @return boolean True if the plugin is active, false otherwise.
+	 */
+	public function is_plugin_active( $plugin_name ) {
+		$plugin_slug = "$plugin_name/{$plugin_name}.php";
+		return is_plugin_active($plugin_slug);
+	}
+
+
+	/**
+	 * Recursive function to find a key in a multi-dimensional array.
+	 *
+	 * @param array $array The array to search.
+	 * @param string $key The key to search for.
+	 * @return mixed The value of the key if found, otherwise null.
+	 *
+	 * @since 1.0.9
+	 */
+	public function find_key_recursive($array, $key) {
+ 		// Check if the current array has the key
+		if (array_key_exists($key, $array)) {
+			return $array[$key];
+		}
+
+		// Loop through each element of the array
+		foreach ($array as $element) {
+			// If the element is an array, recurse into it
+			if (is_array($element)) {
+				$value = $this->find_key_recursive($element, $key);
+				if ($value !== null) {
+					return $value;
+				}
+			}
+		}
+
+		// Return null if the key was not found
+		return null;
+	}
+
+	/**
 	 * Get templates.
 	 *
 	 * @since  1.0.0
@@ -186,24 +239,24 @@ final class Hester_Demo_Library {
 		if ( false === $this->templates ) {
 			$this->templates = get_transient( 'hester_core_demo_templates' );
 		}
-		
+
 		// No stored templates, get from remote.
 		if ( ! $this->templates ) {
 			$response = wp_remote_get(
-				'https://peregrine-themes.com/wp-json/api/v1/demos',
+				'https://peregrine-themes.com/wp-json/api/v2/demos?parent_theme_name='.hester_core()->theme_name,
 				array(
-					// 'user-agent' => 'Hester/' . HESTER_THEME_VERSION . ';',
-					'timeout'    => 60,
+					'user-agent'     => 'HesterCore/' . HESTER_CORE_VERSION . ';',
+					'timeout'        => 60,
 				)
 			);
-			
+
 			if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
 				$this->templates = (array) json_decode( stripcslashes( wp_remote_retrieve_body( $response ) ), true );
 			}
 			$theme  = wp_get_theme();
 			if ( is_array( $this->templates ) && ! empty( $this->templates ) ) {
 				foreach ( $this->templates as $id => $template ) {
-					
+
 					// Skip demos that require a newer version of Hester Core.
 					if ( defined( 'HESTER_CORE_VERSION' ) && isset( $template['hester-core-version'] ) && version_compare( HESTER_CORE_VERSION, $template['hester-core-version'] ) < 0 ) {
 						unset( $this->templates[ $id ] );
@@ -222,16 +275,22 @@ final class Hester_Demo_Library {
 						continue;
 					}
 
-					// Skip demos that require a newer version of Bloglo Theme.
+					// Skip demos that require a newer version of BlogHash Theme.
 					if ( defined( 'BLOGHASH_THEME_VERSION' ) && isset( $template['bloghash-theme-version'] ) && version_compare( BLOGHASH_THEME_VERSION, $template['bloghash-theme-version'] ) < 0 ) {
 						unset( $this->templates[ $id ] );
 						continue;
 					}
+					// Skip demos that require a newer version of Shopwell Theme.
+					if ( defined( 'SHOPWELL_THEME_VERSION' ) && isset( $template['shopwell-theme-version'] ) && version_compare( SHOPWELL_THEME_VERSION, $template['shopwell-theme-version'] ) < 0 ) {
+						unset( $this->templates[ $id ] );
+						continue;
+					}
 
+					// Remove the demos that are not specified for the active theme
 					if( isset( $template['for_themes'] ) && !in_array( strtolower( $theme->name ), $template['for_themes'] ) ){
 						unset( $this->templates[ $id ] );
 						continue;
-					}					
+					}
 				}
 			}
 

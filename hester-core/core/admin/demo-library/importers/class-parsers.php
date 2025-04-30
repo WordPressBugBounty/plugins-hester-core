@@ -13,7 +13,7 @@
  * WordPress Importer class for managing parsing of WXR files.
  */
 class Hester_Core_WXR_Parser {
-	function parse( $file ) {
+	public function parse( $file ) {
 		// Attempt to use proper XML parsers first
 		if ( extension_loaded( 'simplexml' ) ) {
 			$parser = new Hester_Core_WXR_Parser_SimpleXML();
@@ -59,22 +59,19 @@ class Hester_Core_WXR_Parser {
  * WXR Parser that makes use of the SimpleXML PHP extension.
  */
 class Hester_Core_WXR_Parser_SimpleXML {
-	function parse( $file ) {
+	public function parse( $file ) {
 		$authors = $posts = $categories = $tags = $terms = array();
 
 		$internal_errors = libxml_use_internal_errors( true );
 
-		$dom       = new DOMDocument();
-		$old_value = null;
-		if ( function_exists( 'libxml_disable_entity_loader' ) ) {
-			$old_value = libxml_disable_entity_loader( true );
-		}
-		$success = $dom->loadXML( file_get_contents( $file ) );
-		if ( ! is_null( $old_value ) ) {
-			libxml_disable_entity_loader( $old_value );
-		}
+		$dom = new DOMDocument();
+		$success = $dom->loadXML( file_get_contents( $file ), LIBXML_NOENT | LIBXML_DTDLOAD );
 
 		if ( ! $success || isset( $dom->doctype ) ) {
+
+			libxml_clear_errors();
+			libxml_use_internal_errors( $internal_errors );
+
 			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
 		}
 
@@ -83,17 +80,29 @@ class Hester_Core_WXR_Parser_SimpleXML {
 
 		// halt if loading produces an error
 		if ( ! $xml ) {
+
+			libxml_clear_errors();
+			libxml_use_internal_errors( $internal_errors );
+
 			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
 		}
 
 		$wxr_version = $xml->xpath( '/rss/channel/wp:wxr_version' );
 		if ( ! $wxr_version ) {
+
+			libxml_clear_errors();
+			libxml_use_internal_errors( $internal_errors );
+
 			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
 		}
 
 		$wxr_version = (string) trim( $wxr_version[0] );
 		// confirm that we are dealing with the correct file format
 		if ( ! preg_match( '/^\d+\.\d+$/', $wxr_version ) ) {
+
+			libxml_clear_errors();
+			libxml_use_internal_errors( $internal_errors );
+
 			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
 		}
 
@@ -268,6 +277,9 @@ class Hester_Core_WXR_Parser_SimpleXML {
 			$posts[] = $post;
 		}
 
+		libxml_clear_errors();
+		libxml_use_internal_errors( $internal_errors );
+
 		return array(
 			'authors'    => $authors,
 			'posts'      => $posts,
@@ -333,16 +345,15 @@ class Hester_Core_WXR_Parser_XML {
 		'wp:comment_user_id',
 	);
 
-	function parse( $file ) {
+	public function parse( $file ) {
 		$this->wxr_version = $this->in_post = $this->cdata = $this->data = $this->sub_data = $this->in_tag = $this->in_sub_tag = false;
 		$this->authors     = $this->posts = $this->term = $this->category = $this->tag = array();
 
 		$xml = xml_parser_create( 'UTF-8' );
 		xml_parser_set_option( $xml, XML_OPTION_SKIP_WHITE, 1 );
 		xml_parser_set_option( $xml, XML_OPTION_CASE_FOLDING, 0 );
-		xml_set_object( $xml, $this );
-		xml_set_character_data_handler( $xml, 'cdata' );
-		xml_set_element_handler( $xml, 'tag_open', 'tag_close' );
+		xml_set_character_data_handler( $xml, array( $this, 'cdata' ) );
+		xml_set_element_handler( $xml, array( $this, 'tag_open' ), array( $this, 'tag_close' ) );
 
 		if ( ! xml_parse( $xml, file_get_contents( $file ), true ) ) {
 			$current_line   = xml_get_current_line_number( $xml );
@@ -368,7 +379,7 @@ class Hester_Core_WXR_Parser_XML {
 		);
 	}
 
-	function tag_open( $parse, $tag, $attr ) {
+	public function tag_open( $parse, $tag, $attr ) {
 		if ( in_array( $tag, $this->wp_tags ) ) {
 			$this->in_tag = substr( $tag, 3 );
 			return;
@@ -417,7 +428,7 @@ class Hester_Core_WXR_Parser_XML {
 		}
 	}
 
-	function cdata( $parser, $cdata ) {
+	public function cdata( $parser, $cdata ) {
 		if ( ! trim( $cdata ) ) {
 			return;
 		}
@@ -429,7 +440,7 @@ class Hester_Core_WXR_Parser_XML {
 		}
 	}
 
-	function tag_close( $parser, $tag ) {
+	public function tag_close( $parser, $tag ) {
 		switch ( $tag ) {
 			case 'wp:comment':
 				unset( $this->sub_data['key'], $this->sub_data['value'] ); // remove meta sub_data
@@ -510,11 +521,11 @@ class Hester_Core_WXR_Parser_Regex {
 	var $base_url   = '';
 	var $blog_url   = '';
 
-	function __construct() {
+	public function __construct() {
 		$this->has_gzip = is_callable( 'gzopen' );
 	}
 
-	function parse( $file ) {
+	public function parse( $file ) {
 		$wxr_version = $in_multiline = false;
 
 		$multiline_content = '';
@@ -598,8 +609,8 @@ class Hester_Core_WXR_Parser_Regex {
 		);
 	}
 
-	function get_tag( $string, $tag ) {
-		preg_match( "|<$tag.*?>(.*?)</$tag>|is", $string, $return );
+	public function get_tag( $text, $tag ) {
+		preg_match( "|<$tag.*?>(.*?)</$tag>|is", $text, $return );
 		if ( isset( $return[1] ) ) {
 			if ( substr( $return[1], 0, 9 ) == '<![CDATA[' ) {
 				if ( strpos( $return[1], ']]]]><![CDATA[>' ) !== false ) {
@@ -620,7 +631,7 @@ class Hester_Core_WXR_Parser_Regex {
 		return $return;
 	}
 
-	function process_category( $c ) {
+	public function process_category( $c ) {
 		return array(
 			'term_id'              => $this->get_tag( $c, 'wp:term_id' ),
 			'cat_name'             => $this->get_tag( $c, 'wp:cat_name' ),
@@ -630,7 +641,7 @@ class Hester_Core_WXR_Parser_Regex {
 		);
 	}
 
-	function process_tag( $t ) {
+	public function process_tag( $t ) {
 		return array(
 			'term_id'         => $this->get_tag( $t, 'wp:term_id' ),
 			'tag_name'        => $this->get_tag( $t, 'wp:tag_name' ),
@@ -639,7 +650,7 @@ class Hester_Core_WXR_Parser_Regex {
 		);
 	}
 
-	function process_term( $t ) {
+	public function process_term( $t ) {
 		return array(
 			'term_id'          => $this->get_tag( $t, 'wp:term_id' ),
 			'term_taxonomy'    => $this->get_tag( $t, 'wp:term_taxonomy' ),
@@ -650,7 +661,7 @@ class Hester_Core_WXR_Parser_Regex {
 		);
 	}
 
-	function process_author( $a ) {
+	public function process_author( $a ) {
 		return array(
 			'author_id'           => $this->get_tag( $a, 'wp:author_id' ),
 			'author_login'        => $this->get_tag( $a, 'wp:author_login' ),
@@ -661,7 +672,7 @@ class Hester_Core_WXR_Parser_Regex {
 		);
 	}
 
-	function process_post( $post ) {
+	public function process_post( $post ) {
 		$post_id        = $this->get_tag( $post, 'wp:post_id' );
 		$post_title     = $this->get_tag( $post, 'title' );
 		$post_date      = $this->get_tag( $post, 'wp:post_date' );
@@ -777,32 +788,32 @@ class Hester_Core_WXR_Parser_Regex {
 		return $postdata;
 	}
 
-	function _normalize_tag( $matches ) {
+	public function _normalize_tag( $matches ) {
 		return '<' . strtolower( $matches[1] );
 	}
 
-	function fopen( $filename, $mode = 'r' ) {
+	public function fopen( $filename, $mode = 'r' ) {
 		if ( $this->has_gzip ) {
 			return gzopen( $filename, $mode );
 		}
 		return fopen( $filename, $mode );
 	}
 
-	function feof( $fp ) {
+	public function feof( $fp ) {
 		if ( $this->has_gzip ) {
 			return gzeof( $fp );
 		}
 		return feof( $fp );
 	}
 
-	function fgets( $fp, $len = 8192 ) {
+	public function fgets( $fp, $len = 8192 ) {
 		if ( $this->has_gzip ) {
 			return gzgets( $fp, $len );
 		}
 		return fgets( $fp, $len );
 	}
 
-	function fclose( $fp ) {
+	public function fclose( $fp ) {
 		if ( $this->has_gzip ) {
 			return gzclose( $fp );
 		}

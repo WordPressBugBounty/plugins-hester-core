@@ -21,6 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Hester_Customizer_Import_Export {
 
 	/**
+	 * Theme options
+	 *
+	 * @since 1.0.0
+	 * @var object
+	 */
+	public $options;
+
+	/**
 	 * Singleton instance of the class.
 	 *
 	 * @since 1.0.0
@@ -100,32 +108,13 @@ final class Hester_Customizer_Import_Export {
 	 */
 	public static function export() {
 
-		// Export data.
-		$data = array();
+		 // Get all customizer settings
+        $theme_mods['theme_mod'] = get_theme_mods();
 
-		$theme_name =  hester_core()->theme_name;
-		$hester_options = $theme_name . '_option';
-		// Hester settings.
-		$customizer = array_keys( $theme_name()->options->get_defaults() );
-
-		if ( ! empty( $customizer ) ) {
-			foreach ( $customizer as $id ) {
-
-				$id = str_replace( $theme_name.'_', '', $id );
-
-				$data['theme_mod'][ $theme_name.'_' . $id ] = $hester_options( $id );
-			}
-		}
-
-		// Custom CSS.
-		$custom_css = wp_get_custom_css();
-
-		if ( ! empty( $custom_css ) ) {
-			$data['custom_css'] = $custom_css;
-		}
+        // Convert the settings to JSON
+        $data = json_encode($theme_mods);
 
 		$data = apply_filters( 'hester_customizer_export_data', $data );
-		$data = wp_json_encode( $data );
 
 		$filesize = strlen( $data );
 

@@ -92,6 +92,8 @@ final class Hester_Options_Import_Export {
 						case 'woocommerce_lost_password_page_id':
 						case 'page_for_posts':
 						case 'page_on_front':
+                        case 'help_center_page_id':
+                        case 'order_tracking_page_id':
 							$this->update_page_id_by_option_value( $option_name, $option_value );
 							break;
 
@@ -207,6 +209,26 @@ final class Hester_Options_Import_Export {
 			}
 		}
 
+        // Shopwell-Adons
+        if( class_exists( '\Shopwell\Addons' ) ) {
+            $shopwell_adons_pages = array(
+                'help_center_page_id',
+                'order_tracking_page_id'
+            );
+            foreach ( $shopwell_adons_pages as $page_id ) {
+                $data[ $page_id ] = get_the_title( get_option( $page_id ) );
+            }
+
+            $shopwell_adons_options = array(
+                'help_center_disable',
+                'shopwell_popup_disable',
+                'shopwell_builder_enable',
+            );
+            foreach ( $shopwell_adons_options as $id ) {
+                $data[ $id ] = (bool) get_option( $id );
+            }
+        }
+
 		// WPForms.
 		if ( class_exists( 'WPForms' ) ) {
 			$data['wpforms_settings'] = get_option( 'wpforms_settings' );
@@ -305,6 +327,15 @@ final class Hester_Options_Import_Export {
 
 			// WPForms.
 			'wpforms_settings',
+
+            // Shopwell-AdOns Options
+            'help_center_disable',
+            'shopwell_popup_disable',
+            'shopwell_builder_enable',
+
+            // MOtta-Adons Pages
+            'help_center_page_id',
+            'order_tracking_page_id'
 		);
 
 		return apply_filters( 'hester_core_site_options', $options );
@@ -320,12 +351,23 @@ final class Hester_Options_Import_Export {
 	 * @return void
 	 */
 	private function update_page_id_by_option_value( $option_name, $option_value ) {
+		$args = array(
+			'post_type'              => 'page',
+			'title'                  => $option_value,
+			'post_status'            => 'publish',
+			'posts_per_page'         => 1,
+			'orderby'                => 'post_date',
+			'order'                  => 'ASC',
+		);
 
-		$page = get_page_by_title( $option_value );
+		$query = new WP_Query( $args );
 
-		if ( is_object( $page ) ) {
+		if ( $query->have_posts() ) {
+			$page = $query->posts[0];
 			update_option( $option_name, $page->ID );
 		}
+
+		wp_reset_postdata();
 	}
 
 	/**

@@ -59,6 +59,9 @@ final class Hester_Core_Admin {
 		// Fetch recommended plugins remotely.
 		add_filter( 'hester_recommended_plugins', array( $this, 'recommended_plugins' ) );
 
+		// Allow SVG uploads
+		add_filter('upload_mimes', array( $this, 'allow_svg_uploads' ), 10, 1, );
+
 		// Hester Core Admin loaded.
 		do_action( 'hester_core_admin_loaded' );
 	}
@@ -81,9 +84,9 @@ final class Hester_Core_Admin {
 	 */
 	public function init_admin() {
 
-		if ( 
-			! defined( 'HESTER_THEME_VERSION' ) && ! defined( 'BLOGUN_THEME_VERSION' ) && 
-			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) 
+		if (
+			! defined( 'HESTER_THEME_VERSION' ) && ! defined( 'BLOGUN_THEME_VERSION' ) &&
+			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) && ! defined( 'SHOPWELL_THEME_VERSION' )
 		) {
 			add_action( 'admin_notices', array( $this, 'theme_required_notice' ) );
 			return;
@@ -297,6 +300,18 @@ final class Hester_Core_Admin {
 		}
 
 		return $plugins;
+	}
+
+	/**
+	 * SVG uploads.
+	 *
+	 * @since 1.0.9
+	 */
+	public function allow_svg_uploads($mimes) {
+
+		$mimes['svg'] = 'image/svg+xml';
+
+		return $mimes;
 	}
 }
 

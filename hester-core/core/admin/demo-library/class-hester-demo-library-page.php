@@ -183,6 +183,7 @@ final class Hester_Demo_Library_Page
 				<div class="hester-demo"
 					data-demo-id="{{data.slug}}"
 					data-demo-pro="{{data.pro}}"
+					data-demo-pro-plugin-active="{{data.pro_plugin_active}}"
 					data-demo-url="{{{data.url}}}"
 					data-demo-description="{{{data.description}}}"
 					data-demo-screenshot="{{{data.screenshot}}}"
@@ -216,7 +217,7 @@ final class Hester_Demo_Library_Page
 							<span class="name">{{{data.name}}}</span>
 						</div>
 						<div class="demo-actions">
-							<# if(data.pro && !data.is_pro) { #>
+							<# if( data.pro && !data.is_pro && !data.pro_plugin_active  ) { #>
 								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
 							<# } else { #>
 							<a class="hester-btn primary btn-small import" href="#" aria-label="<?php esc_attr_e('Import', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Import Demo', 'hester-core'); ?></a>
@@ -238,6 +239,7 @@ final class Hester_Demo_Library_Page
 							data-
 							data-demo-id="{{{data.id}}}"
 							data-demo-pro="{{{data.pro}}}"
+							data-demo-pro-plugin-active="{{data.pro_plugin_active}}"
 							data-demo-url="{{{data.url}}}"
 							data-demo-name="{{{data.name}}}"
 							data-demo-description="{{{data.description}}}"
@@ -251,7 +253,7 @@ final class Hester_Demo_Library_Page
 						<button class="next-theme"><span class="screen-reader-text"><?php esc_html_e('Next', 'hester-core'); ?></span></button>
 						<span class="spinner"></span>
 
-						<# if(data.pro && !data.is_pro) { #>
+						<# if(data.pro && !data.is_pro && !data.pro_plugin_active) { #>
 							<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
 						<# } else { #>
 							<a class="hester-btn primary hide-if-no-customize hester-demo-import" href="#" disabled="disabled">
@@ -365,7 +367,7 @@ final class Hester_Demo_Library_Page
 					<div class="wp-full-overlay-footer">
 						<div class="footer-import-button-wrap">
 
-							<# if(data.pro && !data.is_pro) { #>
+							<# if(data.pro && !data.is_pro && !data.pro_plugin_active) { #>
 								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
 							<# } else { #>
 
@@ -426,8 +428,10 @@ final class Hester_Demo_Library_Page
 				'url'  => admin_url('admin.php?page='.$theme_name.'-demo-library'),
 			),
 		);
-
-		$items = hester_array_insert($items, $demo, 'changelog', 'before');
+		$insert_array = $theme_name.'_array_insert';
+		if(is_callable($insert_array)){
+			$items = $insert_array($items, $demo, 'changelog', 'before');
+		}
 
 		return $items;
 	}

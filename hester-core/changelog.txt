@@ -1,3 +1,10 @@
+= 1.0.9 =
+* Update call to `post_exists` to include `post_type` in the query
+* PHP 8.4 compatibility fixes.
+* Improved demo import performance.
+* Fix a bug on deserialization of untrusted input.
+* Update compatibility tested-up-to to WordPress 6.8.
+
 = 1.0.8 =
 * BlogHash theme support added.
 * Widget issue fixed.

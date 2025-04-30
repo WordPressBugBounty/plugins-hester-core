@@ -516,6 +516,16 @@ final class Hester_Demo_Importer {
 				wp_delete_nav_menu( $slug );
 			}
 		}
+
+		// If it's a Shopwell theme and Shopwell Addons is installed, enable Shopwell Builder.
+		if ( hester_core()->theme_name === 'shopwell' && class_exists( 'Shopwell_Addons' ) ) {
+			$this->enable_shopwell_builder();
+		}
+	}
+
+	private function enable_shopwell_builder() {
+		// Enable Shopwell Builder.
+		update_option( 'shopwell_builder_enable', true );
 	}
 
 	/**
@@ -561,8 +571,12 @@ final class Hester_Demo_Importer {
 
 		// Generate Dynamic styles.
 		$hester_dynamic_styles =  hester_core()->theme_name . '_dynamic_styles';
+		
 		if ( function_exists( $hester_dynamic_styles ) ) {
-			$hester_dynamic_styles()->update_dynamic_file();
+			$styles = $hester_dynamic_styles();
+			if ( is_object( $styles ) && method_exists( $styles, 'update_dynamic_file' ) ) {
+				$styles->update_dynamic_file();
+			}
 		}
 	}
 
@@ -819,38 +833,41 @@ final class Hester_Demo_Importer {
 
 			// Set variables for storage, fix file filename for query strings.
 			preg_match( '/[^\?]+\.(jpe?g|jpe|svg|gif|png)\b/i', $file, $matches );
-			$file_array         = array();
-			$file_array['name'] = basename( $matches[0] );
 
-			// Download file to temp location.
-			$file_array['tmp_name'] = download_url( $file );
+			if ( isset( $matches[0] ) && ! empty( $matches[0] ) ) {
+				$file_array         = array();
+				$file_array['name'] = basename( $matches[0] );
 
-			// If error storing temporarily, return the error.
-			if ( is_wp_error( $file_array['tmp_name'] ) ) {
-				return $file_array['tmp_name'];
+				// Download file to temp location.
+				$file_array['tmp_name'] = download_url( $file );
+
+				// If error storing temporarily, return the error.
+				if ( is_wp_error( $file_array['tmp_name'] ) ) {
+					return $file_array['tmp_name'];
+				}
+
+				// Check if image exists in media library to prevent duplicates.
+				$id = $this->media_image_exists( $file_array['name'] );
+
+				if ( false === $id ) {
+					// Do the validation and storage stuff.
+					$id = media_handle_sideload( $file_array, 0 );
+				}
+
+				// If error storing permanently, unlink.
+				if ( is_wp_error( $id ) ) {
+					unlink( $file_array['tmp_name'] );
+					return $id;
+				}
+
+				// Build the object to return.
+				$meta                = wp_get_attachment_metadata( $id );
+				$data->attachment_id = $id;
+				$data->url           = wp_get_attachment_url( $id );
+				$data->thumbnail_url = wp_get_attachment_thumb_url( $id );
+				$data->height        = $meta['height'];
+				$data->width         = $meta['width'];
 			}
-
-			// Check if image exists in media library to prevent duplicates.
-			$id = $this->media_image_exists( $file_array['name'] );
-
-			if ( false === $id ) {
-				// Do the validation and storage stuff.
-				$id = media_handle_sideload( $file_array, 0 );
-			}
-
-			// If error storing permanently, unlink.
-			if ( is_wp_error( $id ) ) {
-				unlink( $file_array['tmp_name'] );
-				return $id;
-			}
-
-			// Build the object to return.
-			$meta                = wp_get_attachment_metadata( $id );
-			$data->attachment_id = $id;
-			$data->url           = wp_get_attachment_url( $id );
-			$data->thumbnail_url = wp_get_attachment_thumb_url( $id );
-			$data->height        = $meta['height'];
-			$data->width         = $meta['width'];
 		}
 
 		return $data;

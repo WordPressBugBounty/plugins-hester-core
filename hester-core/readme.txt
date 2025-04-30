@@ -2,8 +2,8 @@
 Contributors: peregrinethemes
 Tags: blocks, custom blocks, widgets, demos, demo template, demo website, gutenberg, hester
 Requires at least: 5.0
-Tested up to: 6.5
-Stable tag: 1.0.8
+Tested up to: 6.8
+Stable tag: 1.0.9
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,13 @@ In the search field type "Hester Core" and click Search Plugins. Once you’ve f
 Hester Core is a companion plugin for the [Peregrine Themes](https://peregrine-themes.com) theme and will only work with the theme installed and activated.
 
 == Changelog ==
+
+= 1.0.9 =
+* Update call to `post_exists` to include `post_type` in the query
+* PHP 8.4 compatibility fixes.
+* Improved demo import performance.
+* Fix a bug on deserialization of untrusted input.
+* Update compatibility tested-up-to to WordPress 6.8.
 
 = 1.0.8 =
 * BlogHash theme support added.
