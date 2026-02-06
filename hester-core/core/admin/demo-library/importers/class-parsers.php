@@ -14,22 +14,45 @@
  */
 class Hester_Core_WXR_Parser {
 	public function parse( $file ) {
-		// Attempt to use proper XML parsers first
-		if ( extension_loaded( 'simplexml' ) ) {
-			$parser = new Hester_Core_WXR_Parser_SimpleXML();
-			$result = $parser->parse( $file );
-
-			// If SimpleXML succeeds or this is an invalid WXR file then return the results
-			if ( ! is_wp_error( $result ) || 'SimpleXML_parse_error' != $result->get_error_code() ) {
-				return $result;
+		// Allow forcing a specific parser via WXR_PARSER: simplexml|xml|regex|xmlprocessor
+		$preferred_parser = defined( 'PREFERRED_WXR_PARSER' ) ? constant( 'PREFERRED_WXR_PARSER' ) : null;
+		if ( $preferred_parser ) {
+			$available_parsers = array(
+				'simplexml'    => 'Hester_Core_WXR_Parser_SimpleXML',
+				'xml'          => 'Hester_Core_WXR_Parser_XML',
+				'regex'        => 'Hester_Core_WXR_Parser_Regex',
+				'xmlprocessor' => 'Hester_Core_WXR_Parser_XML_Processor',
+			);
+			if ( isset( $available_parsers[ $preferred_parser ] ) ) {
+				$parser = new $available_parsers[ $preferred_parser ]();
+				$result = $parser->parse( $file );
+			} else {
+				_doing_it_wrong( __FUNCTION__, sprintf( __( 'Invalid parser specified: %s', 'hester-core' ), $preferred_parser ), '0.9.0' );
+				$result = new WP_Error( 'invalid_parser', sprintf( __( 'Invalid parser specified: %s', 'hester-core' ), $preferred_parser ) );
 			}
-		} elseif ( extension_loaded( 'xml' ) ) {
-			$parser = new Hester_Core_WXR_Parser_XML();
-			$result = $parser->parse( $file );
 
 			// If XMLParser succeeds or this is an invalid WXR file then return the results
 			if ( ! is_wp_error( $result ) || 'XML_parse_error' != $result->get_error_code() ) {
 				return $result;
+			}
+ 		} else {
+			// Attempt to auto-select the best XML parser based on available extensions
+			if ( extension_loaded( 'simplexml' ) ) {
+				$parser = new Hester_Core_WXR_Parser_SimpleXML();
+				$result = $parser->parse( $file );
+
+				// If SimpleXML succeeds or this is an invalid WXR file then return the results
+				if ( ! is_wp_error( $result ) || 'SimpleXML_parse_error' != $result->get_error_code() ) {
+					return $result;
+				}
+			} elseif ( extension_loaded( 'xml' ) ) {
+				$parser = new Hester_Core_WXR_Parser_XML();
+				$result = $parser->parse( $file );
+
+				// If XMLParser succeeds or this is an invalid WXR file then return the results
+				if ( ! is_wp_error( $result ) || 'XML_parse_error' != $result->get_error_code() ) {
+					return $result;
+				}
 			}
 		}
 
@@ -45,12 +68,12 @@ class Hester_Core_WXR_Parser {
 				echo esc_html( $error[0] ) . ':' . esc_html( $error[1] ) . ' ' . esc_html( $error[2] );
 			}
 			echo '</pre>';
-			echo '<p><strong>' . __( 'There was an error when reading this WXR file', 'wordpress-importer' ) . '</strong><br />';
-			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'wordpress-importer' ) . '</p>';
+			echo '<p><strong>' . __( 'There was an error when reading this WXR file', 'hester-core' ) . '</strong><br />';
+			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'hester-core' ) . '</p>';
 		}
 
 		// use regular expressions if nothing else available or this is bad XML
-		$parser = new Hester_Core_WXR_Parser_Regex();
+		$parser = new Hester_Core_WXR_Parser_XML_Processor();
 		return $parser->parse( $file );
 	}
 }
@@ -72,7 +95,7 @@ class Hester_Core_WXR_Parser_SimpleXML {
 			libxml_clear_errors();
 			libxml_use_internal_errors( $internal_errors );
 
-			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'hester-core' ), libxml_get_errors() );
 		}
 
 		$xml = simplexml_import_dom( $dom );
@@ -84,7 +107,7 @@ class Hester_Core_WXR_Parser_SimpleXML {
 			libxml_clear_errors();
 			libxml_use_internal_errors( $internal_errors );
 
-			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'hester-core' ), libxml_get_errors() );
 		}
 
 		$wxr_version = $xml->xpath( '/rss/channel/wp:wxr_version' );
@@ -93,7 +116,7 @@ class Hester_Core_WXR_Parser_SimpleXML {
 			libxml_clear_errors();
 			libxml_use_internal_errors( $internal_errors );
 
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'hester-core' ) );
 		}
 
 		$wxr_version = (string) trim( $wxr_version[0] );
@@ -103,7 +126,7 @@ class Hester_Core_WXR_Parser_SimpleXML {
 			libxml_clear_errors();
 			libxml_use_internal_errors( $internal_errors );
 
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'hester-core' ) );
 		}
 
 		$base_url = $xml->xpath( '/rss/channel/wp:base_site_url' );
@@ -365,7 +388,7 @@ class Hester_Core_WXR_Parser_XML {
 		xml_parser_free( $xml );
 
 		if ( ! preg_match( '/^\d+\.\d+$/', $this->wxr_version ) ) {
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'hester-core' ) );
 		}
 
 		return array(
@@ -510,7 +533,11 @@ class Hester_Core_WXR_Parser_XML {
 }
 
 /**
- * WXR Parser that uses regular expressions. Fallback for installs without an XML parser.
+ * Hester_Core_WXR_Parser_Regex class that uses regular expressions. Fallback for installs without an XML parser.
+ * @deprecated 0.9.0 Use Hester_Core_WXR_Parser_XML_Processor instead. The WXR_Parser_Regex class
+ *             is no longer used by the importer or maintained with bug fixes. The only
+ *             reason it is still included in the codebase is for backwards compatibility
+ *             with plugins that directly reference it.
  */
 class Hester_Core_WXR_Parser_Regex {
 	var $authors    = array();
@@ -543,32 +570,36 @@ class Hester_Core_WXR_Parser_Regex {
 				$importline = rtrim( $this->fgets( $fp ) );
 
 				if ( ! $wxr_version && preg_match( '|<wp:wxr_version>(\d+\.\d+)</wp:wxr_version>|', $importline, $version ) ) {
-					$wxr_version = $version[1];
+					$wxr_version = isset( $version[1] ) ? $version[1] : '';
 				}
 
 				if ( false !== strpos( $importline, '<wp:base_site_url>' ) ) {
 					preg_match( '|<wp:base_site_url>(.*?)</wp:base_site_url>|is', $importline, $url );
-					$this->base_url = $url[1];
+					$this->base_url = isset( $url[1] ) ? $url[1] : '';
 					continue;
 				}
 
 				if ( false !== strpos( $importline, '<wp:base_blog_url>' ) ) {
 					preg_match( '|<wp:base_blog_url>(.*?)</wp:base_blog_url>|is', $importline, $url );
-					$this->blog_url = $url[1];
+					$this->blog_url = isset( $url[1] ) ? $url[1] : '';
 					continue;
+				}elseif ( empty( $this->blog_url ) ) {
+					$this->blog_url = $this->base_url;
 				}
 
 				if ( false !== strpos( $importline, '<wp:author>' ) ) {
 					preg_match( '|<wp:author>(.*?)</wp:author>|is', $importline, $author );
-					$a                                   = $this->process_author( $author[1] );
-					$this->authors[ $a['author_login'] ] = $a;
+					 if ( isset( $author[1] ) ) {
+						$a                                   = $this->process_author( $author[1] );
+						$this->authors[ $a['author_login'] ] = $a;
+					}
 					continue;
 				}
 
 				foreach ( $multiline_tags as $tag => $handler ) {
 					// Handle multi-line tags on a singular line
 					if ( preg_match( '|<' . $tag . '>(.*?)</' . $tag . '>|is', $importline, $matches ) ) {
-						$this->{$handler[0]}[] = call_user_func( $handler[1], $matches[1] );
+						$this->{$handler[0]}[] = call_user_func( $handler[1], isset( $matches[1] ) ? $matches[1] : '' );
 
 					} elseif ( false !== ( $pos = strpos( $importline, "<$tag>" ) ) ) {
 						// Take note of any content after the opening tag
@@ -595,7 +626,7 @@ class Hester_Core_WXR_Parser_Regex {
 		}
 
 		if ( ! $wxr_version ) {
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'hester-core' ) );
 		}
 
 		return array(
@@ -610,14 +641,19 @@ class Hester_Core_WXR_Parser_Regex {
 	}
 
 	public function get_tag( $text, $tag ) {
+		if ( null === $text ) {
+ 	        return '';
+ 	    }
 		preg_match( "|<$tag.*?>(.*?)</$tag>|is", $text, $return );
 		if ( isset( $return[1] ) ) {
 			if ( substr( $return[1], 0, 9 ) == '<![CDATA[' ) {
 				if ( strpos( $return[1], ']]]]><![CDATA[>' ) !== false ) {
 					preg_match_all( '|<!\[CDATA\[(.*?)\]\]>|s', $return[1], $matches );
 					$return = '';
-					foreach ( $matches[1] as $match ) {
-						$return .= $match;
+					if ( isset( $matches[1] ) ) {
+                        foreach ( $matches[1] as $match ) {
+                            $return .= $match;
+                        }
 					}
 				} else {
 					$return = preg_replace( '|^<!\[CDATA\[(.*)\]\]>$|s', '$1', $return[1] );
@@ -819,4 +855,362 @@ class Hester_Core_WXR_Parser_Regex {
 		}
 		return fclose( $fp );
 	}
+}
+
+/**
+ * WordPress eXtended RSS file parser implementations
+ *
+ * @package WordPress
+ * @subpackage Importer
+ */
+use WordPress\ByteStream\ReadStream\FileReadStream;
+/**
+ * WXR Parser that uses the XMLProcessor component.
+ */
+class Hester_Core_WXR_Parser_XML_Processor {
+        public $authors       = array();
+        public $posts         = array();
+        public $categories    = array();
+        public $tags          = array();
+        public $terms         = array();
+        public $base_url      = '';
+        public $base_blog_url = '';
+        /**
+         * Parse a WXR file
+         *
+         * @param string $file Path to WXR file
+         * @return array|WP_Error Parsed data or error object
+         */
+        public function parse( $file ) {
+                // Trigger a warning for non-existent files to match legacy behavior and tests.
+                if ( ! is_readable( $file ) ) {
+                        // Intentionally trigger a PHP warning; return value is ignored.
+                        file_get_contents( $file );
+                }
+                // Initialize variables
+                $this->authors       = array();
+                $this->posts         = array();
+                $this->categories    = array();
+                $this->tags          = array();
+                $this->terms         = array();
+                $this->base_url      = '';
+                $this->base_blog_url = '';
+                $wxr_version         = '';
+                try {
+                        $reader = $this->create_wxr_entity_reader( $file );
+                        // Parse the XML document
+                        $last_term = null;
+                        while ( $reader->next_entity() ) {
+                                $entity       = $reader->get_entity();
+                                $trimmed_data = array();
+                                foreach ( $entity->get_data() as $k => $v ) {
+                                        if ( ! is_string( $v ) ) {
+                                                $trimmed_data[ $k ] = $v;
+                                                continue;
+                                        }
+                                        $trimmed_data[ $k ] = $v;
+                                }
+                                switch ( $entity->get_type() ) {
+                                        case 'wxr_version':
+                                                $wxr_version = $trimmed_data['wxr_version'];
+                                                break;
+                                        case 'site_option':
+                                                if ( isset( $trimmed_data['option_name'], $trimmed_data['option_value'] ) ) {
+                                                        switch ( $trimmed_data['option_name'] ) {
+                                                                case 'wxr_version':
+                                                                        $wxr_version = $trimmed_data['option_value'];
+                                                                        break;
+                                                                case 'siteurl':
+                                                                        $this->base_url = $trimmed_data['option_value'];
+                                                                        break;
+                                                                case 'home':
+                                                                        $this->base_blog_url = $trimmed_data['option_value'];
+                                                                        break;
+                                                        }
+                                                }
+                                                break;
+                                        case 'user':
+                                                $key                   = isset( $trimmed_data['author_login'] ) ? $trimmed_data['author_login'] : (
+                                                        isset( $trimmed_data['author_email'] ) ? $trimmed_data['author_email'] : (
+                                                                isset( $trimmed_data['author_id'] ) ? $trimmed_data['author_id'] : count( $this->authors )
+                                                        )
+                                                );
+                                                $this->authors[ $key ] = $trimmed_data;
+                                                break;
+                                        case 'post':
+                                                $this->posts[] = $trimmed_data;
+                                                break;
+                                        case 'post_meta':
+                                                $last_post_key = count( $this->posts ) - 1;
+                                                if ( ! isset( $this->posts[ $last_post_key ]['postmeta'] ) ) {
+                                                        $this->posts[ $last_post_key ]['postmeta'] = array();
+                                                }
+                                                // Ensure only expected keys 'key' and 'value' are present to match tests
+                                                if ( isset( $trimmed_data['post_id'] ) ) {
+                                                        unset( $trimmed_data['post_id'] );
+                                                }
+                                                $this->posts[ $last_post_key ]['postmeta'][] = $trimmed_data;
+                                                break;
+                                        case 'comment':
+                                                $last_post_key = count( $this->posts ) - 1;
+                                                if ( ! isset( $this->posts[ $last_post_key ]['comments'] ) ) {
+                                                        $this->posts[ $last_post_key ]['comments'] = array();
+                                                }
+                                                $trimmed_data['commentmeta']                 = array();
+                                                $this->posts[ $last_post_key ]['comments'][] = $trimmed_data;
+                                                break;
+                                        case 'comment_meta':
+                                                $last_post_key      = count( $this->posts ) - 1;
+                                                $last_comment_index = count( $this->posts[ $last_post_key ]['comments'] ) - 1;
+                                                if ( $last_comment_index >= 0 ) {
+                                                        // Do not include comment_id in the final commentmeta array to match expected shape.
+                                                        if ( isset( $trimmed_data['comment_id'] ) ) {
+                                                                unset( $trimmed_data['comment_id'] );
+                                                        }
+                                                        $this->posts[ $last_post_key ]['comments'][ $last_comment_index ]['commentmeta'][] = $trimmed_data;
+                                                }
+                                                break;
+                                        case 'category':
+                                                if ( isset( $trimmed_data['term_id'] ) ) {
+                                                        $trimmed_data['term_id'] = (int) $trimmed_data['term_id'];
+                                                }
+                                                unset( $trimmed_data['taxonomy'], $trimmed_data['term_description'] );
+                                                $this->categories[] = $trimmed_data;
+                                                $last_term_index    = count( $this->categories ) - 1;
+                                                $last_term          = &$this->categories[ $last_term_index ];
+                                                break;
+                                        case 'tag':
+                                                if ( isset( $trimmed_data['term_id'] ) ) {
+                                                        $trimmed_data['term_id'] = (int) $trimmed_data['term_id'];
+                                                }
+                                                unset( $trimmed_data['taxonomy'], $trimmed_data['term_description'] );
+                                                $this->tags[]    = $trimmed_data;
+                                                $last_term_index = count( $this->tags ) - 1;
+                                                $last_term       = &$this->tags[ $last_term_index ];
+                                                break;
+                                        case 'term':
+                                                if ( isset( $trimmed_data['term_id'] ) ) {
+                                                        $trimmed_data['term_id'] = (int) $trimmed_data['term_id'];
+                                                }
+                                                // unset($trimmed_data['taxonomy'], $trimmed_data['term_description']);
+                                                // $trimmed_data['taxonomy'] id 'domain'
+                                                // $trimmed_data['slug'] id 'nicename'
+                                                $this->terms[]   = $trimmed_data;
+                                                $last_term_index = count( $this->terms ) - 1;
+                                                $last_term       = &$this->terms[ $last_term_index ];
+                                                break;
+                                        case 'termmeta':
+                                        case 'term_meta':
+                                                if ( ! isset( $last_term['termmeta'] ) ) {
+                                                        $last_term['termmeta'] = array();
+                                                }
+                                                $last_term['termmeta'][] = $trimmed_data;
+                                                break;
+                                        case 'wxr_version':
+                                                // Support entity-style wxr_version array or raw string
+                                                if ( isset( $trimmed_data['wxr_version'] ) ) {
+                                                        $wxr_version = $trimmed_data['wxr_version'];
+                                                } else {
+                                                        $wxr_version = $trimmed_data;
+                                                }
+                                                break;
+                                        default:
+                                                // Ignore unknown entity types silently to avoid emitting notices.
+                                                break;
+                                }
+                        }
+                } catch ( Exception $e ) {
+                        return new WP_Error( 'WXR_parse_error', $e->getMessage() );
+                }
+                // Normalize per-post terms to legacy shape { domain, slug, name } when needed.
+                foreach ( $this->posts as $idx => $post ) {
+                        if ( isset( $post['terms'] ) && is_array( $post['terms'] ) ) {
+                                foreach ( $post['terms'] as $tidx => $term ) {
+                                        if ( ! isset( $term['domain'] ) && isset( $term['taxonomy'] ) ) {
+                                                $mapped                                = array(
+                                                        'domain' => $term['taxonomy'],
+                                                        'slug'   => isset( $term['slug'] ) ? $term['slug'] : '',
+                                                        'name'   => isset( $term['description'] ) ? $term['description'] : '',
+                                                );
+                                                $this->posts[ $idx ]['terms'][ $tidx ] = $mapped;
+                                        }
+                                }
+                        }
+                }
+                // Validate WXR version
+                if ( empty( $wxr_version ) || ! preg_match( '/^\d+\.\d+$/', $wxr_version ) ) {
+                        return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'hester-core' ) );
+                }
+                return array(
+                        'authors'       => $this->authors,
+                        'posts'         => $this->posts,
+                        'categories'    => $this->categories,
+                        'tags'          => $this->tags,
+                        'terms'         => $this->terms,
+                        'base_url'      => $this->base_url,
+                        'base_blog_url' => $this->base_blog_url,
+                        'version'       => $wxr_version,
+                );
+        }
+        private function create_wxr_entity_reader( $file ) {
+                // Every XML element is a combination of a long-form namespace and a
+                // local element name, e.g. a syntax <wp:post_id> could actually refer
+                // to a (https://wordpress.org/export/1.0/, post_id) element.
+                //
+                // Namespaces are paramount for parsing XML and cannot be ignored. Elements
+                // element must be matched based on both their namespace and local name.
+                //
+                // Unfortunately, different WXR files defined the `wp` namespace in a different way.
+                // Folks use a mixture of HTTP vs HTTPS protocols and version numbers. We must
+                // account for all possible options to parse these documents correctly.
+                $wxr_namespaces = array(
+                        'http://wordpress.org/export/1.0/',
+                        'https://wordpress.org/export/1.0/',
+                        'http://wordpress.org/export/1.1/',
+                        'https://wordpress.org/export/1.1/',
+                        'http://wordpress.org/export/1.2/',
+                        'https://wordpress.org/export/1.2/',
+                );
+                $known_entities = array(
+                        'item' => array(
+                                'type'   => 'post',
+                                'fields' => array(
+                                        'title'       => 'post_title',
+                                        'guid'        => 'guid',
+                                        'description' => 'post_excerpt',
+                                        '{http://purl.org/dc/elements/1.1/}creator' => 'post_author',
+                                        '{http://purl.org/rss/1.0/modules/content/}encoded' => 'post_content',
+                                        '{http://wordpress.org/export/1.0/excerpt/}encoded' => 'post_excerpt',
+                                        '{http://wordpress.org/export/1.1/excerpt/}encoded' => 'post_excerpt',
+                                        '{http://wordpress.org/export/1.2/excerpt/}encoded' => 'post_excerpt',
+                                ),
+                        ),
+                );
+                $known_site_options = array();
+                foreach ( $wxr_namespaces as $wxr_namespace ) {
+                        $known_site_options               = array_merge(
+                                $known_site_options,
+                                array(
+                                        '{' . $wxr_namespace . '}base_blog_url' => 'home',
+                                        '{' . $wxr_namespace . '}base_site_url' => 'siteurl',
+                                        '{' . $wxr_namespace . '}wxr_version' => 'wxr_version',
+                                        'title'                               => 'blogname',
+                                )
+                        );
+                        $known_entities['item']['fields'] = array_merge(
+                                $known_entities['item']['fields'],
+                                array(
+                                        '{' . $wxr_namespace . '}post_id'     => 'post_id',
+                                        '{' . $wxr_namespace . '}status'      => 'status',
+                                        '{' . $wxr_namespace . '}post_date'   => 'post_date',
+                                        '{' . $wxr_namespace . '}post_date_gmt' => 'post_date_gmt',
+                                        '{' . $wxr_namespace . '}post_modified' => 'post_modified',
+                                        '{' . $wxr_namespace . '}post_modified_gmt' => 'post_modified_gmt',
+                                        '{' . $wxr_namespace . '}comment_status' => 'comment_status',
+                                        '{' . $wxr_namespace . '}ping_status' => 'ping_status',
+                                        '{' . $wxr_namespace . '}post_name'   => 'post_name',
+                                        '{' . $wxr_namespace . '}post_parent' => 'post_parent',
+                                        '{' . $wxr_namespace . '}menu_order'  => 'menu_order',
+                                        '{' . $wxr_namespace . '}post_type'   => 'post_type',
+                                        '{' . $wxr_namespace . '}post_password' => 'post_password',
+                                        '{' . $wxr_namespace . '}is_sticky'   => 'is_sticky',
+                                        '{' . $wxr_namespace . '}attachment_url' => 'attachment_url',
+                                )
+                        );
+                        $known_entities                   = array_merge(
+                                $known_entities,
+                                array(
+                                        '{' . $wxr_namespace . '}comment'     => array(
+                                                'type'   => 'comment',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}comment_id'   => 'comment_id',
+                                                        '{' . $wxr_namespace . '}comment_author' => 'comment_author',
+                                                        '{' . $wxr_namespace . '}comment_author_email' => 'comment_author_email',
+                                                        '{' . $wxr_namespace . '}comment_author_url' => 'comment_author_url',
+                                                        '{' . $wxr_namespace . '}comment_author_IP' => 'comment_author_IP',
+                                                        '{' . $wxr_namespace . '}comment_date' => 'comment_date',
+                                                        '{' . $wxr_namespace . '}comment_date_gmt' => 'comment_date_gmt',
+                                                        '{' . $wxr_namespace . '}comment_content' => 'comment_content',
+                                                        '{' . $wxr_namespace . '}comment_approved' => 'comment_approved',
+                                                        '{' . $wxr_namespace . '}comment_type' => 'comment_type',
+                                                        '{' . $wxr_namespace . '}comment_parent' => 'comment_parent',
+                                                        '{' . $wxr_namespace . '}comment_user_id' => 'comment_user_id',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}commentmeta' => array(
+                                                'type'   => 'comment_meta',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}meta_key' => 'key',
+                                                        '{' . $wxr_namespace . '}meta_value' => 'value',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}author'      => array(
+                                                'type'   => 'user',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}author_id'    => 'author_id',
+                                                        '{' . $wxr_namespace . '}author_login' => 'author_login',
+                                                        '{' . $wxr_namespace . '}author_email' => 'author_email',
+                                                        '{' . $wxr_namespace . '}author_display_name' => 'author_display_name',
+                                                        '{' . $wxr_namespace . '}author_first_name' => 'author_first_name',
+                                                        '{' . $wxr_namespace . '}author_last_name' => 'author_last_name',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}postmeta'    => array(
+                                                'type'   => 'post_meta',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}meta_key' => 'key',
+                                                        '{' . $wxr_namespace . '}meta_value' => 'value',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}term'        => array(
+                                                'type'   => 'term',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}term_id' => 'term_id',
+                                                        '{' . $wxr_namespace . '}term_taxonomy' => 'term_taxonomy',
+                                                        '{' . $wxr_namespace . '}term_slug' => 'slug',
+                                                        '{' . $wxr_namespace . '}term_parent' => 'term_parent',
+                                                        '{' . $wxr_namespace . '}term_name' => 'term_name',
+                                                        '{' . $wxr_namespace . '}term_description' => 'term_description',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}termmeta'    => array(
+                                                'type'   => 'term_meta',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}meta_key' => 'key',
+                                                        '{' . $wxr_namespace . '}meta_value' => 'value',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}tag'         => array(
+                                                'type'   => 'tag',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}term_id'  => 'term_id',
+                                                        '{' . $wxr_namespace . '}tag_slug' => 'tag_slug',
+                                                        '{' . $wxr_namespace . '}tag_name' => 'tag_name',
+                                                        '{' . $wxr_namespace . '}tag_description' => 'tag_description',
+                                                ),
+                                        ),
+                                        '{' . $wxr_namespace . '}category'    => array(
+                                                'type'   => 'category',
+                                                'fields' => array(
+                                                        '{' . $wxr_namespace . '}term_id'  => 'term_id',
+                                                        '{' . $wxr_namespace . '}category_nicename' => 'category_nicename',
+                                                        '{' . $wxr_namespace . '}category_parent' => 'category_parent',
+                                                        '{' . $wxr_namespace . '}cat_name' => 'cat_name',
+                                                        '{' . $wxr_namespace . '}category_description' => 'category_description',
+                                                ),
+                                        ),
+                                )
+                        );
+                }
+                return WordPress\DataLiberation\EntityReader\WXREntityReader::create(
+                        FileReadStream::from_path( $file ),
+                        null,
+                        array(
+                                'known_site_options'        => $known_site_options,
+                                'known_entities'            => $known_entities,
+                                'use_legacy_post_term_keys' => true,
+                                'remap_wp_author'           => false,
+                        )
+                );
+        }
 }

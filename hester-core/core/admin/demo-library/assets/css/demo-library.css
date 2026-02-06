@@ -853,3 +853,33 @@ div.hester-section-title .hester-btn {
   letter-spacing: .1em;
   margin: 30px 0;
 }
+
+/**
+ * Toast
+ */
+.hester-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 300px;
+  background: #fbeaea;
+  color: #b32d2e;
+  border-left: 4px solid #dc3232;
+  padding: 12px 40px 12px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 999999;
+  font-size: 14px;
+}
+
+.hester-toast button.hester-toast-dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+}

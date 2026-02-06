@@ -122,6 +122,7 @@
 			$document.on( 'hester-core-import_options', HesterCoreDemoLibrary.importOptions );
 			$document.on( 'hester-core-import_wpforms', HesterCoreDemoLibrary.importWPForms );
 			$document.on( 'hester-core-import_completed', HesterCoreDemoLibrary.importCompleted );
+			$document.on( 'hester-core-import_failed', HesterCoreDemoLibrary.importFailed );
 
 			// Filter template list.
 			$document.on( 'click', '.demo-filters a', HesterCoreDemoLibrary.filters );
@@ -510,23 +511,52 @@
 			data.demo_id     = $( '.wp-full-overlay-header' ).data( 'demo-slug' );
 
 			return $.ajax({
-				url : hester_strings.ajaxurl,
-				type : 'POST',
+				url: hester_strings.ajaxurl,
+				type: 'POST',
 				dataType: 'json',
-				data : data,
-			}).done( function(response) {
-
-				if ( response.success ) {
+				data: data
+			})
+			.done(function (response) {
+				if (response.success) {
+					// Success path
 					HesterCoreDemoLibrary.updateProgressBar();
 					HesterCoreDemoLibrary.importNextStep();
 				} else {
-					console.log( response );
+					// Handle logical failure (still 200 OK)
+					let errorMsg = response.data || hesterCoreDemoLibrary.strings.importFailed;
+					let solutionMsg = '';
+
+					// If you want to give guidance when server error is wrapped in success=false
+					if (response.code && response.code >= 500 && response.code < 600) {
+						solutionMsg = hesterCoreDemoLibrary.strings.solutionMsg;
+					}
+
+					// Trigger consistent failure event
+					$document.trigger('hester-core-import_failed', {
+						error: errorMsg,
+						solution: solutionMsg
+					});
 				}
-			}).fail(function(jqXHR, textStatus, errorThrown)  {
-				console.log(jqXHR);
+			})
+			.fail(function (jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.responseText);
 				console.log(textStatus);
-			    console.log(errorThrown);
+				console.log(errorThrown);
+
+				// Build messages
+				let errorMsg =  `${jqXHR.status}: ${jqXHR.responseText}.`  || textStatus || `${jqXHR.status}: ${hesterCoreDemoLibrary.strings.importFailed}`;
+				let solutionMsg = '';
+
+				if (jqXHR.status >= 500 && jqXHR.status < 600) {
+					solutionMsg = hesterCoreDemoLibrary.strings.solutionMsg;
+				}
+
+				$document.trigger('hester-core-import_failed', {
+					error: errorMsg,
+					solution: solutionMsg
+				});
 			});
+
 		},
 
 		/**
@@ -642,6 +672,40 @@
 		},
 
 		/**
+		 * Import Failed.
+		 */
+		importFailed: function(e, data) {
+			$( '.hester-demo-preview .hester-demo-import' )
+				.text( hesterCoreDemoLibrary.strings.importFailed )
+				.removeClass( 'hester-demo-import' )
+				.attr( 'disabled', true );
+
+			$( '.wp-full-overlay-footer .status' )
+				.text( hesterCoreDemoLibrary.strings.importFailed );
+
+			$body.removeClass( 'importing' );
+
+			// Build toast HTML
+			var html  = '<div class="hester-toast hester-toast-error">';
+				html += '<span class="hester-toast-message"><strong>' + (data?.error || hesterCoreDemoLibrary.strings.importFailed) + '</strong></span>';
+				if (data?.solution) {
+					html += '<p style="margin-top:6px;">' + data.solution + '</p>';
+				}
+				html += '<button type="button" class="hester-toast-dismiss">&times;</button>';
+				html += '</div>';
+
+			var $toast = $(html);
+
+			$('body').append($toast);
+
+			// Dismiss manually
+			$toast.on('click', '.hester-toast-dismiss', function() {
+				$toast.remove();
+			});
+		},
+
+
+		/**
 		 * Trigger next import step.
 		 */
 		importNextStep: function() {
@@ -709,7 +773,29 @@
 			$( '.hester-section.demos' ).html('');
 
 			if ( _.isEmpty( templates ) ) {
-				$( '.hester-section.demos' ).html( '<div class="hester-column">' + hesterCoreDemoLibrary.strings.noResultsFound + '</div>' );
+				const stored = localStorage.getItem('demoFetchMessage');
+				if (stored) {
+					try {
+						const data = JSON.parse(stored); // parse object
+
+						let html = '<div class="notice notice-error is-dismissible" style="display:block;">';
+						html += '<p><strong>' + data.error + '</strong></p>';
+						if (data.solution) {
+							html += '<p style="margin-top:6px;color:#555d66">' + data.solution + '</p>';
+						}
+						html += '</div>';
+
+						// Insert after .demo-filters
+						jQuery('.demo-filters').after(html).css('display', 'block');
+					} catch(e) {
+						console.error('Invalid error message in localStorage');
+					}
+
+					// Clear after showing once
+					localStorage.removeItem('demoFetchMessage');
+				} else{
+					$( '.hester-section.demos' ).html( '<div class="hester-column">' + hesterCoreDemoLibrary.strings.noResultsFound + '</div>' );
+				}
 				return;
 			}
 

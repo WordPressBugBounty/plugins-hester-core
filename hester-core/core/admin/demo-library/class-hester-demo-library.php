@@ -147,6 +147,7 @@ final class Hester_Demo_Library {
 				'activatingPlugin'    => __( 'Activating plugin', 'hester-core' ) . ' ',
 				'activated'           => __( 'Plugin activated! ', 'hester-core' ),
 				'importCompleted'     => __( 'All Done! Visit Site', 'hester-core' ),
+				'importFailed'     	  => __( 'Import Failed!', 'hester-core' ),
 				'importingCustomizer' => __( 'Importing Customizer...', 'hester-core' ),
 				'importingContent'    => __( 'Importing Content...', 'hester-core' ),
 				'importingWPForms'    => __( 'Importing WPForms...', 'hester-core' ),
@@ -155,6 +156,7 @@ final class Hester_Demo_Library {
 				'preview'             => __( 'Preview', 'hester-core' ),
 				'preparing'           => __( 'Preparing Data...', 'hester-core' ),
 				'noResultsFound'      => __( 'No results found', 'hester-core' ),
+				'solutionMsg'		  => __('This looks like a server-side problem. Please contact your hosting provider.', 'hester-core'),
 			),
 			'homeurl'            => home_url( '/' ),
 			'templates'          => $this->get_templates(),
@@ -176,7 +178,7 @@ final class Hester_Demo_Library {
 
 		wp_enqueue_style(
 			'hester-core-admin',
-			plugin_dir_url( __FILE__ ) . 'assets/css/demo-library.min.css',
+			plugin_dir_url( __FILE__ ) . 'assets/css/demo-library'.$suffix.'.css',
 			$this->version,
 			true
 		);
@@ -250,9 +252,32 @@ final class Hester_Demo_Library {
 				)
 			);
 
-			if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+
+			if(is_wp_error($response)){
+				$error_message = $response->get_error_message();
+				$error_code    = $response->get_error_code();
+
+				// Build main error text
+				$main_error = $error_code . ': ' . $error_message;
+
+				// Add solution if it's server-side (5xx errors)
+				$solution = '';
+				if ( preg_match('/^5\d{2}$/', $error_code) ) {
+					$solution = __('This looks like a server-side problem. Please contact your hosting provider to resolve the issue.', 'textdomain');
+				}
+
+				// Store as an object in JSON (so JS can use both parts easily)
+				echo '<script>
+					localStorage.setItem("demoFetchMessage", ' . json_encode(json_encode([
+						'error'    => $main_error,
+						'solution' => $solution,
+					])) . ');
+				</script>';
+
+            }elseif (  200 === wp_remote_retrieve_response_code( $response ) ) {
 				$this->templates = (array) json_decode( stripcslashes( wp_remote_retrieve_body( $response ) ), true );
 			}
+
 			$theme  = wp_get_theme();
 			if ( is_array( $this->templates ) && ! empty( $this->templates ) ) {
 				foreach ( $this->templates as $id => $template ) {
@@ -282,6 +307,12 @@ final class Hester_Demo_Library {
 					}
 					// Skip demos that require a newer version of Shopwell Theme.
 					if ( defined( 'SHOPWELL_THEME_VERSION' ) && isset( $template['shopwell-theme-version'] ) && version_compare( SHOPWELL_THEME_VERSION, $template['shopwell-theme-version'] ) < 0 ) {
+						unset( $this->templates[ $id ] );
+						continue;
+					}
+
+					// Skip demos that require a newer version of Blogsy Theme.
+					if ( defined( 'BLOGSY_THEME_VERSION' ) && isset( $template['blogsy-theme-version'] ) && version_compare( BLOGSY_THEME_VERSION, $template['blogsy-theme-version'] ) < 0 ) {
 						unset( $this->templates[ $id ] );
 						continue;
 					}

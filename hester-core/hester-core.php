@@ -4,7 +4,7 @@
  * Description: Additional features for Hester WordPress Theme.
  * Author:      Peregrine Themes
  * Author URI:  https://peregrine-themes.com
- * Version:     1.0.9
+ * Version:     1.0.10
  * Text Domain: hester-core
  * Domain Path: languages
  *
@@ -57,7 +57,7 @@ if (!class_exists("Hester_Core")) {
          * @since 1.0.0
          * @var sting
          */
-        public $version = "1.0.9";
+        public $version = "1.0.10";
 
         public $theme_name = "hester";
 
@@ -197,7 +197,8 @@ if (!class_exists("Hester_Core")) {
         "bloglo-pro" === $theme->template ||
         "bloghash" === $theme->template ||
         "bloghash-pro" === $theme->template ||
-        "shopwell" === $theme->template
+        "shopwell" === $theme->template ||
+        "blogsy" === $theme->template
     ) {
         hester_core();
     } else {

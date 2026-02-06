@@ -86,7 +86,8 @@ final class Hester_Core_Admin {
 
 		if (
 			! defined( 'HESTER_THEME_VERSION' ) && ! defined( 'BLOGUN_THEME_VERSION' ) &&
-			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) && ! defined( 'SHOPWELL_THEME_VERSION' )
+			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) && 
+			! defined( 'SHOPWELL_THEME_VERSION' ) && ! defined( 'BLOGSY_THEME_VERSION' )
 		) {
 			add_action( 'admin_notices', array( $this, 'theme_required_notice' ) );
 			return;
