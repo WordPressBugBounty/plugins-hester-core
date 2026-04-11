@@ -33,7 +33,7 @@ class Hester_Core_CLI {
 	 * @since 1.0.0
 	 */
 	private function includes() {
-		require_once dirname( __FILE__ ) . '/commands/class-cli-import.php';
+		require_once __DIR__ . '/commands/class-cli-import.php';
 	}
 
 	/**

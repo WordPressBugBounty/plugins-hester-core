@@ -6,6 +6,12 @@
  * @author      Peregrine Themes <peregrinethemes@gmail.com>
  * @since       1.0.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Hester_Core_Social_Links_Widget extends WP_Widget {
 
 	/**
@@ -48,7 +54,6 @@ class Hester_Core_Social_Links_Widget extends WP_Widget {
 
 		// Load widget.
 		parent::__construct( $widget_slug, _x( '[Hester] Social Links', 'Widget', 'hester-core' ), $widget_ops, $control_ops );
-
 	}
 
 	/**
@@ -86,7 +91,7 @@ class Hester_Core_Social_Links_Widget extends WP_Widget {
 
 			$nav_menu_args = apply_filters( 'hester_social_links_widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance );
 
-			$hester_social_links =  hester_core()->theme_name . '_social_links';
+			$hester_social_links = hester_core()->theme_name . '_social_links';
 
 			$hester_social_links( $nav_menu_args );
 		}

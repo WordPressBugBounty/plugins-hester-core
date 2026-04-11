@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 add_filter( 'hester_customizer_options', 'hester_customizer_slider_options' );
 function hester_customizer_slider_options( array $options ) {
@@ -57,7 +61,13 @@ function hester_customizer_slider_options( array $options ) {
 			'title_format'  => esc_html__( '[live_title]', 'hester-core' ), // [live_title]
 			'add_text'      => esc_html__( 'Add new slide', 'hester-core' ),
 			'max_item'      => 3, // Maximum item can add,
-			'limited_msg'   => wp_kses_post( __( 'Upgrade to <a target="_blank" href="https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=slider&utm_campaign=upgradeToPro">Hester Pro</a> to be able to add more items and unlock other premium features!', 'hester-core' ) ),
+			'limited_msg'   => printf(
+								wp_kses_post(
+									/* translators: %s: Hester Pro link */
+									__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )
+								),
+								'<a target="_blank" href="' . esc_url( 'https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=slider&utm_campaign=upgradeToPro' ) . '">Hester Pro</a>'
+							),
 			'fields'        => array(
 				'image'               => array(
 					'title' => esc_html__( 'Slide image', 'hester-core' ),
@@ -103,9 +113,9 @@ function hester_customizer_slider_options( array $options ) {
 					'type'  => 'url',
 				),
 				'btn_1_class'         => array(
-					'title'       => esc_html__( 'Button 1 Style', 'hester-core' ),
-					'desc'        => esc_html__( 'Add predefined classes btn-primary, btn-secondary, btn-white. Add `btn-outline` class to outline the button', 'hester-core' ),
-					'type'        => 'text',
+					'title' => esc_html__( 'Button 1 Style', 'hester-core' ),
+					'desc'  => esc_html__( 'Add predefined classes btn-primary, btn-secondary, btn-white. Add `btn-outline` class to outline the button', 'hester-core' ),
+					'type'  => 'text',
 				),
 				'btn_2_text'          => array(
 					'title' => esc_html__( 'Button 2 text', 'hester-core' ),
@@ -116,9 +126,9 @@ function hester_customizer_slider_options( array $options ) {
 					'type'  => 'url',
 				),
 				'btn_2_class'         => array(
-					'title'       => esc_html__( 'Button 2 Style', 'hester-core' ),
-					'desc'        => esc_html__( 'Add predefined classes btn-primary, btn-secondary, btn-white. Add `btn-outline` class to outline the button', 'hester-core' ),
-					'type'        => 'text',
+					'title' => esc_html__( 'Button 2 Style', 'hester-core' ),
+					'desc'  => esc_html__( 'Add predefined classes btn-primary, btn-secondary, btn-white. Add `btn-outline` class to outline the button', 'hester-core' ),
+					'type'  => 'text',
 				),
 				'alignment'           => array(
 					'title'   => esc_html__( 'Align', 'hester-core' ),
@@ -249,7 +259,7 @@ function hester_customizer_slider_options( array $options ) {
 			'description' => esc_html__( 'Choose a slider shape. Upgrade to PRO for more options.', 'hester-core' ),
 			'section'     => 'hester_section_slider',
 			'choices'     => array(
-				''       => esc_html__( 'None', 'hester-core' ),
+				''     => esc_html__( 'None', 'hester-core' ),
 				'wave' => esc_html__( 'Wave', 'hester-core' ),
 			),
 		),

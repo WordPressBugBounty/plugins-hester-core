@@ -9,7 +9,7 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -19,8 +19,8 @@ if (!defined('ABSPATH')) {
  * @since 1.0.0
  * @package Hester Core
  */
-final class Hester_Demo_Library_Page
-{
+final class Hester_Demo_Library_Page {
+
 
 	/**
 	 * Singleton instance of the class.
@@ -36,10 +36,9 @@ final class Hester_Demo_Library_Page
 	 * @since 1.0.0
 	 * @return Hester_Demo_Library_Page
 	 */
-	public static function instance()
-	{
+	public static function instance() {
 
-		if (!isset(self::$instance) && !(self::$instance instanceof Hester_Demo_Library_Page)) {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Hester_Demo_Library_Page ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -50,17 +49,16 @@ final class Hester_Demo_Library_Page
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
-		$theme_name =  hester_core()->theme_name;
+		$theme_name = hester_core()->theme_name;
 
-		add_action('admin_menu', array($this, 'add_admin_menu'), 100);
-		add_action('admin_print_footer_scripts-hester_page_'.$theme_name.'-demo-library', array($this, 'print_templates'));
-		add_filter( $theme_name . '_admin_page_tabs', array($this, 'add_admin_page_tabs'));
-		add_filter( $theme_name . '_dashboard_navigation_items', array($this, 'update_navigation_items'));
+		add_action( 'admin_menu', array( $this, 'add_admin_menu' ), 100 );
+		add_action( 'admin_print_footer_scripts-hester_page_' . $theme_name . '-demo-library', array( $this, 'print_templates' ) );
+		add_filter( $theme_name . '_admin_page_tabs', array( $this, 'add_admin_page_tabs' ) );
+		add_filter( $theme_name . '_dashboard_navigation_items', array( $this, 'update_navigation_items' ) );
 
-		do_action('hester_demo_library_page_loaded');
+		do_action( 'hester_demo_library_page_loaded' );
 	}
 
 	/**
@@ -68,19 +66,18 @@ final class Hester_Demo_Library_Page
 	 *
 	 * @since 1.0.0
 	 */
-	public function add_admin_menu()
-	{
+	public function add_admin_menu() {
 
-		$theme_name =  hester_core()->theme_name;
-		
+		$theme_name = hester_core()->theme_name;
+
 		// Demo Library page.
 		add_submenu_page(
 			$theme_name . '-dashboard',
-			esc_html__('Demo Library', 'hester-core'),
+			esc_html__( 'Demo Library', 'hester-core' ),
 			'Demo Library',
-			apply_filters('hester_manage_cap', 'edit_theme_options'),
+			apply_filters( 'hester_manage_cap', 'edit_theme_options' ),
 			$theme_name . '-demo-library',
-			array($this, 'render_demo_library')
+			array( $this, 'render_demo_library' )
 		);
 	}
 
@@ -89,68 +86,70 @@ final class Hester_Demo_Library_Page
 	 *
 	 * @since 1.0.0
 	 */
-	public function render_demo_library()
-	{
-		$theme_name =  hester_core()->theme_name;
-		$hester_dashboard =  $theme_name . '_dashboard';
-
+	public function render_demo_library() {
+		$theme_name       = hester_core()->theme_name;
+		$hester_dashboard = $theme_name . '_dashboard';
 
 		$hester_dashboard()->render_navigation();
-		
-?>
+
+		?>
 		<div class="hester-container">
 
 			<div class="hester-section-title">
-				<h2 class="hester-section-title"><?php esc_html_e('Demo Library', 'hester-core'); ?></h2>
+				<h2 class="hester-section-title"><?php esc_html_e( 'Demo Library', 'hester-core' ); ?></h2>
 
 				<div class="demo-search">
-					<input type="search" placeholder="<?php esc_html_e('Filter&hellip;', 'hester-core'); ?>" id="hester-search-demos" />
+					<input type="search" placeholder="<?php esc_html_e( 'Filter&hellip;', 'hester-core' ); ?>" id="hester-search-demos" />
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<circle cx="11" cy="11" r="8" />
 						<path d="M21 21l-4.35-4.35" />
 					</svg>
 				</div>
 
-				<a href="<?php echo esc_url(wp_nonce_url(admin_url('admin.php?page='.$theme_name.'-demo-library'), 'refresh_templates', 'hester_core_nonce')); ?>" class="hester-btn secondary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . $theme_name . '-demo-library' ), 'refresh_templates', 'hester_core_nonce' ) ); ?>" class="hester-btn secondary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M23 4v6h-6M1 20v-6h6" />
 						<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-					</svg><?php esc_html_e('Refresh', 'hester-core'); ?></a>
+					</svg><?php esc_html_e( 'Refresh', 'hester-core' ); ?></a>
 			</div><!-- END .hester-section-title -->
 
 			<div class="demo-filters">
-				<?php $templates = get_transient('hester_core_demo_templates'); ?>
+				<?php $templates = get_transient( 'hester_core_demo_templates' ); ?>
 				<ul class="demo-categories">
-					<li class="selected" data-category=""><a href="#"><?php esc_html_e('All', 'hester-core'); ?></a></li>
-					<?php if (is_array($templates) && !empty($templates)) {
-						$cats = array_values(array_column($templates, 'categories'));
+					<li class="selected" data-category=""><a href="#"><?php esc_html_e( 'All', 'hester-core' ); ?></a></li>
+					<?php
+					if ( is_array( $templates ) && ! empty( $templates ) ) {
+						$cats = array_values( array_column( $templates, 'categories' ) );
 
-						foreach ($cats as $id => $cat) {
-							$arr[] =  array_keys($cat);
+						foreach ( $cats as $id => $cat ) {
+							$arr[] = array_keys( $cat );
 						}
 
 						$templateCatArray = array();
-						for($i = 0; $i < count($arr); $i++) {
+						for ( $i = 0; $i < count( $arr ); $i++ ) {
 
-						    for ( $j=0; $j < count($arr[$i]); $j++ ) {
-								$templateCatArray[] = $arr[$i][$j];
-						    }
+							for ( $j = 0; $j < count( $arr[ $i ] ); $j++ ) {
+								$templateCatArray[] = $arr[ $i ][ $j ];
+							}
 						}
-						$cats = array_values(array_unique($templateCatArray));
-						for($i = 0; $i < count($cats); $i++) { ?>
-							<li><a href="#" data-category="<?php echo esc_attr($cats[$i]) ?>"><?php echo ucfirst($cats[$i]) ?></a></li>
-						<?php }
-					} else { ?>
-						<li><a href="#" data-category="blog"><?php esc_html_e('Blog', 'hester-core'); ?></a></li>
-						<li><a href="#" data-category="shop"><?php esc_html_e('Shop', 'hester-core'); ?></a></li>
-						<li><a href="#" data-category="agency"><?php esc_html_e('Agency', 'hester-core'); ?></a></li>
-						<li><a href="#" data-category="business"><?php esc_html_e('Business', 'hester-core'); ?></a></li>
-						<li><a href="#" data-category="food"><?php esc_html_e('Food', 'hester-core'); ?></a></li>
+						$cats = array_values( array_unique( $templateCatArray ) );
+						for ( $i = 0; $i < count( $cats ); $i++ ) {
+							?>
+							<li><a href="#" data-category="<?php echo esc_attr( $cats[ $i ] ); ?>"><?php echo ucfirst( $cats[ $i ] ); ?></a></li>
+							<?php
+						}
+					} else {
+						?>
+						<li><a href="#" data-category="blog"><?php esc_html_e( 'Blog', 'hester-core' ); ?></a></li>
+						<li><a href="#" data-category="shop"><?php esc_html_e( 'Shop', 'hester-core' ); ?></a></li>
+						<li><a href="#" data-category="agency"><?php esc_html_e( 'Agency', 'hester-core' ); ?></a></li>
+						<li><a href="#" data-category="business"><?php esc_html_e( 'Business', 'hester-core' ); ?></a></li>
+						<li><a href="#" data-category="food"><?php esc_html_e( 'Food', 'hester-core' ); ?></a></li>
 					<?php } ?>
 				</ul>
 
 				<ul class="demo-builders">
-					<li><a href="#" data-builder="block-editor"><?php esc_html_e('Gutenberg', 'hester-core'); ?></a></li>
-					<li><a href="#" data-builder="elementor"><?php esc_html_e('Elementor', 'hester-core'); ?></a></li>
+					<li><a href="#" data-builder="block-editor"><?php esc_html_e( 'Gutenberg', 'hester-core' ); ?></a></li>
+					<li><a href="#" data-builder="elementor"><?php esc_html_e( 'Elementor', 'hester-core' ); ?></a></li>
 				</ul>
 			</div>
 
@@ -158,11 +157,11 @@ final class Hester_Demo_Library_Page
 			</div><!-- END .demos -->
 
 			<p class="demo-notice">
-				<?php esc_html_e('New demos coming soon', 'hester-core'); ?>
+				<?php esc_html_e( 'New demos coming soon', 'hester-core' ); ?>
 			</p>
 
 		</div>
-	<?php
+		<?php
 	}
 
 	/**
@@ -172,9 +171,8 @@ final class Hester_Demo_Library_Page
 	 *
 	 * @since 1.0.0
 	 */
-	public function print_templates()
-	{
-	?>
+	public function print_templates() {
+		?>
 		<script type="text/template" id="tmpl-hester-core-template">
 		</script>
 
@@ -218,11 +216,11 @@ final class Hester_Demo_Library_Page
 						</div>
 						<div class="demo-actions">
 							<# if( data.pro && !data.is_pro && !data.pro_plugin_active  ) { #>
-								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
+								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e( 'Upgrade to pro', 'hester-core' ); ?> {{data.name}}"><?php esc_html_e( 'Upgrade to pro', 'hester-core' ); ?></a>
 							<# } else { #>
-							<a class="hester-btn primary btn-small import" href="#" aria-label="<?php esc_attr_e('Import', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Import Demo', 'hester-core'); ?></a>
+							<a class="hester-btn primary btn-small import" href="#" aria-label="<?php esc_attr_e( 'Import', 'hester-core' ); ?> {{data.name}}"><?php esc_html_e( 'Import Demo', 'hester-core' ); ?></a>
 							<# } #>
-							<a class="hester-btn secondary btn-small preview" href="#" aria-label="<?php esc_attr_e('Preview', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Preview', 'hester-core'); ?></a>
+							<a class="hester-btn secondary btn-small preview" href="#" aria-label="<?php esc_attr_e( 'Preview', 'hester-core' ); ?> {{data.name}}"><?php esc_html_e( 'Preview', 'hester-core' ); ?></a>
 						</div>
 					</div>
 				</div>
@@ -248,16 +246,16 @@ final class Hester_Demo_Library_Page
 							data-content="{{{data.content}}}"
 							data-required-plugins="{{data.required_plugins}}">
 
-						<button class="close-full-overlay"><span class="screen-reader-text"><?php esc_html_e('Close', 'hester-core'); ?></span></button>
-						<button class="previous-theme"><span class="screen-reader-text"><?php esc_html_e('Previous', 'hester-core'); ?></span></button>
-						<button class="next-theme"><span class="screen-reader-text"><?php esc_html_e('Next', 'hester-core'); ?></span></button>
+						<button class="close-full-overlay"><span class="screen-reader-text"><?php esc_html_e( 'Close', 'hester-core' ); ?></span></button>
+						<button class="previous-theme"><span class="screen-reader-text"><?php esc_html_e( 'Previous', 'hester-core' ); ?></span></button>
+						<button class="next-theme"><span class="screen-reader-text"><?php esc_html_e( 'Next', 'hester-core' ); ?></span></button>
 						<span class="spinner"></span>
 
 						<# if(data.pro && !data.is_pro && !data.pro_plugin_active) { #>
-							<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
+							<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e( 'Upgrade to pro', 'hester-core' ); ?> {{data.name}}"><?php esc_html_e( 'Upgrade to pro', 'hester-core' ); ?></a>
 						<# } else { #>
 							<a class="hester-btn primary hide-if-no-customize hester-demo-import" href="#" disabled="disabled">
-								<?php esc_html_e('Import Demo', 'hester-core'); ?>
+								<?php esc_html_e( 'Import Demo', 'hester-core' ); ?>
 							</a>
 						<# } #>
 
@@ -270,7 +268,7 @@ final class Hester_Demo_Library_Page
 							<# } #>
 
 							<div class="hester-demo-name">
-								<span><?php esc_html_e('You are previewing', 'hester-core'); ?></span>
+								<span><?php esc_html_e( 'You are previewing', 'hester-core' ); ?></span>
 								<h3>{{{data.name}}}</h3>
 							</div>
 
@@ -287,7 +285,7 @@ final class Hester_Demo_Library_Page
 							<div class="hester-demo-section">
 
 								<div class="hester-demo-section-title">
-									<span class="control-heading"><?php esc_html_e('Import Options', 'hester-core'); ?></span>
+									<span class="control-heading"><?php esc_html_e( 'Import Options', 'hester-core' ); ?></span>
 									<span class="control-toggle">
 										<input type="checkbox" id="options_toggle" name="options_toggle" aria-hidden="true">
 										<label for="options_toggle" aria-hidden="true"></label>
@@ -298,29 +296,29 @@ final class Hester_Demo_Library_Page
 									<p>
 										<label class="hester-checkbox">
 											<input type="checkbox" checked name="import_customizer" id="import_customizer" />
-											<span class="hester-label"><?php esc_html_e('Import Customizer Settings', 'hester-core'); ?></span>
+											<span class="hester-label"><?php esc_html_e( 'Import Customizer Settings', 'hester-core' ); ?></span>
 										</label>
 									</p>
 
 									<p>
 										<label class="hester-checkbox">
 											<input type="checkbox" checked name="import_content" id="import_content" />
-											<span class="hester-label"><?php esc_html_e('Import Content', 'hester-core'); ?></span>
-											<span class="hester-tooltip" data-tooltip="<?php esc_html_e('Import pages, posts and menus from this demo.', 'hester-core'); ?>"><span class="dashicons dashicons-editor-help"></span>
+											<span class="hester-label"><?php esc_html_e( 'Import Content', 'hester-core' ); ?></span>
+											<span class="hester-tooltip" data-tooltip="<?php esc_html_e( 'Import pages, posts and menus from this demo.', 'hester-core' ); ?>"><span class="dashicons dashicons-editor-help"></span>
 										</label>
 									</p>
 
 									<p>
 										<label class="hester-checkbox">
 											<input type="checkbox" checked name="import_media" id="import_media" />
-											<span class="hester-label"><?php esc_html_e('Import Media', 'hester-core'); ?></span>
+											<span class="hester-label"><?php esc_html_e( 'Import Media', 'hester-core' ); ?></span>
 										</label>
 									</p>
 
 									<p>
 										<label class="hester-checkbox">
 											<input type="checkbox" checked name="import_widgets" id="import_widgets" />
-											<span class="hester-label"><?php esc_html_e('Import Widgets', 'hester-core'); ?></span>
+											<span class="hester-label"><?php esc_html_e( 'Import Widgets', 'hester-core' ); ?></span>
 										</label>
 									</p>
 
@@ -331,7 +329,7 @@ final class Hester_Demo_Library_Page
 
 								<div class="hester-demo-section">
 									<div class="hester-demo-section-title">
-										<span class="control-heading"><?php esc_html_e('Plugins Used in This Demo', 'hester-core'); ?> ({{{ _.size( data.required_plugins )}}})</span>
+										<span class="control-heading"><?php esc_html_e( 'Plugins Used in This Demo', 'hester-core' ); ?> ({{{ _.size( data.required_plugins )}}})</span>
 										<span class="control-toggle">
 											<input type="checkbox" id="install_plugins_toggle" name="install_plugins_toggle" aria-hidden="true">
 											<label for="install_plugins_toggle" aria-hidden="true"></label>
@@ -348,14 +346,14 @@ final class Hester_Demo_Library_Page
 													<span class="hester-label">{{{plugin.name}}}</span>
 
 													<# if ( 'active' === plugin.status ) { #>
-														<em><i class="dashicons dashicons-yes"></i><?php esc_html_e('Already installed', 'hester-core'); ?></em>
+														<em><i class="dashicons dashicons-yes"></i><?php esc_html_e( 'Already installed', 'hester-core' ); ?></em>
 													<# } #>
 												</label>
 											</p>
 
 										<# } ) #>
 
-										<em class="theme-description"><?php esc_html_e('These plugins will be auto-installed for you.', 'hester-core'); ?></em>
+										<em class="theme-description"><?php esc_html_e( 'These plugins will be auto-installed for you.', 'hester-core' ); ?></em>
 									</div>
 								</div>
 
@@ -368,12 +366,12 @@ final class Hester_Demo_Library_Page
 						<div class="footer-import-button-wrap">
 
 							<# if(data.pro && !data.is_pro && !data.pro_plugin_active) { #>
-								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e('Upgrade to pro', 'hester-core'); ?> {{data.name}}"><?php esc_html_e('Upgrade to pro', 'hester-core'); ?></a>
+								<a class="hester-btn primary btn-small" href="{{ data.upgrade_to_pro }}" target="_blank" aria-label="<?php esc_attr_e( 'Upgrade to pro', 'hester-core' ); ?> {{data.name}}"><?php esc_html_e( 'Upgrade to pro', 'hester-core' ); ?></a>
 							<# } else { #>
 
 							<a class="hester-btn primary large-button hide-if-no-customize hester-demo-import" href="#" disabled="disabled">
 								<span class="spinner hester-spinner"></span>
-								<span class="status"><?php esc_html_e('Import Demo', 'hester-core'); ?></span>
+								<span class="status"><?php esc_html_e( 'Import Demo', 'hester-core' ); ?></span>
 								<span class="percent"></span>
 							</a>
 							<# } #>
@@ -382,21 +380,21 @@ final class Hester_Demo_Library_Page
 							</div>
 						</div>
 						<button type="button" class="collapse-sidebar button" aria-expanded="true"
-								aria-label="<?php esc_html_e('Collapse Sidebar', 'hester-core'); ?>">
+								aria-label="<?php esc_html_e( 'Collapse Sidebar', 'hester-core' ); ?>">
 							<span class="collapse-sidebar-arrow"></span>
-							<span class="collapse-sidebar-label"><?php esc_html_e('Collapse', 'hester-core'); ?></span>
+							<span class="collapse-sidebar-label"><?php esc_html_e( 'Collapse', 'hester-core' ); ?></span>
 						</button>
 
 						<div class="devices-wrapper">
 							<div class="devices">
 								<button type="button" class="preview-desktop active" aria-pressed="true" data-device="desktop">
-									<span class="screen-reader-text"><?php esc_html_e('Enter desktop preview mode', 'hester-core'); ?></span>
+									<span class="screen-reader-text"><?php esc_html_e( 'Enter desktop preview mode', 'hester-core' ); ?></span>
 								</button>
 								<button type="button" class="preview-tablet" aria-pressed="false" data-device="tablet">
-									<span class="screen-reader-text"><?php esc_html_e('Enter tablet preview mode', 'hester-core'); ?></span>
+									<span class="screen-reader-text"><?php esc_html_e( 'Enter tablet preview mode', 'hester-core' ); ?></span>
 								</button>
 								<button type="button" class="preview-mobile" aria-pressed="false" data-device="mobile">
-									<span class="screen-reader-text"><?php esc_html_e('Enter mobile preview mode', 'hester-core'); ?></span>
+									<span class="screen-reader-text"><?php esc_html_e( 'Enter mobile preview mode', 'hester-core' ); ?></span>
 								</button>
 							</div>
 						</div>
@@ -404,11 +402,11 @@ final class Hester_Demo_Library_Page
 					</div>
 				</div>
 				<div class="wp-full-overlay-main">
-					<iframe src="{{{data.url}}}" title="<?php esc_attr_e('Preview', 'hester-core'); ?>"></iframe>
+					<iframe src="{{{data.url}}}" title="<?php esc_attr_e( 'Preview', 'hester-core' ); ?>"></iframe>
 				</div>
 			</div>
 		</script>
-<?php
+		<?php
 	}
 
 	/**
@@ -417,20 +415,19 @@ final class Hester_Demo_Library_Page
 	 * @since 1.0.0
 	 * @param array $items Array of navigation items.
 	 */
-	public function update_navigation_items($items)
-	{
-		$theme_name =  hester_core()->theme_name;
-		$demo = array(
+	public function update_navigation_items( $items ) {
+		$theme_name   = hester_core()->theme_name;
+		$demo         = array(
 			'demo-library' => array(
 				'id'   => 'demo-library',
-				'name' => esc_html__('Demo Library', 'hester-core'),
+				'name' => esc_html__( 'Demo Library', 'hester-core' ),
 				'icon' => '',
-				'url'  => admin_url('admin.php?page='.$theme_name.'-demo-library'),
+				'url'  => admin_url( 'admin.php?page=' . $theme_name . '-demo-library' ),
 			),
 		);
-		$insert_array = $theme_name.'_array_insert';
-		if(is_callable($insert_array)){
-			$items = $insert_array($items, $demo, 'changelog', 'before');
+		$insert_array = $theme_name . '_array_insert';
+		if ( is_callable( $insert_array ) ) {
+			$items = $insert_array( $items, $demo, 'changelog', 'before' );
 		}
 
 		return $items;
@@ -448,8 +445,7 @@ final class Hester_Demo_Library_Page
  * @since 1.0.0
  * @return object
  */
-function hester_demo_library_page()
-{
+function hester_demo_library_page() {
 	return Hester_Demo_Library_Page::instance();
 }
 

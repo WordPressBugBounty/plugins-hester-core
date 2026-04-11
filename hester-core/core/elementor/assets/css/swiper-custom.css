@@ -1,0 +1,544 @@
+/* Swiper Carousel Styles for Hester Core */
+
+/* Keep WooCommerce theme product styles intact; only style slider shell. */
+.hester-woo-carousel {
+    position: relative;
+}
+
+.hester-woo-carousel .swiper {
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.hester-woo-carousel .products.swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important; /* Allow products their natural height for autoHeight */
+    width: 100%;
+    margin: 0;
+    list-style: none;
+}
+
+.hester-woo-carousel .products.swiper-wrapper li.product.swiper-slide {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin-top: 0 !important;
+    margin-right: 0;
+    margin-bottom: 0 !important;
+    margin-left: 0;
+    float: none !important;
+    clear: none !important;
+    max-width: none !important;
+    align-self: flex-start !important; /* Prevent stretching within flex container */
+}
+
+.hester-woo-carousel .products.swiper-wrapper > li {
+    flex: 0 0 auto !important;
+}
+
+.hester-woo-carousel .swiper-initialized .products.swiper-wrapper {
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+}
+
+/* Shopwell compatibility: preserve product hover interactions inside slides. */
+.theme-shopwell .hester-woo-carousel .swiper-initialized:has(.product-card-layout-1, .product-card-layout-2) {
+    margin: -10px -10px -150px;
+    padding: 10px 10px 150px;
+}
+
+@media (max-width: 1024px) {
+    .theme-shopwell .hester-woo-carousel .swiper-initialized:has(.product-card-layout-1, .product-card-layout-2) {
+        margin: 0 -8px;
+        padding: 0;
+    }
+}
+
+/* Navigation Arrows */
+.hester-woo-carousel .swiper-button-prev,
+.hester-woo-carousel .swiper-button-next {
+    position: absolute;
+    top: 34%;
+    transform: translateY(-34%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.hester-woo-carousel .swiper-button-prev::after,
+.hester-woo-carousel .swiper-button-next::after {
+    display: none;
+}
+
+.hester-woo-carousel .swiper-button-prev:hover,
+.hester-woo-carousel .swiper-button-next:hover {
+    background-color: #000;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+
+.hester-woo-carousel .swiper-button-prev {
+    left: 10px;
+}
+
+.hester-woo-carousel .swiper-button-next {
+    right: 10px;
+}
+
+/* RTL Support for Arrows */
+[dir="rtl"] .hester-woo-carousel .swiper-button-prev {
+    left: auto;
+    right: 10px;
+}
+
+[dir="rtl"] .hester-woo-carousel .swiper-button-next {
+    right: auto;
+    left: 10px;
+}
+
+/* Arrow Icons using Font Awesome */
+.hester-woo-carousel .swiper-button-prev::before,
+.hester-woo-carousel .swiper-button-next::before {
+    content: '';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.hester-woo-carousel .swiper-button-prev::before {
+    content: '\f053';
+}
+
+.hester-woo-carousel .swiper-button-next::before {
+    content: '\f054';
+}
+
+/* Pagination Dots */
+.hester-woo-carousel .swiper-pagination {
+    position: static;
+    display: flex;
+    width: 100%;
+    left: 0;
+    gap: 2px;
+    justify-content: center;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.hester-woo-carousel .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hester-woo-carousel .swiper-pagination-bullet-active {
+    background-color: #000;
+    opacity: 1;
+    width: 28px;
+    border-radius: 5px;
+}
+
+.hester-woo-carousel .swiper-pagination-bullet:hover {
+    background-color: #000;
+    opacity: 1;
+}
+
+/* Free Mode Momentum */
+.hester-woo-carousel.swiper-free-mode .swiper-wrapper {
+    transition-timing-function: ease-out;
+}
+
+/* Fade Effect */
+.hester-woo-carousel .swiper-fade .swiper-slide {
+    opacity: 0;
+    transition-property: opacity;
+}
+
+.hester-woo-carousel .swiper-fade .swiper-slide-active {
+    opacity: 1;
+}
+
+/* CoverFlow Effect */
+.hester-woo-carousel .swiper-3d .swiper-slide-shadow-left,
+.hester-woo-carousel .swiper-3d .swiper-slide-shadow-right {
+    background-image: none;
+}
+
+/* Disable scrollbar */
+.hester-woo-carousel .swiper-scrollbar {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hester-woo-carousel .swiper-button-prev,
+    .hester-woo-carousel .swiper-button-next {
+        width: 35px;
+        height: 35px;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    .hester-woo-carousel:hover .swiper-button-prev,
+    .hester-woo-carousel:hover .swiper-button-next {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hester-woo-carousel .swiper-button-prev,
+    .hester-woo-carousel .swiper-button-next {
+        width: 30px;
+        height: 30px;
+    }
+
+    .hester-woo-carousel .swiper-button-prev {
+        left: 4px;
+    }
+
+    .hester-woo-carousel .swiper-button-next {
+        right: 4px;
+    }
+
+    .hester-woo-carousel .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .hester-woo-carousel .swiper-pagination-bullet-active {
+        width: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hester-woo-carousel .swiper-button-prev,
+    .hester-woo-carousel .swiper-button-next {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
+
+/* Accessibility */
+.hester-woo-carousel .swiper-button-prev:focus,
+.hester-woo-carousel .swiper-button-next:focus,
+.hester-woo-carousel .swiper-pagination-bullet:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* ======================= Widget: Slides ========================= */
+/*------------------------------------------------------------------
+Slides
+-------------------------------------------------------------------*/
+
+.hester-slides-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    color: #fff;
+}
+
+.hester-slides-wrapper .swiper-wrapper,
+.hester-slides-wrapper .swiper-slide {
+    height: 100%;
+}
+
+.hester-slides-wrapper .swiper-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.hester-slides-wrapper .swiper-slide-bg {
+    position: absolute;
+    inset: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-origin: center center;
+    will-change: transform;
+    z-index: 0;
+}
+
+.hester-slides-wrapper .hester-slide-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hester-slides-wrapper .hester-slide-bg-embed {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hester-slides-wrapper .elementor-background-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+.hester-slides-wrapper .swiper-slide-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    padding: 50px;
+    z-index: 3;
+}
+
+.hester-slides-wrapper .swiper-slide-contents {
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+
+.hester-slides-wrapper .swiper-slide-inner,
+.hester-slides-wrapper .swiper-slide-inner:hover {
+    color: #fff;
+    display: flex;
+}
+
+.hester-slides-wrapper span.elementor-slide-subtitle {
+    display: inline-block;
+}
+
+.hester-slides-wrapper .elementor-slide-subtitle:not(:last-child),
+.hester-slides-wrapper .elementor-slide-heading:not(:last-child),
+.hester-slides-wrapper .elementor-slide-description:not(:last-child) {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.hester-slides-wrapper .elementor-slide-subtitle,
+.hester-slides-wrapper .elementor-slide-heading {
+    color: inherit;
+    line-height: 1.1;
+}
+
+.hester-slides-wrapper .elementor-slide-description {
+    color: inherit;
+    line-height: 1.6;
+}
+
+.hester-slides-wrapper .elementor-slide-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid currentColor;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hester-slides-wrapper .elementor-slide-button:hover {
+    transform: translateY(-1px);
+}
+
+.hester-slides-wrapper .swiper-pagination {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    z-index: 3;
+}
+
+.hester-slides-wrapper .elementor-swiper-button {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+}
+
+.hester-slides-wrapper .elementor-swiper-button-prev {
+    left: 10px;
+}
+
+.hester-slides-wrapper .elementor-swiper-button-next {
+    right: 10px;
+}
+
+.elementor--v-position-top .hester-slides-wrapper .swiper-slide-inner {
+    align-items: flex-start;
+}
+
+.elementor--v-position-middle .hester-slides-wrapper .swiper-slide-inner {
+    align-items: center;
+}
+
+.elementor--v-position-bottom .hester-slides-wrapper .swiper-slide-inner {
+    align-items: flex-end;
+}
+
+.elementor--h-position-left .hester-slides-wrapper .swiper-slide-inner {
+    justify-content: flex-start;
+}
+
+.elementor--h-position-center .hester-slides-wrapper .swiper-slide-inner {
+    justify-content: center;
+}
+
+.elementor--h-position-right .hester-slides-wrapper .swiper-slide-inner {
+    justify-content: flex-end;
+}
+
+.hester-slides-wrapper .elementor-ken-burns--in {
+    transform: scale(1);
+}
+
+.hester-slides-wrapper .elementor-ken-burns--out {
+    transform: scale(1.15);
+}
+
+.hester-slides-wrapper .swiper-slide-active .elementor-ken-burns.elementor-ken-burns--in,
+.hester-slides-wrapper .swiper-slide-duplicate-active .elementor-ken-burns.elementor-ken-burns--in {
+    animation: hesterKenBurnsIn 7000ms linear forwards;
+}
+
+.hester-slides-wrapper .swiper-slide-active .elementor-ken-burns.elementor-ken-burns--out,
+.hester-slides-wrapper .swiper-slide-duplicate-active .elementor-ken-burns.elementor-ken-burns--out {
+    animation: hesterKenBurnsOut 7000ms linear forwards;
+}
+
+.hester-slides-wrapper .swiper-slide-contents > .hester-slide-content-animated {
+    animation-duration: 800ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    will-change: opacity, transform;
+}
+
+.hester-slides-wrapper.hester-slides--animation-ready .swiper-slide-contents > * {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hester-slides-wrapper.hester-slides--animation-ready .swiper-slide-contents > .hester-slide-content-animated {
+    visibility: visible;
+}
+
+@keyframes hesterKenBurnsIn {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes hesterKenBurnsOut {
+    0% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -24px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-24px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(24px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.92, 0.92, 0.92);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@media (max-width: 767px) {
+    .hester-slides-wrapper .swiper-slide-inner {
+        padding: 30px 20px;
+    }
+
+    .hester-slides-wrapper .swiper-slide-contents {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hester-slides-wrapper .swiper-slide-bg,
+    .hester-slides-wrapper .swiper-slide-contents > .hester-slide-content-animated {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -78,7 +78,6 @@ final class Hester_Core_Customizer {
 	// $controls['repeater'] = 'Hester_Customizer_Control_Repeater';
 	// return $controls;
 	// }
-
 }
 
 /**

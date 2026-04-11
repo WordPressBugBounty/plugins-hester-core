@@ -1,16 +1,32 @@
 === Hester Core ===
 Contributors: peregrinethemes
-Tags: blocks, custom blocks, widgets, demos, demo template, demo website, gutenberg, hester
-Requires at least: 5.0
+Tags: demos, elementor, widgets, woocommerce
+Requires at least: 5.9
+Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.0.10
-Requires PHP: 5.6
+Stable tag: 1.1.0
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 Hester Core is an optional companion plugin for [Peregrine Themes](https://peregrine-themes.com) theme. It adds additional features such as homepage sections, widgets, blocks and a collection of pre-built websites (demos) for popular page builders and the WordPress block editor (Gutenberg).
+
+== Elementor Widgets ==
+
+* Animated Heading - Heading with animated text effects.
+* Contact Form 7 - Style Contact Form 7 forms.
+* Flip Box - Animated box with front/back content.
+* Off Canvas - Trigger and display an off-canvas panel.
+* Posts - Blog posts grid/feed widget.
+* Pricing - Pricing table widget.
+* Ajax Search - Live search for products, posts, or pages.
+* Slides - Hero/content slider with slide options.
+* Tabs - Content tabs with WooCommerce shortcode support.
+* Woo - Add To Cart - Add to cart button for selected product.
+* Woo - Categories - WooCommerce categories grid.
+* Woo - Products - WooCommerce products grid.
+* Woo - Carousel - WooCommerce products carousel.
 
 == Installation ==
 
@@ -31,7 +47,14 @@ In the search field type "Hester Core" and click Search Plugins. Once you’ve f
 
 Hester Core is a companion plugin for the [Peregrine Themes](https://peregrine-themes.com) theme and will only work with the theme installed and activated.
 
+= What Elementor features does this plugin provide? =
+
+Hester Core adds 13 powerful Elementor widgets for the page builder, including Slides, Posts Grid, Pricing Tables, WooCommerce widgets (Products, Categories, Add to Cart, Carousel), and more. All widgets are fully customizable with advanced styling controls.
+
 == Changelog ==
+
+= 1.1.0 =
+* Added Elementor widgets: Animated Heading, Contact Form 7, Flip Box, Off Canvas, Posts, Pricing, Ajax Search, Slides, Tabs, and WooCommerce widgets (Add To Cart, Categories, Products, Carousel).
 
 = 1.0.10 = 
 * Importer updated to 0.9.5.

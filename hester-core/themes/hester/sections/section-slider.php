@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 if ( ! function_exists( 'hester_section_slider' ) ) {
 
@@ -106,7 +110,7 @@ if ( ! function_exists( 'hester_section_slider' ) ) {
 																	<div class="starter__slider-btn">
 																		<?php
 																		echo wp_kses_post( $button_1 );
-																			  echo wp_kses_post( $button_2 );
+																				echo wp_kses_post( $button_2 );
 																		?>
 																	</div>
 																<?php } ?>

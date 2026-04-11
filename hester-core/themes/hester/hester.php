@@ -1,18 +1,49 @@
-<?PHP
-
+<?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 require HESTER_CORE_PLUGIN_DIR . 'themes/hester/customizer/customizer.php';
 require HESTER_CORE_PLUGIN_DIR . 'themes/hester/sections/index.php';
 
 function hester_core_hester_enqueue_scripts() {
-	 $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-	wp_enqueue_style( 'hester-core-hester', HESTER_CORE_PLUGIN_URL . '/assets/css/style' . $suffix . '.css' );
-	wp_enqueue_style( 'hester-core-swiper', HESTER_CORE_PLUGIN_URL . '/assets/css/swiper-bundle' . $suffix . '.css' );
-	wp_enqueue_style( 'glightbox', HESTER_CORE_PLUGIN_URL . 'assets/css/glightbox' . $suffix . '.css' );
+	$style_file      = HESTER_CORE_PLUGIN_DIR . 'assets/css/style' . $suffix . '.css';
+	$swiper_css_file = HESTER_CORE_PLUGIN_DIR . 'assets/css/swiper-bundle' . $suffix . '.css';
+	$swiper_js_file  = HESTER_CORE_PLUGIN_DIR . 'assets/js/swiper-bundle' . $suffix . '.js';
+	$glightbox_css   = HESTER_CORE_PLUGIN_DIR . 'assets/css/glightbox' . $suffix . '.css';
+	$glightbox_js    = HESTER_CORE_PLUGIN_DIR . 'assets/js/glightbox' . $suffix . '.js';
+	$app_js_file     = HESTER_CORE_PLUGIN_DIR . 'assets/js/app' . $suffix . '.js';
 
-	wp_enqueue_script( 'swiper', HESTER_CORE_PLUGIN_URL . '/assets/js/swiper-bundle' . $suffix . '.js', array(), false, true );
-	wp_enqueue_script( 'glightbox-js', HESTER_CORE_PLUGIN_URL . 'assets/js/glightbox' . $suffix . '.js', array(), false, true );
-	wp_enqueue_script( 'hester-core-hester-js', HESTER_CORE_PLUGIN_URL . '/assets/js/app' . $suffix . '.js', array(), false, true );
+	$style_version      = file_exists( $style_file ) ? filemtime( $style_file ) : HESTER_CORE_VERSION;
+	$swiper_css_version = file_exists( $swiper_css_file ) ? filemtime( $swiper_css_file ) : HESTER_CORE_VERSION;
+	$swiper_js_version  = file_exists( $swiper_js_file ) ? filemtime( $swiper_js_file ) : HESTER_CORE_VERSION;
+	$glightbox_css_ver  = file_exists( $glightbox_css ) ? filemtime( $glightbox_css ) : HESTER_CORE_VERSION;
+	$glightbox_js_ver   = file_exists( $glightbox_js ) ? filemtime( $glightbox_js ) : HESTER_CORE_VERSION;
+	$app_js_version     = file_exists( $app_js_file ) ? filemtime( $app_js_file ) : HESTER_CORE_VERSION;
+
+	wp_register_style( 'hester-core-hester', HESTER_CORE_PLUGIN_URL . '/assets/css/style' . $suffix . '.css', array(), $style_version );
+	wp_register_style( 'glightbox', HESTER_CORE_PLUGIN_URL . 'assets/css/glightbox' . $suffix . '.css', array(), $glightbox_css_ver );
+
+	if ( ! wp_style_is( 'swiper', 'registered' ) ) {
+		wp_register_style( 'swiper', HESTER_CORE_PLUGIN_URL . '/assets/css/swiper-bundle' . $suffix . '.css', array(), $swiper_css_version );
+	}
+
+	if ( ! wp_script_is( 'swiper', 'registered' ) ) {
+		wp_register_script( 'swiper', HESTER_CORE_PLUGIN_URL . '/assets/js/swiper-bundle' . $suffix . '.js', array(), $swiper_js_version, true );
+	}
+
+	wp_register_script( 'glightbox-js', HESTER_CORE_PLUGIN_URL . 'assets/js/glightbox' . $suffix . '.js', array(), $glightbox_js_ver, true );
+	wp_register_script( 'hester-core-hester-app-js', HESTER_CORE_PLUGIN_URL . '/assets/js/app' . $suffix . '.js', array( 'swiper', 'glightbox-js' ), $app_js_version, true );
+
+	wp_enqueue_style( 'hester-core-hester' );
+	wp_enqueue_style( 'swiper' );
+	wp_enqueue_style( 'glightbox' );
+
+	wp_enqueue_script( 'swiper' );
+	wp_enqueue_script( 'glightbox-js' );
+	wp_enqueue_script( 'hester-core-hester-app-js' );
 }
 add_action( 'wp_enqueue_scripts', 'hester_core_hester_enqueue_scripts' );
 

@@ -6,6 +6,11 @@
  * @author  Peregrine Themes <peregrinethemes@gmail.com>
  * @since   1.0.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 class Hester_Core_Custom_List_Widget extends WP_Widget {
 
 	/**
@@ -92,7 +97,7 @@ class Hester_Core_Custom_List_Widget extends WP_Widget {
 					$entry['icon'] = $this->process_icon( $entry['icon'] );
 
 					if ( false !== strpos( $entry['icon'], '<svg' ) ) {
-						$hester_get_allowed_html_tags =  hester_core()->theme_name . '_get_allowed_html_tags';
+						$hester_get_allowed_html_tags = hester_core()->theme_name . '_get_allowed_html_tags';
 						echo wp_kses( $entry['icon'], $hester_get_allowed_html_tags( 'svg' ) );
 					} else {
 						echo '<i class="hester-widget-icon ' . esc_attr( $entry['icon'] ) . '" aria-hidden="true"></i>';
@@ -100,7 +105,7 @@ class Hester_Core_Custom_List_Widget extends WP_Widget {
 				}
 
 				if ( $entry['description'] ) {
-					//echo '<span class="hester-entry">' . wp_kses_post( nl2br( $entry['description'] ) ) . '</span>';
+					// echo '<span class="hester-entry">' . wp_kses_post( nl2br( $entry['description'] ) ) . '</span>';
 					echo '<span class="hester-entry">' . wp_kses_post( $entry['description'] ) . '</span>';
 				}
 
@@ -142,8 +147,8 @@ class Hester_Core_Custom_List_Widget extends WP_Widget {
 				);
 
 				if ( isset( $entry['icon'] ) ) {
-					$hester_get_allowed_html_tags =  hester_core()->theme_name . '_get_allowed_html_tags';
-					$new_entry['icon'] = wp_kses( $this->process_icon( $entry['icon'] ), $hester_get_allowed_html_tags( 'svg' ) );
+					$hester_get_allowed_html_tags = hester_core()->theme_name . '_get_allowed_html_tags';
+					$new_entry['icon']            = wp_kses( $this->process_icon( $entry['icon'] ), $hester_get_allowed_html_tags( 'svg' ) );
 				}
 
 				if ( ! empty( $new_entry['icon'] ) || ! empty( $new_entry['description'] ) || true === $new_entry['separator'] ) {
@@ -321,7 +326,7 @@ class Hester_Core_Custom_List_Widget extends WP_Widget {
 			$_icon = trim( str_replace( 'hester-icon', '', $icon ) );
 			$_icon = trim( str_replace( 'hester-', '', $_icon ) );
 
-			$function_name =  hester_core()->theme_name;
+			$function_name = hester_core()->theme_name;
 
 			$svg_icon = $function_name()->icons->get_svg( $_icon );
 

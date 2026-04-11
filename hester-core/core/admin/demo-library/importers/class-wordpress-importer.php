@@ -14,6 +14,11 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
 
 use PhpParser\Node\Stmt\Continue_;
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
 	return;
 

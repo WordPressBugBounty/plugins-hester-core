@@ -46,6 +46,7 @@ final class Hester_Demo_Library {
 
 	/**
 	 * Is pro
+	 *
 	 * @since 1.0.6
 	 * @var boolean
 	 */
@@ -112,29 +113,29 @@ final class Hester_Demo_Library {
 	 * @return void
 	 */
 	public function admin_enqueue( $hook = '' ) {
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		$theme_name =  hester_core()->theme_name;
+		$suffix     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$theme_name = hester_core()->theme_name;
 
-		if ( 'hester_page_'.$theme_name.'-demo-library' !== $hook ) {
+		if ( 'hester_page_' . $theme_name . '-demo-library' !== $hook ) {
 			return;
 		}
 
 		wp_enqueue_script(
 			'hester-demo-library',
-			plugin_dir_url( __FILE__ ) . 'assets/js/demo-library'.$suffix.'.js',
+			plugin_dir_url( __FILE__ ) . 'assets/js/demo-library' . $suffix . '.js',
 			array( 'jquery', 'wp-util', 'updates' ),
 			$this->version,
 			true
 		);
 
-		$theme  = wp_get_theme(); // gets the current theme
+		$theme = wp_get_theme(); // gets the current theme
 		if ( stripos( strtolower( $theme->name ), 'pro' ) ) {
 			$this->is_pro = true;
 		}
 
- 		$pro_plugin_name = '';
-		if( is_array( $this->get_templates() ) && ! empty( $this->get_templates() ) ) {
-			$pro_plugin_name = $this->find_key_recursive($this->get_templates(), 'pro_plugin');
+		$pro_plugin_name = '';
+		if ( is_array( $this->get_templates() ) && ! empty( $this->get_templates() ) ) {
+			$pro_plugin_name = $this->find_key_recursive( $this->get_templates(), 'pro_plugin' );
 		}
 
 		$localized = array(
@@ -147,7 +148,7 @@ final class Hester_Demo_Library {
 				'activatingPlugin'    => __( 'Activating plugin', 'hester-core' ) . ' ',
 				'activated'           => __( 'Plugin activated! ', 'hester-core' ),
 				'importCompleted'     => __( 'All Done! Visit Site', 'hester-core' ),
-				'importFailed'     	  => __( 'Import Failed!', 'hester-core' ),
+				'importFailed'        => __( 'Import Failed!', 'hester-core' ),
 				'importingCustomizer' => __( 'Importing Customizer...', 'hester-core' ),
 				'importingContent'    => __( 'Importing Content...', 'hester-core' ),
 				'importingWPForms'    => __( 'Importing WPForms...', 'hester-core' ),
@@ -156,16 +157,16 @@ final class Hester_Demo_Library {
 				'preview'             => __( 'Preview', 'hester-core' ),
 				'preparing'           => __( 'Preparing Data...', 'hester-core' ),
 				'noResultsFound'      => __( 'No results found', 'hester-core' ),
-				'solutionMsg'		  => __('This looks like a server-side problem. Please contact your hosting provider.', 'hester-core'),
+				'solutionMsg'         => __( 'This looks like a server-side problem. Please contact your hosting provider.', 'hester-core' ),
 			),
 			'homeurl'            => home_url( '/' ),
 			'templates'          => $this->get_templates(),
 			'is_pro'             => $this->is_pro,
-			'upgrade_to_pro_url' => sprintf('https://peregrine-themes.com/%s/?utm_medium=dashboard&utm_source=demos&utm_campaign=upgradeToPro', $theme_name),
+			'upgrade_to_pro_url' => sprintf( 'https://peregrine-themes.com/%s/?utm_medium=dashboard&utm_source=demos&utm_campaign=upgradeToPro', $theme_name ),
 		);
 
-		if( $pro_plugin_name ) {
-			$localized['pro_plugin_active'] = $this->is_plugin_active($pro_plugin_name);
+		if ( $pro_plugin_name ) {
+			$localized['pro_plugin_active'] = $this->is_plugin_active( $pro_plugin_name );
 		}
 
 		$localized = apply_filters( 'hester_core_demo_library_localized', $localized );
@@ -178,7 +179,7 @@ final class Hester_Demo_Library {
 
 		wp_enqueue_style(
 			'hester-core-admin',
-			plugin_dir_url( __FILE__ ) . 'assets/css/demo-library'.$suffix.'.css',
+			plugin_dir_url( __FILE__ ) . 'assets/css/demo-library' . $suffix . '.css',
 			$this->version,
 			true
 		);
@@ -194,31 +195,31 @@ final class Hester_Demo_Library {
 	 */
 	public function is_plugin_active( $plugin_name ) {
 		$plugin_slug = "$plugin_name/{$plugin_name}.php";
-		return is_plugin_active($plugin_slug);
+		return is_plugin_active( $plugin_slug );
 	}
 
 
 	/**
 	 * Recursive function to find a key in a multi-dimensional array.
 	 *
-	 * @param array $array The array to search.
+	 * @param array  $array The array to search.
 	 * @param string $key The key to search for.
 	 * @return mixed The value of the key if found, otherwise null.
 	 *
 	 * @since 1.0.9
 	 */
-	public function find_key_recursive($array, $key) {
- 		// Check if the current array has the key
-		if (array_key_exists($key, $array)) {
-			return $array[$key];
+	public function find_key_recursive( $array, $key ) {
+		// Check if the current array has the key
+		if ( array_key_exists( $key, $array ) ) {
+			return $array[ $key ];
 		}
 
 		// Loop through each element of the array
-		foreach ($array as $element) {
+		foreach ( $array as $element ) {
 			// If the element is an array, recurse into it
-			if (is_array($element)) {
-				$value = $this->find_key_recursive($element, $key);
-				if ($value !== null) {
+			if ( is_array( $element ) ) {
+				$value = $this->find_key_recursive( $element, $key );
+				if ( $value !== null ) {
 					return $value;
 				}
 			}
@@ -245,15 +246,14 @@ final class Hester_Demo_Library {
 		// No stored templates, get from remote.
 		if ( ! $this->templates ) {
 			$response = wp_remote_get(
-				'https://peregrine-themes.com/wp-json/api/v2/demos?parent_theme_name='.hester_core()->theme_name,
+				'https://peregrine-themes.com/wp-json/api/v2/demos?parent_theme_name=' . hester_core()->theme_name,
 				array(
-					'user-agent'     => 'HesterCore/' . HESTER_CORE_VERSION . ';',
-					'timeout'        => 60,
+					'user-agent' => 'HesterCore/' . HESTER_CORE_VERSION . ';',
+					'timeout'    => 60,
 				)
 			);
 
-
-			if(is_wp_error($response)){
+			if ( is_wp_error( $response ) ) {
 				$error_message = $response->get_error_message();
 				$error_code    = $response->get_error_code();
 
@@ -262,23 +262,27 @@ final class Hester_Demo_Library {
 
 				// Add solution if it's server-side (5xx errors)
 				$solution = '';
-				if ( preg_match('/^5\d{2}$/', $error_code) ) {
-					$solution = __('This looks like a server-side problem. Please contact your hosting provider to resolve the issue.', 'textdomain');
+				if ( preg_match( '/^5\d{2}$/', $error_code ) ) {
+					$solution = __( 'This looks like a server-side problem. Please contact your hosting provider to resolve the issue.', 'textdomain' );
 				}
 
 				// Store as an object in JSON (so JS can use both parts easily)
 				echo '<script>
-					localStorage.setItem("demoFetchMessage", ' . json_encode(json_encode([
-						'error'    => $main_error,
-						'solution' => $solution,
-					])) . ');
+					localStorage.setItem("demoFetchMessage", ' . json_encode(
+					json_encode(
+						array(
+							'error'    => $main_error,
+							'solution' => $solution,
+						)
+					)
+				) . ');
 				</script>';
 
-            }elseif (  200 === wp_remote_retrieve_response_code( $response ) ) {
+			} elseif ( 200 === wp_remote_retrieve_response_code( $response ) ) {
 				$this->templates = (array) json_decode( stripcslashes( wp_remote_retrieve_body( $response ) ), true );
 			}
 
-			$theme  = wp_get_theme();
+			$theme = wp_get_theme();
 			if ( is_array( $this->templates ) && ! empty( $this->templates ) ) {
 				foreach ( $this->templates as $id => $template ) {
 
@@ -318,7 +322,7 @@ final class Hester_Demo_Library {
 					}
 
 					// Remove the demos that are not specified for the active theme
-					if( isset( $template['for_themes'] ) && !in_array( strtolower( $theme->name ), $template['for_themes'] ) ){
+					if ( isset( $template['for_themes'] ) && ! in_array( strtolower( $theme->name ), $template['for_themes'] ) ) {
 						unset( $this->templates[ $id ] );
 						continue;
 					}
@@ -351,9 +355,9 @@ final class Hester_Demo_Library {
 
 		delete_transient( 'hester_core_demo_templates' );
 
-		$theme_name =  hester_core()->theme_name;
+		$theme_name = hester_core()->theme_name;
 
-		wp_safe_redirect( admin_url( 'admin.php?page='.$theme_name.'-demo-library' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=' . $theme_name . '-demo-library' ) );
 		die;
 	}
 
@@ -364,7 +368,7 @@ final class Hester_Demo_Library {
 	 */
 	public function filter_templates() {
 
-		$hester_nonce =  hester_core()->theme_name . '_nonce';
+		$hester_nonce = hester_core()->theme_name . '_nonce';
 
 		// Nonce check.
 		check_ajax_referer( $hester_nonce );
@@ -425,8 +429,8 @@ final class Hester_Demo_Library {
 			return;
 		}
 
-		$theme_name =  hester_core()->theme_name;
-		$hester_plugin_utilities =  $theme_name . '_plugin_utilities';
+		$theme_name              = hester_core()->theme_name;
+		$hester_plugin_utilities = $theme_name . '_plugin_utilities';
 
 		if ( ! function_exists( $hester_plugin_utilities ) ) {
 			return $template['plugins'];

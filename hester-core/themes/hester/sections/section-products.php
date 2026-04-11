@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 if ( ! function_exists( 'hester_section_products' ) ) {
 	function hester_section_products() {
 		$show_section = hester()->options->get( 'hester_enable_products' );

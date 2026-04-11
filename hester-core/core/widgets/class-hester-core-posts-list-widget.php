@@ -6,6 +6,11 @@
  * @author  Peregrine Themes <peregrinethemes@gmail.com>
  * @since   1.0.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 class Hester_Core_Posts_List_Widget extends WP_Widget {
 
 	/**
@@ -52,7 +57,6 @@ class Hester_Core_Posts_List_Widget extends WP_Widget {
 
 		// Hook into dynamic styles.
 		add_filter( 'hester_dynamic_styles', array( $this, 'dynamic_styles' ) );
-
 	}
 
 	/**
@@ -101,12 +105,12 @@ class Hester_Core_Posts_List_Widget extends WP_Widget {
 
 				if ( $instance['show_thumb'] ) {
 					$hester_get_post_thumbnail = $theme_name . '_get_post_thumbnail';
-					$post_thumbnail = $hester_get_post_thumbnail( get_the_ID(), array( 75, 75 ), true );
-					$post_thumbnail = apply_filters( 'hester_core_opsts_list_widget_thumbnail', $post_thumbnail, get_the_ID() );
+					$post_thumbnail            = $hester_get_post_thumbnail( get_the_ID(), array( 75, 75 ), true );
+					$post_thumbnail            = apply_filters( 'hester_core_opsts_list_widget_thumbnail', $post_thumbnail, get_the_ID() );
 
 					if ( ! empty( $post_thumbnail ) ) {
 						$hester_get_allowed_html_tags = $theme_name . '_get_allowed_html_tags';
-						//echo '<div class="hester-posts-list-widget-thumb"><a href="' . esc_url( get_permalink() ) . '">' . wp_kses( $post_thumbnail, $hester_get_allowed_html_tags( 'basic' ) ) . '</a></div>';
+						// echo '<div class="hester-posts-list-widget-thumb"><a href="' . esc_url( get_permalink() ) . '">' . wp_kses( $post_thumbnail, $hester_get_allowed_html_tags( 'basic' ) ) . '</a></div>';
 						echo '<div class="hester-posts-list-widget-thumb"><a href="' . esc_url( get_permalink() ) . '">' . wp_kses_post( $post_thumbnail ) . '</a></div>';
 					}
 				}
@@ -115,7 +119,8 @@ class Hester_Core_Posts_List_Widget extends WP_Widget {
 
 				if ( $instance['show_category'] ) {
 
-					/*$category_icon = hester()->icons->get_svg( 'bookmark' );
+					/*
+					$category_icon = hester()->icons->get_svg( 'bookmark' );
 					wp_kses( $category_icon, hester_get_allowed_html_tags( 'svg' ) )*/
 					$hester_entry_meta_category = $theme_name . '_entry_meta_category';
 					echo '<div class="hester-posts-list-widget-categories">' . $hester_entry_meta_category( ', ', true, true ) . '</div>';
@@ -129,11 +134,11 @@ class Hester_Core_Posts_List_Widget extends WP_Widget {
 
 				$post_meta = '';
 
-				$hester_get_allowed_html_tags =  hester_core()->theme_name . '_get_allowed_html_tags';
+				$hester_get_allowed_html_tags = hester_core()->theme_name . '_get_allowed_html_tags';
 
 				if ( $instance['show_date'] ) {
-					
-					$hester_function =  hester_core()->theme_name;
+
+					$hester_function = hester_core()->theme_name;
 
 					$date_icon = $hester_function()->icons->get_svg( 'clock' );
 

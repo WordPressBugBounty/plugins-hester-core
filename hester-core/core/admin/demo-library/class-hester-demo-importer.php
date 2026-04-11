@@ -96,7 +96,7 @@ final class Hester_Demo_Importer {
 	 */
 	public function import_demo_step() {
 
-		$hester_nonce =  hester_core()->theme_name . '_nonce';
+		$hester_nonce = hester_core()->theme_name . '_nonce';
 
 		// Nonce check.
 		check_ajax_referer( $hester_nonce );
@@ -150,7 +150,7 @@ final class Hester_Demo_Importer {
 	 */
 	private function before_import_step() {
 
-		$hester_nonce =  hester_core()->theme_name . '_nonce';
+		$hester_nonce = hester_core()->theme_name . '_nonce';
 
 		// Nonce check.
 		check_ajax_referer( $hester_nonce );
@@ -570,8 +570,8 @@ final class Hester_Demo_Importer {
 		$results = Hester_Options_Import_Export::instance()->import( $content );
 
 		// Generate Dynamic styles.
-		$hester_dynamic_styles =  hester_core()->theme_name . '_dynamic_styles';
-		
+		$hester_dynamic_styles = hester_core()->theme_name . '_dynamic_styles';
+
 		if ( function_exists( $hester_dynamic_styles ) ) {
 			$styles = $hester_dynamic_styles();
 			if ( is_object( $styles ) && method_exists( $styles, 'update_dynamic_file' ) ) {
@@ -796,7 +796,7 @@ final class Hester_Demo_Importer {
 			wp_send_json_error( esc_html__( 'Plugin activation error', 'hester-core' ), 'activate_plugin_error' );
 		}
 
-		$hester_plugin_utilities =  hester_core()->theme_name . '_plugin_utilities';
+		$hester_plugin_utilities = hester_core()->theme_name . '_plugin_utilities';
 
 		// Check if helper class exists.
 		if ( ! function_exists( $hester_plugin_utilities ) ) {
@@ -964,8 +964,8 @@ final class Hester_Demo_Importer {
 		}
 
 		$this->demo_id          = $demo_id;
-		$this->demo_upload_uri  = trailingslashit( $upload_dir['baseurl'] ) . hester_core()->theme_name. '/' . $demo_id . '/';
-		$this->demo_upload_path = trailingslashit( $upload_dir['basedir'] ) . hester_core()->theme_name. '/' . $demo_id . '/';
+		$this->demo_upload_uri  = trailingslashit( $upload_dir['baseurl'] ) . hester_core()->theme_name . '/' . $demo_id . '/';
+		$this->demo_upload_path = trailingslashit( $upload_dir['basedir'] ) . hester_core()->theme_name . '/' . $demo_id . '/';
 		// Create theme folder.
 		if ( ! file_exists( $this->demo_upload_path ) ) {
 			wp_mkdir_p( $this->demo_upload_path );

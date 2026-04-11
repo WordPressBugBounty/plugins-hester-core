@@ -108,11 +108,11 @@ final class Hester_Customizer_Import_Export {
 	 */
 	public static function export() {
 
-		 // Get all customizer settings
-        $theme_mods['theme_mod'] = get_theme_mods();
+		// Get all customizer settings
+		$theme_mods['theme_mod'] = get_theme_mods();
 
-        // Convert the settings to JSON
-        $data = json_encode($theme_mods);
+		// Convert the settings to JSON
+		$data = json_encode( $theme_mods );
 
 		$data = apply_filters( 'hester_customizer_export_data', $data );
 

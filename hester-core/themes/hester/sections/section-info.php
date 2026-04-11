@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 if ( ! function_exists( 'hester_section_info' ) ) {
 	function hester_section_info( $enable_section = false ) {
 		$show_section  = $enable_section || hester()->options->get( 'hester_enable_info' );

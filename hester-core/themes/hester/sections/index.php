@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 require_once HESTER_CORE_PLUGIN_DIR . 'themes/hester/sections/section-slider.php';
 require_once HESTER_CORE_PLUGIN_DIR . 'themes/hester/sections/section-info.php';
 require_once HESTER_CORE_PLUGIN_DIR . 'themes/hester/sections/section-services.php';

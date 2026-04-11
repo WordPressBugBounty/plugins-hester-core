@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 add_filter( 'hester_customizer_options', 'hester_customizer_additional_options' );
 function hester_customizer_additional_options( array $options ) {
@@ -147,8 +151,8 @@ function hester_customizer_additional_options( array $options ) {
 			'label'    => esc_html__( 'Style', 'hester-core' ),
 			'section'  => 'hester_section_info',
 			'choices'  => array(
-				''   => esc_html__( 'Default style', 'hester-core' ),
-				'0'  => esc_html__( '1 style', 'hester-core' ),
+				''  => esc_html__( 'Default style', 'hester-core' ),
+				'0' => esc_html__( '1 style', 'hester-core' ),
 			),
 			'required' => array(
 				array(
@@ -173,7 +177,13 @@ function hester_customizer_additional_options( array $options ) {
 			'title_format'  => esc_html__( '[live_title]', 'hester-core' ), // [live_title]
 			'add_text'      => esc_html__( 'Add new info', 'hester-core' ),
 			'max_item'      => 4, // Maximum item can add,
-			'limited_msg'   => wp_kses_post( __( 'Upgrade to <a target="_blank" href="https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=info&utm_campaign=upgradeToPro">Hester Pro</a> to be able to add more items and unlock other premium features!', 'hester-core' ) ),
+			'limited_msg'   => printf(
+								wp_kses_post(
+									/* translators: %s: Hester Pro link */
+									__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )
+								),
+								'<a target="_blank" href="' . esc_url( 'https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=info&utm_campaign=upgradeToPro' ) . '">Hester Pro</a>'
+							),
 			'fields'        => array(
 
 				'icon'        => array(

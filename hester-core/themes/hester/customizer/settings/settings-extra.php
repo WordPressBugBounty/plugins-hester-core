@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 add_filter( 'hester_customizer_options', 'hester_customizer_extra_options' );
 function hester_customizer_extra_options( array $options ) {
 	// About/Extra section

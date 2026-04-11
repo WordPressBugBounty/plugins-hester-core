@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 add_filter( 'hester_customizer_options', 'hester_customizer_services_options' );
 function hester_customizer_services_options( array $options ) {
 	// Service section
@@ -116,7 +121,13 @@ function hester_customizer_services_options( array $options ) {
 			'title_format'  => esc_html__( '[live_title]', 'hester-core' ), // [live_title]
 			'add_text'      => esc_html__( 'Add new Service', 'hester-core' ),
 			'max_item'      => 3, // Maximum item can add,
-			'limited_msg'   => wp_kses_post( __( 'Upgrade to <a target="_blank" href="https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=services&utm_campaign=upgradeToPro">Hester Pro</a> to be able to add more items and unlock other premium features!', 'hester-core' ) ),
+			'limited_msg'   => printf(
+								wp_kses_post(
+									/* translators: %s: Hester Pro link */
+										__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )
+									),
+									'<a target="_blank" href="' . esc_url( 'https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=services&utm_campaign=upgradeToPro' ) . '">Hester Pro</a>'
+								),
 			'fields'        => array(
 
 				'icon'        => array(

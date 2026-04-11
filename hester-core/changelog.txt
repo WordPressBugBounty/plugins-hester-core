@@ -1,3 +1,6 @@
+= 1.1.0 =
+* Added Elementor widgets: Animated Heading, Contact Form 7, Flip Box, Off Canvas, Posts, Pricing, Ajax Search, Slides, Tabs, and WooCommerce widgets (Add To Cart, Categories, Products, Carousel).
+
 = 1.0.10 = 
 * Importer updated to 0.9.5.
 * Blogsy theme support added.

@@ -1,10 +1,15 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 add_filter( 'hester_default_option_values', 'hester_core_hester_default_options', 10, 1 );
 function hester_core_hester_default_options( $defaults ) {
 	// echo '<pre>';print_r($defaults);'</pre>';
 	// disable front page sections
 	$defaults['hester_enable_front_page'] = false;
-	$defaults['hester_sections_order'] = '{"hester_section_info":10,"hester_section_services":15,"hester_section_extra":75,"hester_section_features":80,"hester_section_blog":85,"hester_section_products":90}';
+	$defaults['hester_sections_order']    = '{"hester_section_info":10,"hester_section_services":15,"hester_section_extra":75,"hester_section_features":80,"hester_section_blog":85,"hester_section_products":90}';
 	// Slider default
 	$defaults['hester_enable_slider']     = true;
 	$defaults['hester_slider_shape']      = 'wave';
@@ -259,7 +264,7 @@ function hester_core_hester_default_options( $defaults ) {
 	$defaults['hester_features_heading']     = esc_html__( 'Our Features', 'hester-core' );
 	$defaults['hester_features_description'] = wp_kses_post( 'Et in risus egestas nec vitae odio ac nibh vestibulum volutpat aliquet aenean erat lobortis non.<br><br>Nibh egestas dictumst cursus est turpis quis tincidunt pulvinar maecenas eget massa vel, ante nam blandit egestas enim id quis sit maecenas.', 'hester-core' );
 
-	$defaults['hester_features_slides']             = apply_filters(
+	$defaults['hester_features_slides']          = apply_filters(
 		'hester_core_features_slides_default',
 		array(
 			array(
@@ -292,7 +297,7 @@ function hester_core_hester_default_options( $defaults ) {
 			),
 		)
 	);
-	$defaults['hester_features_background']         = hester_design_options_defaults(
+	$defaults['hester_features_background']      = hester_design_options_defaults(
 		array(
 			'background' => array(
 				'background-type' => 'image',
@@ -306,14 +311,14 @@ function hester_core_hester_default_options( $defaults ) {
 			),
 		)
 	);
-	$defaults['hester_features_text_color']         = hester_design_options_defaults(
+	$defaults['hester_features_text_color']      = hester_design_options_defaults(
 		array(
 			'color' => array(
 				'text-color' => '#FFFFFF',
 			),
 		)
 	);
-	$defaults['hester_features_container_width']    = 'content-width';
+	$defaults['hester_features_container_width'] = 'content-width';
 
 	// Home blog
 	$defaults['hester_enable_blog']       = true;

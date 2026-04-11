@@ -1,4 +1,10 @@
-<?php if ( ! function_exists( 'hester_section_blog' ) ) {
+<?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
+if ( ! function_exists( 'hester_section_blog' ) ) {
 	function hester_section_blog() {
 
 		$show_section   = hester()->options->get( 'hester_enable_blog' );

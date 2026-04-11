@@ -60,7 +60,7 @@ final class Hester_Core_Admin {
 		add_filter( 'hester_recommended_plugins', array( $this, 'recommended_plugins' ) );
 
 		// Allow SVG uploads
-		add_filter('upload_mimes', array( $this, 'allow_svg_uploads' ), 10, 1, );
+		add_filter( 'upload_mimes', array( $this, 'allow_svg_uploads' ), 10, 1, );
 
 		// Hester Core Admin loaded.
 		do_action( 'hester_core_admin_loaded' );
@@ -86,14 +86,14 @@ final class Hester_Core_Admin {
 
 		if (
 			! defined( 'HESTER_THEME_VERSION' ) && ! defined( 'BLOGUN_THEME_VERSION' ) &&
-			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) && 
+			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) &&
 			! defined( 'SHOPWELL_THEME_VERSION' ) && ! defined( 'BLOGSY_THEME_VERSION' )
 		) {
 			add_action( 'admin_notices', array( $this, 'theme_required_notice' ) );
 			return;
 		}
 
-		$theme_name =  hester_core()->theme_name;
+		$theme_name = hester_core()->theme_name;
 
 		// Add Hester admin page.
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ), 100 );
@@ -118,7 +118,7 @@ final class Hester_Core_Admin {
 	 */
 	public function add_admin_menu() {
 
-		$theme_name =  hester_core()->theme_name;
+		$theme_name       = hester_core()->theme_name;
 		$hester_dashboard = $theme_name . '_dashboard';
 		// Remove from Appearance.
 		remove_submenu_page( 'themes.php', $theme_name . '-dashboard' );
@@ -163,7 +163,7 @@ final class Hester_Core_Admin {
 	 */
 	public function add_changelog_menu() {
 
-		$theme_name =  hester_core()->theme_name;
+		$theme_name       = hester_core()->theme_name;
 		$hester_dashboard = $theme_name . '_dashboard';
 
 		remove_submenu_page( null, $theme_name . '-changelog' );
@@ -186,10 +186,10 @@ final class Hester_Core_Admin {
 	 * @since 1.0.0
 	 */
 	public function update_navigation_items( $items ) {
-		$theme_name =  hester_core()->theme_name;
-		$items['dashboard']['url'] = admin_url( 'admin.php?page='. $theme_name . '-dashboard' );
-		$items['plugins']['url']   = admin_url( 'admin.php?page='. $theme_name . '-plugins' );
-		$items['changelog']['url'] = admin_url( 'admin.php?page='. $theme_name . '-changelog' );
+		$theme_name                = hester_core()->theme_name;
+		$items['dashboard']['url'] = admin_url( 'admin.php?page=' . $theme_name . '-dashboard' );
+		$items['plugins']['url']   = admin_url( 'admin.php?page=' . $theme_name . '-plugins' );
+		$items['changelog']['url'] = admin_url( 'admin.php?page=' . $theme_name . '-changelog' );
 
 		return $items;
 	}
@@ -281,7 +281,7 @@ final class Hester_Core_Admin {
 				'https://peregrine-themes.com/wp-json/api/v1/plugins',
 				array(
 					// 'user-agent' => 'Hester/' . HESTER_THEME_VERSION . ';',
-					'timeout'    => 60,
+					'timeout' => 60,
 				)
 			);
 
@@ -308,7 +308,7 @@ final class Hester_Core_Admin {
 	 *
 	 * @since 1.0.9
 	 */
-	public function allow_svg_uploads($mimes) {
+	public function allow_svg_uploads( $mimes ) {
 
 		$mimes['svg'] = 'image/svg+xml';
 
