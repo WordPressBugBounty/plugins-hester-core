@@ -39,8 +39,8 @@ class Assets_Manager {
 	public function enqueue_frontend_scripts() {
 		$css_file              = HESTER_CORE_ELEMENTOR_PATH . 'assets/css/hester-widgets.css';
 		$js_file               = HESTER_CORE_ELEMENTOR_PATH . 'assets/js/hester-widgets.js';
-		$typed_file            = HESTER_CORE_ELEMENTOR_PATH . 'assets/vendor/js/typed.min.js';
-		$morphext_file         = HESTER_CORE_ELEMENTOR_PATH . 'assets/vendor/js/morphext.min.js';
+		$typed_file            = HESTER_CORE_ELEMENTOR_PATH . 'assets/js/vendors/typed.min.js';
+		$morphext_file         = HESTER_CORE_ELEMENTOR_PATH . 'assets/js/vendors/morphext.min.js';
 		$swiper_css_file       = HESTER_CORE_PLUGIN_DIR . 'assets/css/swiper-bundle.min.css';
 		$swiper_js_file        = HESTER_CORE_PLUGIN_DIR . 'assets/js/swiper-bundle.min.js';
 		$swiper_custom_file    = HESTER_CORE_ELEMENTOR_PATH . 'assets/css/swiper-custom.css';
@@ -55,7 +55,7 @@ class Assets_Manager {
 		// Register Main CSS - All widgets share this
 		wp_register_style(
 			'hester-widgets',
-			HESTER_CORE_ELEMENTOR_URL . 'assets/css/hester-widgets.css',
+			$css_file,
 			array(),
 			$css_version
 		);
@@ -63,7 +63,7 @@ class Assets_Manager {
 		// Register Main JS - All widgets share this
 		wp_register_script(
 			'hester-widgets',
-			HESTER_CORE_ELEMENTOR_URL . 'assets/js/hester-widgets.js',
+			$js_file,
 			array( 'jquery' ),
 			$js_version,
 			true
@@ -81,7 +81,7 @@ class Assets_Manager {
 		// Bundled library dependencies.
 		wp_register_script(
 			'typed',
-			HESTER_CORE_ELEMENTOR_URL . 'assets/vendor/js/typed.min.js',
+			$typed_file,
 			array(),
 			$typed_version,
 			true
@@ -89,7 +89,7 @@ class Assets_Manager {
 
 		wp_register_script(
 			'morphext',
-			HESTER_CORE_ELEMENTOR_URL . 'assets/vendor/js/morphext.min.js',
+			$morphext_file,
 			array( 'jquery' ),
 			$morphext_version,
 			true
@@ -99,7 +99,7 @@ class Assets_Manager {
 		if ( ! wp_style_is( 'swiper', 'registered' ) ) {
 			wp_register_style(
 				'swiper',
-				HESTER_CORE_PLUGIN_URL . 'assets/css/swiper-bundle.min.css',
+				$swiper_css_file,
 				array(),
 				$swiper_css_version
 			);
@@ -108,7 +108,7 @@ class Assets_Manager {
 		if ( ! wp_script_is( 'swiper', 'registered' ) ) {
 			wp_register_script(
 				'swiper',
-				HESTER_CORE_PLUGIN_URL . 'assets/js/swiper-bundle.min.js',
+				$swiper_js_file,
 				array(),
 				$swiper_js_version,
 				true
@@ -118,7 +118,7 @@ class Assets_Manager {
 		// Swiper Custom Styles
 		wp_register_style(
 			'hester-swiper-custom',
-			HESTER_CORE_ELEMENTOR_URL . 'assets/css/swiper-custom.css',
+			$swiper_custom_file,
 			array( 'swiper' ),
 			$swiper_custom_version
 		);
@@ -185,7 +185,7 @@ class Assets_Manager {
 	public function ajax_search() {
 		check_ajax_referer( 'hester_nonce', '_wpnonce' );
 
-		$query  = isset( $_POST['query'] ) ? sanitize_text_field( wp_unslash( $_POST['query'] ) ) : '';
+		$query = isset( $_POST['query'] ) ? sanitize_text_field( wp_unslash( $_POST['query'] ) ) : '';
 		if ( '' === $query && isset( $_POST['q'] ) ) {
 			$query = sanitize_text_field( wp_unslash( $_POST['q'] ) );
 		}

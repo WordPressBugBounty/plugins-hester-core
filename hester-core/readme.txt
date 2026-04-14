@@ -4,13 +4,33 @@ Tags: demos, elementor, widgets, woocommerce
 Requires at least: 5.9
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Plugin Name: Hester Core
+
+The official companion plugin for Peregrine Themes. Adds widgets, customization options, Elementor widgets, and demo import features.
 
 == Description ==
 
-Hester Core is an optional companion plugin for [Peregrine Themes](https://peregrine-themes.com) theme. It adds additional features such as homepage sections, widgets, blocks and a collection of pre-built websites (demos) for popular page builders and the WordPress block editor (Gutenberg).
+**Hester Core** is the optional companion plugin for themes by [Peregrine Themes](https://wordpress.org/themes/author/peregrinethemes/). It extends functionality and unlocks additional features for supported themes.
+
+With Hester Core, you can:
+
+* Add exclusive widgets and modules.
+* Access advanced Customizer options.
+* Use additional Elementor widgets.
+* Import pre-built demos.
+
+Hester Core makes it easy to set up your website quickly, customize layouts, and create a professional design — without touching any code.
+
+== Features ==
+
+* One-click demo import for Peregrine Themes.
+* Custom widgets and sections for the WordPress Customizer.
+* Extended design and layout settings.
+* Exclusive Elementor widgets for dynamic content.
+* Seamless compatibility with Gutenberg and major page builders.
 
 == Elementor Widgets ==
 
@@ -52,6 +72,12 @@ Hester Core is a companion plugin for the [Peregrine Themes](https://peregrine-t
 Hester Core adds 13 powerful Elementor widgets for the page builder, including Slides, Posts Grid, Pricing Tables, WooCommerce widgets (Products, Categories, Add to Cart, Carousel), and more. All widgets are fully customizable with advanced styling controls.
 
 == Changelog ==
+
+= 1.1.1 =
+* Included missing JS files.
+* Refactored asset paths in Assets_Manager and enhance Morphext functionality in hester-widgets.js.
+* Added admin notice to showcase "Elementor widgets" support.
+* Removed unnecessary "unsupported theme" notice from class-hester-core-admin.php file.
 
 = 1.1.0 =
 * Added Elementor widgets: Animated Heading, Contact Form 7, Flip Box, Off Canvas, Posts, Pricing, Ajax Search, Slides, Tabs, and WooCommerce widgets (Add To Cart, Categories, Products, Carousel).

@@ -56,6 +56,19 @@
                 }));
             } else if ('morphext' === layout) {
                 if (typeof window.jQuery.fn.Morphext === 'function') {
+                    var words = $current.data('words');
+                    if (typeof words === 'string') {
+                        try {
+                            words = JSON.parse(words);
+                        } catch (err) {
+                            words = words.split(',');
+                        }
+                    }
+
+                    if (Array.isArray(words)) {
+                        $current.text(words.join(', '));
+                    }
+
                     $current.Morphext({
                         animation: $current.data('animation'),
                         separator: ',',

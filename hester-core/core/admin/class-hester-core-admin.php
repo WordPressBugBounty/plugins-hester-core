@@ -84,15 +84,6 @@ final class Hester_Core_Admin {
 	 */
 	public function init_admin() {
 
-		if (
-			! defined( 'HESTER_THEME_VERSION' ) && ! defined( 'BLOGUN_THEME_VERSION' ) &&
-			! defined( 'BLOGLO_THEME_VERSION' ) && ! defined( 'BLOGHASH_THEME_VERSION' ) &&
-			! defined( 'SHOPWELL_THEME_VERSION' ) && ! defined( 'BLOGSY_THEME_VERSION' )
-		) {
-			add_action( 'admin_notices', array( $this, 'theme_required_notice' ) );
-			return;
-		}
-
 		$theme_name = hester_core()->theme_name;
 
 		// Add Hester admin page.
@@ -253,16 +244,6 @@ final class Hester_Core_Admin {
 			</div>
 		</div><!-- END .hester-columns -->
 		<?php
-	}
-
-	/**
-	 * Display notice.
-	 *
-	 * @since 1.0.0
-	 */
-	public function theme_required_notice() {
-
-		echo '<div class="notice notice-warning"><p>' . esc_html__( 'One of Peregrine Themes needs to be installed and activated in order to use Hester Core plugin.', 'hester-core' ) . ' <a href="' . esc_url( admin_url( 'themes.php' ) ) . '"><strong>' . esc_html__( 'Install & Activate', 'hester-core' ) . '</strong></a>.</p></div>';
 	}
 
 	/**
