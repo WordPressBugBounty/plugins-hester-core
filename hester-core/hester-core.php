@@ -4,7 +4,7 @@
  * Description: The official companion plugin for Peregrine Themes. Adds widgets, customization options, Elementor widgets, and demo import features.
  * Author:      Peregrine Themes
  * Author URI:  https://peregrine-themes.com
- * Version:     1.1.2
+ * Version:     1.1.3
  * Text Domain: hester-core
  * Domain Path: /languages
  * Requires at least: 5.9
@@ -97,7 +97,7 @@ final class Hester_Core {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.1.2';
+	public $version = '1.1.3';
 
 	/**
 	 * Active theme template slug (e.g. "hester", "bloglo").
@@ -219,7 +219,7 @@ final class Hester_Core {
 		}
 
 		// Theme-specific extras.
-		if ( in_array( $theme_template, array( 'hester', 'hester-pro' ), true ) ) {
+		if ( in_array( $theme_template, array( 'hester' ), true ) ) {
 			require_once HESTER_CORE_PLUGIN_DIR . 'themes/hester/hester.php';
 		}
 	}

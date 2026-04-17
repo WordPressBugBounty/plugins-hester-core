@@ -104,7 +104,7 @@ function hester_customizer_features_options( array $options ) {
 			'title_format'  => esc_html__( '[live_title]', 'hester-core' ), // [live_title]
 			'add_text'      => esc_html__( 'Add new Feature', 'hester-core' ),
 			'max_item'      => 4, // Maximum item can add,
-			'limited_msg'   => printf(
+			'limited_msg'   => sprintf(
 								wp_kses_post(
 									/* translators: %s: Hester Pro link */
 									__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )

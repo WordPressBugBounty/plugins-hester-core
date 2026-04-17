@@ -61,13 +61,13 @@ function hester_customizer_slider_options( array $options ) {
 			'title_format'  => esc_html__( '[live_title]', 'hester-core' ), // [live_title]
 			'add_text'      => esc_html__( 'Add new slide', 'hester-core' ),
 			'max_item'      => 3, // Maximum item can add,
-			'limited_msg'   => printf(
-								wp_kses_post(
+			'limited_msg'   => sprintf(
+				wp_kses_post(
 									/* translators: %s: Hester Pro link */
-									__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )
-								),
-								'<a target="_blank" href="' . esc_url( 'https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=slider&utm_campaign=upgradeToPro' ) . '">Hester Pro</a>'
-							),
+					__( 'Upgrade to %s to be able to add more items and unlock other premium features!', 'hester-core' )
+				),
+				'<a target="_blank" href="' . esc_url( 'https://peregrine-themes.com/hester/?utm_medium=customizer&utm_source=slider&utm_campaign=upgradeToPro' ) . '">Hester Pro</a>'
+			),
 			'fields'        => array(
 				'image'               => array(
 					'title' => esc_html__( 'Slide image', 'hester-core' ),
