@@ -990,7 +990,7 @@ class Posts extends Base_Widget {
 					'after'  => __( 'After Name', 'hester-core' ),
 				),
 				'condition' => array(
-					'meta_data'                => 'author',
+					'meta_data'               => 'author',
 					'meta_show_author_avatar' => 'yes',
 				),
 			)
@@ -1587,7 +1587,7 @@ class Posts extends Base_Widget {
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
-					'meta_data'                => 'author',
+					'meta_data'               => 'author',
 					'meta_show_author_avatar' => 'yes',
 				),
 			)
@@ -1613,7 +1613,7 @@ class Posts extends Base_Widget {
 					'{{WRAPPER}} .hester-posts__author-avatar-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
-					'meta_data'                => 'author',
+					'meta_data'               => 'author',
 					'meta_show_author_avatar' => 'yes',
 				),
 			)
@@ -1629,7 +1629,7 @@ class Posts extends Base_Widget {
 					'{{WRAPPER}} .hester-posts__author-avatar-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'  => array(
-					'meta_data'                => 'author',
+					'meta_data'               => 'author',
 					'meta_show_author_avatar' => 'yes',
 				),
 			)
@@ -1655,7 +1655,7 @@ class Posts extends Base_Widget {
 					'{{WRAPPER}} .hester-posts__author-link' => 'gap: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
-					'meta_data'                => 'author',
+					'meta_data'               => 'author',
 					'meta_show_author_avatar' => 'yes',
 				),
 			)
@@ -2495,7 +2495,7 @@ class Posts extends Base_Widget {
 			$author_name = get_the_author();
 
 			if ( $author_id > 0 ) {
-				$author_label_html = '<span class="hester-posts__author-name">' . esc_html( $author_name ) . '</span>';
+				$author_label_html  = '<span class="hester-posts__author-name">' . esc_html( $author_name ) . '</span>';
 				$author_avatar_html = '';
 
 				if ( $show_avatar ) {
@@ -2843,7 +2843,7 @@ class Posts extends Base_Widget {
 			}
 
 			if ( 'full_content' !== $skin && $show_button && '' !== $button_text ) {
-				echo '<a class="hester-posts__button" href="' . esc_url( get_permalink() ) . '"' . $link_attrs . '>' . esc_html( $button_text ) . '</a>';
+				echo '<a class="hester-posts__button elementor-button" href="' . esc_url( get_permalink() ) . '"' . $link_attrs . '>' . esc_html( $button_text ) . '</a>';
 			}
 
 			echo '</div>';

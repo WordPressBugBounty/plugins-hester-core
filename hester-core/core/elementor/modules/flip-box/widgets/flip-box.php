@@ -1208,6 +1208,7 @@ class FlipBox extends Base_Widget {
 			array(
 				'hester-flip-box-button',
 				'button',
+				'elementor-button',
 			)
 		);
 
@@ -1394,7 +1395,7 @@ class FlipBox extends Base_Widget {
 						<# } #>
 
 						<# if(settings.button_text) { #>
-							<{{ buttonTag }} href="#" class="hester-flip-box-button button">{{{ settings.button_text }}}</{{ buttonTag }}>
+							<{{ buttonTag }} href="#" class="hester-flip-box-button button elementor-button">{{{ settings.button_text }}}</{{ buttonTag }}>
 						<# } #>
 					</div>
 				</div>

@@ -582,7 +582,7 @@ class Off_Canvas extends Base_Widget {
 
 		$this->add_render_attribute( 'button-wrap', 'class', 'hester-off-canvas-button' );
 		$this->add_render_attribute( 'button', 'href', '#hester-off-canvas-' . esc_attr( $id ) );
-		$this->add_render_attribute( 'button', 'class', 'button' );
+		$this->add_render_attribute( 'button', 'class', 'button elementor-button' );
 
 		$this->add_render_attribute(
 			'icon-align',

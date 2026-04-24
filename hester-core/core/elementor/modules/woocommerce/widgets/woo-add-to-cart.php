@@ -550,6 +550,7 @@ class Woo_Add_To_Cart extends Base_Widget {
 				array(
 					'hester-addtocart',
 					'button',
+					'elementor-button',
 				)
 			);
 			?>

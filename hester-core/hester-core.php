@@ -4,7 +4,7 @@
  * Description: The official companion plugin for Peregrine Themes. Adds widgets, customization options, Elementor widgets, and demo import features.
  * Author:      Peregrine Themes
  * Author URI:  https://peregrine-themes.com
- * Version:     1.1.3
+ * Version:     1.1.4
  * Text Domain: hester-core
  * Domain Path: /languages
  * Requires at least: 5.9
@@ -97,7 +97,7 @@ final class Hester_Core {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.1.3';
+	public $version = '1.1.4';
 
 	/**
 	 * Active theme template slug (e.g. "hester", "bloglo").
@@ -318,8 +318,6 @@ function hester_core_welcome_notice() {
 			.hester-core-welcome-notice .hester-core-welcome-text{flex:1;min-width:0}
 			.hester-core-welcome-notice .hester-core-welcome-text h2{margin:0 0 8px;font-size:18px}
 			.hester-core-welcome-notice .hester-core-welcome-text p{margin:0 0 12px;line-height:1.6}
-			.hester-core-welcome-notice .hester-core-welcome-banner{max-width:350px;margin-left:20px;flex-shrink:0}
-			.hester-core-welcome-notice .hester-core-welcome-banner img{width:100%;height:auto;border-radius:6px}
 			.hester-core-welcome-notice .hester-core-welcome-actions{margin-top:12px}
 			.hester-core-welcome-notice .hester-core-welcome-actions .button{margin-right:8px}
 		</style>
@@ -334,12 +332,6 @@ function hester_core_welcome_notice() {
 					<?php esc_html_e( 'Dismiss', 'hester-core' ); ?>
 				</a>
 			</div>
-		</div>
-		<div class="hester-core-welcome-banner">
-			<img
-				src="<?php echo esc_url( $banner_url ); ?>"
-				alt="<?php esc_attr_e( 'Hester Core', 'hester-core' ); ?>"
-			/>
 		</div>
 	</div>
 	<?php

@@ -12,26 +12,6 @@
     text-decoration: none;
 }
 
-.elementor-element .button,
-.elementor-element button[type=submit],
-.elementor-element input[type=button],
-.elementor-element input[type=reset],
-.elementor-element input[type=submit] {
-    display: inline-block;
-    font-family: inherit;
-    background-color: #0d6efd;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    margin: 0;
-    padding: 14px 20px;
-    border: 0;
-    cursor: pointer;
-    text-align: center;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
 ul.page-numbers {
     display: inline-block;
     width: 100%;
@@ -55,7 +35,7 @@ ul.page-numbers li {
     line-height: 38px;
     margin: 0 8px 0 0;
     text-align: center;
-    color: #555;
+    color: #111827;
     border: 1px solid #e9e9e9;
     font-size: 18px;
     cursor: pointer;
@@ -425,16 +405,8 @@ Posts
 }
 
 .hester-posts__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    padding: 12px 18px;
-    line-height: 1.177;
     background-color: #111827;
     color: #fff;
-    text-decoration: none;
-    transition: all 0.25s ease;
 }
 
 .hester-posts__button:hover {
@@ -878,7 +850,7 @@ Flip Box
 
 .hester-flip-box .hester-flip-box-button {
     background-color: #fff;
-    color: #333;
+    color: #111827;
 }
 
 .hester-flip-box .hester-flip-box-button:hover {
@@ -1249,18 +1221,14 @@ Search
 }
 
 .hester-search-wrap .search-submit {
-    color: #333;
+    color: #fff;
+    background-color: #111827;
     position: absolute;
     top: 2px;
     right: 2px;
     bottom: 2px;
-    padding: 0 12.5px !important;
+    padding: 0 12.5px;
     border-radius: 5px;
-}
-
-.hester-search-wrap .search-submit:focus,
-.hester-search-wrap .search-submit:hover {
-    color: #333;
 }
 
 .hester-search-wrap .hester-ajax-loading {
@@ -1388,7 +1356,7 @@ Search
 
 .hester-search-wrap .hester-search-results ul li a.search-result-link:hover {
     background-color: #f8f8f8;
-    color: #555;
+    color: #111827;
 }
 
 .hester-search-wrap .hester-search-results ul li:last-child a {
@@ -1903,8 +1871,8 @@ Responsive
 .hester-pagination .page-numbers span.current,
 .hester-pagination .page-numbers .current {
     color: #fff;
-    background: #222;
-    border-color: #222;
+    background: #111827;
+    border-color: #111827;
 }
 
 /* Shared: Tabs */
@@ -1999,7 +1967,7 @@ Responsive
 
 .hester-search-input:focus {
     outline: none;
-    border-color: #333;
+    border-color: #111827;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -2041,7 +2009,7 @@ Responsive
 }
 
 .hester-price-table .hester-price-table__header {
-    background: var(--hester-price-table-header-background-color, #555);
+    background: var(--hester-price-table-header-background-color, #111827);
     padding: 20px 0;
 }
 
@@ -2076,7 +2044,7 @@ Responsive
 
 .hester-price-table .hester-price-table__price {
     align-items: center;
-    color: #555;
+    color: #111827;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2252,7 +2220,7 @@ Responsive
 }
 
 .elementor-widget-hester-pricing .hester-price-table__ribbon-inner {
-    background: #000;
+    background: #111827;
     color: #fff;
     font-size: 13px;
     font-weight: 800;

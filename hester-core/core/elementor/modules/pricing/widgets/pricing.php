@@ -1296,7 +1296,7 @@ class Pricing extends Base_Widget {
 			array(
 				'label'     => esc_html__( 'Size', 'hester-core' ),
 				'type'      => Controls_Manager::SELECT,
-				'default'   => 'md',
+				'default'   => 'sm',
 				'options'   => array(
 					'xs' => esc_html__( 'Extra Small', 'hester-core' ),
 					'sm' => esc_html__( 'Small', 'hester-core' ),
@@ -1919,7 +1919,7 @@ class Pricing extends Base_Widget {
 			array(
 				'hester-price-table__button',
 				'elementor-button',
-				'elementor-size-' . sanitize_html_class( $settings['button_size'] ?? 'md' ),
+				'elementor-size-' . sanitize_html_class( $settings['button_size'] ?? 'sm' ),
 			)
 		);
 
