@@ -438,7 +438,8 @@
 						HesterCoreDemoLibrary.pluginActivate( plugin );
 					},
 					error: function( response ) {
-						console.log( response );
+						var msg = ( response && response.errorMessage ) ? response.errorMessage : hesterCoreDemoLibrary.strings.importFailed;
+						window.HesterToast && HesterToast.error( msg );
 					}
 				});
 
@@ -685,23 +686,9 @@
 
 			$body.removeClass( 'importing' );
 
-			// Build toast HTML
-			var html  = '<div class="hester-toast hester-toast-error">';
-				html += '<span class="hester-toast-message"><strong>' + (data?.error || hesterCoreDemoLibrary.strings.importFailed) + '</strong></span>';
-				if (data?.solution) {
-					html += '<p style="margin-top:6px;">' + data.solution + '</p>';
-				}
-				html += '<button type="button" class="hester-toast-dismiss">&times;</button>';
-				html += '</div>';
-
-			var $toast = $(html);
-
-			$('body').append($toast);
-
-			// Dismiss manually
-			$toast.on('click', '.hester-toast-dismiss', function() {
-				$toast.remove();
-			});
+			var msg    = ( data && data.error    ) ? data.error    : hesterCoreDemoLibrary.strings.importFailed;
+			var detail = ( data && data.solution ) ? data.solution : '';
+			window.HesterToast && HesterToast.error( msg, { detail: detail, duration: 0 } );
 		},
 
 
@@ -776,24 +763,15 @@
 				const stored = localStorage.getItem('demoFetchMessage');
 				if (stored) {
 					try {
-						const data = JSON.parse(stored); // parse object
-
-						let html = '<div class="notice notice-error is-dismissible" style="display:block;">';
-						html += '<p><strong>' + data.error + '</strong></p>';
-						if (data.solution) {
-							html += '<p style="margin-top:6px;color:#555d66">' + data.solution + '</p>';
-						}
-						html += '</div>';
-
-						// Insert after .demo-filters
-						jQuery('.demo-filters').after(html).css('display', 'block');
+						const data = JSON.parse(stored);
+						var msg    = data.error    || hesterCoreDemoLibrary.strings.importFailed;
+						var detail = data.solution || '';
+						window.HesterToast && HesterToast.error( msg, { detail: detail, duration: 0 } );
 					} catch(e) {
 						console.error('Invalid error message in localStorage');
 					}
-
-					// Clear after showing once
 					localStorage.removeItem('demoFetchMessage');
-				} else{
+				} else {
 					$( '.hester-section.demos' ).html( '<div class="hester-column">' + hesterCoreDemoLibrary.strings.noResultsFound + '</div>' );
 				}
 				return;

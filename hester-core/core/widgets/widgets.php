@@ -157,7 +157,7 @@ function hester_core_print_widget_templates() {
 						echo wp_kses_post(
 							sprintf(
 								_x( 'HTML tags allowed.', 'Widget', 'hester-core' ),
-								'<a href="http://docs.peregrine-themes.com/" rel="nofollow noreferrer" target="_blank">',
+								'<a href="https://docs.peregrine-themes.com/" rel="nofollow noreferrer" target="_blank">',
 								'</a>'
 							)
 						);

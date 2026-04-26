@@ -19,40 +19,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: core/admin/class-hester-core-admin.php:129
+#: core/admin/class-hester-core-admin.php:123
 msgid "Hester"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:141
+#: core/admin/class-hester-core-admin.php:135
 msgid "About"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:151
+#: core/admin/class-hester-core-admin.php:145
 msgid "Plugins"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:174
+#: core/admin/class-hester-core-admin.php:168
 msgid "Changelog"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:224
+#: core/admin/class-hester-core-admin.php:244
 msgid "Changelog file not found."
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:226
+#: core/admin/class-hester-core-admin.php:246
 msgid "Changelog file not readable."
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:241
+#: core/admin/class-hester-core-admin.php:261
 msgid "Hester Core Plugin Changelog"
-msgstr ""
-
-#: core/admin/class-hester-core-admin.php:265
-msgid "One of Peregrine Themes needs to be installed and activated in order to use Hester Core plugin."
-msgstr ""
-
-#: core/admin/class-hester-core-admin.php:265
-msgid "Install & Activate"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-importer.php:106
@@ -152,10 +144,12 @@ msgid "Demo Library"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:102
+#: core/admin/theme-library/class-hester-theme-library-page.php:99
 msgid "Filter&hellip;"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:112
+#: core/admin/theme-library/class-hester-theme-library-page.php:111
 msgid "Refresh"
 msgstr ""
 
@@ -165,7 +159,7 @@ msgid "All"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:142
-#: themes/hester/hester.php:56
+#: themes/hester/hester.php:59
 msgid "Blog"
 msgstr ""
 
@@ -200,7 +194,7 @@ msgstr ""
 #: core/admin/demo-library/class-hester-demo-library-page.php:219
 #: core/admin/demo-library/class-hester-demo-library-page.php:255
 #: core/admin/demo-library/class-hester-demo-library-page.php:369
-#: themes/hester/customizer/settings/settings-extra.php:55
+#: themes/hester/customizer/settings/settings-extra.php:60
 msgid "Upgrade to pro"
 msgstr ""
 
@@ -217,26 +211,33 @@ msgstr ""
 #: core/admin/demo-library/class-hester-demo-library-page.php:223
 #: core/admin/demo-library/class-hester-demo-library-page.php:405
 #: core/admin/demo-library/class-hester-demo-library.php:157
+#: core/admin/theme-library/class-hester-theme-library-page.php:178
+#: core/admin/theme-library/class-hester-theme-library-page.php:297
+#: core/admin/theme-library/class-hester-theme-library.php:150
 msgid "Preview"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:249
+#: core/admin/theme-library/class-hester-theme-library-page.php:202
 msgid "Close"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:250
+#: core/admin/theme-library/class-hester-theme-library-page.php:203
 #: core/elementor/modules/posts/widgets/posts.php:363
 #: core/elementor/modules/posts/widgets/posts.php:2665
 msgid "Previous"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:251
+#: core/admin/theme-library/class-hester-theme-library-page.php:204
 #: core/elementor/modules/posts/widgets/posts.php:376
 #: core/elementor/modules/posts/widgets/posts.php:2666
 msgid "Next"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:271
+#: core/admin/theme-library/class-hester-theme-library-page.php:220
 msgid "You are previewing"
 msgstr ""
 
@@ -277,22 +278,27 @@ msgid "These plugins will be auto-installed for you."
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:383
+#: core/admin/theme-library/class-hester-theme-library-page.php:273
 msgid "Collapse Sidebar"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:385
+#: core/admin/theme-library/class-hester-theme-library-page.php:275
 msgid "Collapse"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:391
+#: core/admin/theme-library/class-hester-theme-library-page.php:281
 msgid "Enter desktop preview mode"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:394
+#: core/admin/theme-library/class-hester-theme-library-page.php:284
 msgid "Enter tablet preview mode"
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library-page.php:397
+#: core/admin/theme-library/class-hester-theme-library-page.php:287
 msgid "Enter mobile preview mode"
 msgstr ""
 
@@ -357,7 +363,7 @@ msgid "Preparing Data..."
 msgstr ""
 
 #: core/admin/demo-library/class-hester-demo-library.php:159
-#: core/elementor/assets-manager.php:278
+#: core/elementor/assets-manager.php:285
 msgid "No results found"
 msgstr ""
 
@@ -375,27 +381,27 @@ msgstr ""
 msgid "Import data could not be read. Please try a different file."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-parsers.php:30
-#: core/admin/demo-library/importers/class-parsers.php:31
+#: core/admin/demo-library/importers/class-parsers.php:36
+#: core/admin/demo-library/importers/class-parsers.php:37
 #, php-format
 msgid "Invalid parser specified: %s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-parsers.php:71
-#: core/admin/demo-library/importers/class-parsers.php:98
-#: core/admin/demo-library/importers/class-parsers.php:110
+#: core/admin/demo-library/importers/class-parsers.php:77
+#: core/admin/demo-library/importers/class-parsers.php:104
+#: core/admin/demo-library/importers/class-parsers.php:116
 msgid "There was an error when reading this WXR file"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-parsers.php:72
+#: core/admin/demo-library/importers/class-parsers.php:78
 msgid "Details are shown above. The importer will now try again with a different parser..."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-parsers.php:119
-#: core/admin/demo-library/importers/class-parsers.php:129
-#: core/admin/demo-library/importers/class-parsers.php:391
-#: core/admin/demo-library/importers/class-parsers.php:629
-#: core/admin/demo-library/importers/class-parsers.php:1042
+#: core/admin/demo-library/importers/class-parsers.php:125
+#: core/admin/demo-library/importers/class-parsers.php:135
+#: core/admin/demo-library/importers/class-parsers.php:397
+#: core/admin/demo-library/importers/class-parsers.php:635
+#: core/admin/demo-library/importers/class-parsers.php:1048
 msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
 msgstr ""
 
@@ -423,212 +429,212 @@ msgstr ""
 msgid "No Title"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:155
+#: core/admin/demo-library/importers/class-wordpress-importer.php:160
 msgid "URL rewriting requires WordPress 6.7 or newer. The import will continue without rewriting URLs."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:188
-#: core/admin/demo-library/importers/class-wordpress-importer.php:199
-#: core/admin/demo-library/importers/class-wordpress-importer.php:273
-#: core/admin/demo-library/importers/class-wordpress-importer.php:277
-#: core/admin/demo-library/importers/class-wordpress-importer.php:288
+#: core/admin/demo-library/importers/class-wordpress-importer.php:193
+#: core/admin/demo-library/importers/class-wordpress-importer.php:204
+#: core/admin/demo-library/importers/class-wordpress-importer.php:278
+#: core/admin/demo-library/importers/class-wordpress-importer.php:282
+#: core/admin/demo-library/importers/class-wordpress-importer.php:293
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:189
+#: core/admin/demo-library/importers/class-wordpress-importer.php:194
 msgid "The file does not exist, please try again."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:257
+#: core/admin/demo-library/importers/class-wordpress-importer.php:262
 msgid "All done."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:257
+#: core/admin/demo-library/importers/class-wordpress-importer.php:262
 msgid "Have fun!"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:258
+#: core/admin/demo-library/importers/class-wordpress-importer.php:263
 msgid "Remember to update the passwords and roles of imported users."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:278
+#: core/admin/demo-library/importers/class-wordpress-importer.php:283
 #, php-format
 msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:296
+#: core/admin/demo-library/importers/class-wordpress-importer.php:301
 #, php-format
 msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:321
+#: core/admin/demo-library/importers/class-wordpress-importer.php:326
 #, php-format
 msgid "Failed to import author %s. Their posts will be attributed to the current user."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:349
+#: core/admin/demo-library/importers/class-wordpress-importer.php:354
 msgid "Assign Authors"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:350
+#: core/admin/demo-library/importers/class-wordpress-importer.php:355
 msgid "To make it simpler for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site, such as your primary administrator account."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:352
+#: core/admin/demo-library/importers/class-wordpress-importer.php:357
 #, php-format
 msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:362
+#: core/admin/demo-library/importers/class-wordpress-importer.php:367
 msgid "Import Attachments"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:365
+#: core/admin/demo-library/importers/class-wordpress-importer.php:370
 msgid "Download and import file attachments"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:369
+#: core/admin/demo-library/importers/class-wordpress-importer.php:374
 msgid "Content Options"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:372
+#: core/admin/demo-library/importers/class-wordpress-importer.php:377
 msgid "Change all imported URLs that currently link to the previous site so that they now link to this site"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:375
+#: core/admin/demo-library/importers/class-wordpress-importer.php:380
 msgid "Submit"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:389
+#: core/admin/demo-library/importers/class-wordpress-importer.php:394
 msgid "Import author:"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:404
+#: core/admin/demo-library/importers/class-wordpress-importer.php:409
 msgid "or create new user with login name:"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:407
+#: core/admin/demo-library/importers/class-wordpress-importer.php:412
 msgid "as a new user:"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:417
+#: core/admin/demo-library/importers/class-wordpress-importer.php:422
 msgid "assign posts to an existing user:"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:419
+#: core/admin/demo-library/importers/class-wordpress-importer.php:424
 msgid "or assign posts to an existing user:"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:428
+#: core/admin/demo-library/importers/class-wordpress-importer.php:433
 msgid "- Select -"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:487
+#: core/admin/demo-library/importers/class-wordpress-importer.php:492
 #, php-format
 msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:555
+#: core/admin/demo-library/importers/class-wordpress-importer.php:560
 #, php-format
 msgid "Failed to import category %s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:621
+#: core/admin/demo-library/importers/class-wordpress-importer.php:626
 #, php-format
 msgid "Failed to import post tag %s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:693
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1219
+#: core/admin/demo-library/importers/class-wordpress-importer.php:698
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1224
 #, php-format
 msgid "Failed to import %1$s %2$s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:815
+#: core/admin/demo-library/importers/class-wordpress-importer.php:820
 #, php-format
 msgid "Failed to import &#8220;%1$s&#8221;: Invalid post type %2$s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:856
+#: core/admin/demo-library/importers/class-wordpress-importer.php:861
 #, php-format
 msgid "%1$s &#8220;%2$s&#8221; already exists."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:951
+#: core/admin/demo-library/importers/class-wordpress-importer.php:956
 #, php-format
 msgid "Failed to import %1$s &#8220;%2$s&#8221;"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1265
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1270
 msgid "Menu item skipped due to missing menu slug"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1272
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1277
 #, php-format
 msgid "Menu item skipped due to invalid menu slug: %s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1367
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1372
 msgid "Fetching attachments is not enabled"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1385
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1390
 msgid "Invalid file type"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1429
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1434
 msgid "Could not create temporary file."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1451
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1456
 #, php-format
 msgid "Request failed due to an error: %1$s (%2$s)"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1467
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1472
 #, php-format
 msgid "Remote server returned the following unexpected result: %1$s (%2$s)"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1479
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1484
 msgid "Remote server did not respond"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1486
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1491
 msgid "Zero size file downloaded"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1491
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1496
 msgid "Downloaded file has incorrect size"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1497
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1502
 #, php-format
 msgid "Remote file is too large, limit is %s"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1529
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1534
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1544
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1549
 msgid "The uploaded file could not be moved"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1723
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1728
 msgid "Import WordPress"
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1730
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1735
 #, php-format
 msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1745
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1750
 msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
 msgstr ""
 
-#: core/admin/demo-library/importers/class-wordpress-importer.php:1746
+#: core/admin/demo-library/importers/class-wordpress-importer.php:1751
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
 
@@ -702,6 +708,95 @@ msgstr ""
 msgid "Unexpected token type \"%1$s\" in element stage."
 msgstr ""
 
+#: core/admin/theme-library/class-hester-theme-library-page.php:72
+#: core/admin/theme-library/class-hester-theme-library-page.php:96
+#: core/admin/theme-library/class-hester-theme-library-page.php:319
+msgid "Themes"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:119
+#: core/admin/theme-library/class-hester-theme-library.php:153
+msgid "No themes found."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:155
+msgid "Preview Theme"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:158
+#: core/admin/theme-library/class-hester-theme-library.php:148
+#: core/elementor/modules/tabs/widgets/tabs.php:296
+#: core/elementor/modules/tabs/widgets/tabs.php:550
+msgid "Active"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:160
+#: core/admin/theme-library/class-hester-theme-library-page.php:238
+#: core/admin/theme-library/class-hester-theme-library.php:145
+msgid "Installed"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:171
+#: core/admin/theme-library/class-hester-theme-library-page.php:207
+#: core/admin/theme-library/class-hester-theme-library-page.php:259
+#: core/admin/theme-library/class-hester-theme-library.php:149
+msgid "Customize"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:174
+#: core/admin/theme-library/class-hester-theme-library-page.php:209
+#: core/admin/theme-library/class-hester-theme-library-page.php:262
+#: core/admin/theme-library/class-hester-theme-library.php:146
+msgid "Activate"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:176
+#: core/admin/theme-library/class-hester-theme-library-page.php:211
+#: core/admin/theme-library/class-hester-theme-library-page.php:266
+#: core/admin/theme-library/class-hester-theme-library.php:143
+msgid "Install"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:233
+msgid "Currently Active"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library-page.php:248
+msgid "Version"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:144
+msgid "Installing..."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:147
+msgid "Activating..."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:151
+msgid "Installation failed"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:152
+msgid "Activation failed"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:280
+msgid "You do not have permission to activate themes."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:286
+msgid "Invalid theme slug."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:292
+msgid "Theme is not installed."
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:300
+msgid "Theme activated successfully."
+msgstr ""
+
 #: core/cli/commands/class-cli-import.php:35
 msgid "Imports demo content"
 msgstr ""
@@ -728,7 +823,7 @@ msgstr ""
 msgid "Page imported."
 msgstr ""
 
-#: core/elementor/assets-manager.php:206
+#: core/elementor/assets-manager.php:213
 msgid "Search query too short"
 msgstr ""
 
@@ -840,9 +935,9 @@ msgstr ""
 #: core/elementor/modules/flip-box/widgets/flip-box.php:221
 #: core/elementor/modules/pricing/widgets/pricing.php:358
 #: core/elementor/modules/slides/widgets/slides.php:375
-#: themes/hester/customizer/settings/settings-features.php:129
-#: themes/hester/customizer/settings/settings-info.php:205
-#: themes/hester/customizer/settings/settings-services.php:148
+#: themes/hester/customizer/settings/settings-features.php:133
+#: themes/hester/customizer/settings/settings-info.php:209
+#: themes/hester/customizer/settings/settings-services.php:153
 msgid "Link"
 msgstr ""
 
@@ -873,7 +968,7 @@ msgstr ""
 #: core/elementor/modules/search/widgets/search.php:161
 #: core/elementor/modules/tabs/widgets/tabs.php:137
 #: core/elementor/modules/tabs/widgets/tabs.php:509
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:86
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:91
 msgid "Alignment"
 msgstr ""
 
@@ -894,8 +989,8 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:925
 #: core/elementor/modules/tabs/widgets/tabs.php:127
 #: core/elementor/modules/tabs/widgets/tabs.php:141
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:90
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:94
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:95
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:99
 msgid "Left"
 msgstr ""
 
@@ -914,8 +1009,8 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:929
 #: core/elementor/modules/slides/widgets/slides.php:976
 #: core/elementor/modules/tabs/widgets/tabs.php:145
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:94
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:98
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:99
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:103
 msgid "Center"
 msgstr ""
 
@@ -936,8 +1031,8 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:933
 #: core/elementor/modules/tabs/widgets/tabs.php:128
 #: core/elementor/modules/tabs/widgets/tabs.php:149
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:98
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:102
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:103
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:107
 msgid "Right"
 msgstr ""
 
@@ -971,10 +1066,10 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:225
 #: core/elementor/modules/tabs/widgets/tabs.php:530
 #: core/elementor/modules/tabs/widgets/tabs.php:943
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:186
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:337
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:677
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:849
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:191
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:342
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:682
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:854
 msgid "Normal"
 msgstr ""
 
@@ -1057,17 +1152,17 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:795
 #: core/elementor/modules/tabs/widgets/tabs.php:900
 #: core/elementor/modules/tabs/widgets/tabs.php:1104
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:315
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:368
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:477
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:529
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:634
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:838
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:452
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:648
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:700
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:806
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1010
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:320
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:373
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:482
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:534
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:639
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:843
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:457
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:653
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:705
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:811
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1015
 msgid "Color"
 msgstr ""
 
@@ -1104,24 +1199,24 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:879
 #: core/elementor/modules/tabs/widgets/tabs.php:1062
 #: core/elementor/modules/tabs/widgets/tabs.php:1158
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:305
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:456
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:233
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:337
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:379
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:387
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:499
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:551
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:613
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:796
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:892
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:558
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:609
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:670
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:722
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:784
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:968
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1064
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:310
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:461
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:238
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:342
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:384
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:392
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:504
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:556
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:618
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:801
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:897
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:563
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:614
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:675
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:727
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:789
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:973
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1069
 msgid "Margin"
 msgstr ""
 
@@ -1146,10 +1241,10 @@ msgstr ""
 #: core/elementor/modules/search/widgets/search.php:611
 #: core/elementor/modules/slides/widgets/slides.php:1337
 #: core/elementor/modules/tabs/widgets/tabs.php:974
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:217
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:368
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:708
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:880
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:222
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:373
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:713
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:885
 msgid "Hover"
 msgstr ""
 
@@ -1172,10 +1267,10 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:1370
 #: core/elementor/modules/tabs/widgets/tabs.php:464
 #: core/elementor/modules/tabs/widgets/tabs.php:1003
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:246
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:397
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:737
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:909
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:251
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:402
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:742
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:914
 msgid "Border Color"
 msgstr ""
 
@@ -1213,18 +1308,18 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:684
 #: core/elementor/modules/tabs/widgets/tabs.php:1029
 #: core/elementor/modules/tabs/widgets/tabs.php:1125
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:272
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:423
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:200
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:264
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:355
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:418
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:763
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:859
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:525
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:589
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:935
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1031
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:277
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:428
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:205
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:269
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:360
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:423
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:768
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:864
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:530
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:594
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:940
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1036
 msgid "Border Radius"
 msgstr ""
 
@@ -1252,17 +1347,17 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:704
 #: core/elementor/modules/tabs/widgets/tabs.php:1049
 #: core/elementor/modules/tabs/widgets/tabs.php:1145
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:292
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:443
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:220
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:284
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:375
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:438
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:783
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:879
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:545
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:955
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1051
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:297
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:448
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:225
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:289
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:380
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:443
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:788
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:884
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:550
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:960
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1056
 msgid "Padding"
 msgstr ""
 
@@ -1313,19 +1408,19 @@ msgstr ""
 #: core/elementor/modules/tabs/widgets/tabs.php:950
 #: core/elementor/modules/tabs/widgets/tabs.php:981
 #: core/elementor/modules/tabs/widgets/tabs.php:1093
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:193
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:224
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:344
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:375
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:179
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:334
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:684
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:715
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:827
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:504
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:856
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:887
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:999
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:198
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:229
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:349
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:380
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:184
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:339
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:689
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:720
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:832
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:509
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:861
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:892
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:1004
 msgid "Background Color"
 msgstr ""
 
@@ -1362,9 +1457,9 @@ msgstr ""
 #: core/elementor/modules/pricing/widgets/pricing.php:175
 #: core/elementor/modules/slides/widgets/slides.php:735
 #: core/elementor/modules/tabs/widgets/tabs.php:448
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:283
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:401
-#: themes/hester/customizer/settings/settings-slider.php:258
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:288
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:406
+#: themes/hester/customizer/settings/settings-slider.php:262
 msgid "None"
 msgstr ""
 
@@ -1374,11 +1469,11 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:837
 #: core/elementor/modules/posts/widgets/posts.php:1320
 #: core/elementor/modules/slides/widgets/slides.php:168
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:247
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:401
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:572
-#: themes/hester/customizer/settings/settings-slider.php:143
-#: themes/hester/customizer/settings/settings-slider.php:157
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:252
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:406
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:577
+#: themes/hester/customizer/settings/settings-slider.php:147
+#: themes/hester/customizer/settings/settings-slider.php:161
 msgid "Image"
 msgstr ""
 
@@ -1387,10 +1482,10 @@ msgstr ""
 #: core/elementor/modules/flip-box/widgets/flip-box.php:577
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:176
 #: core/elementor/modules/pricing/widgets/pricing.php:295
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:114
-#: themes/hester/customizer/settings/settings-features.php:113
-#: themes/hester/customizer/settings/settings-info.php:186
-#: themes/hester/customizer/settings/settings-services.php:129
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:119
+#: themes/hester/customizer/settings/settings-features.php:117
+#: themes/hester/customizer/settings/settings-info.php:190
+#: themes/hester/customizer/settings/settings-services.php:134
 msgid "Icon"
 msgstr ""
 
@@ -1454,12 +1549,12 @@ msgstr ""
 #: core/elementor/modules/flip-box/widgets/flip-box.php:994
 #: core/elementor/modules/slides/widgets/slides.php:351
 #: core/elementor/modules/slides/widgets/slides.php:1177
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:147
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:351
-#: themes/hester/customizer/settings/settings-features.php:121
-#: themes/hester/customizer/settings/settings-info.php:195
-#: themes/hester/customizer/settings/settings-services.php:138
-#: themes/hester/customizer/settings/settings-slider.php:100
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:152
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:356
+#: themes/hester/customizer/settings/settings-features.php:125
+#: themes/hester/customizer/settings/settings-info.php:199
+#: themes/hester/customizer/settings/settings-services.php:143
+#: themes/hester/customizer/settings/settings-slider.php:104
 msgid "Description"
 msgstr ""
 
@@ -1527,14 +1622,14 @@ msgid "Flip Effect"
 msgstr ""
 
 #: core/elementor/modules/flip-box/widgets/flip-box.php:299
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:189
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:194
 msgid "Flip"
 msgstr ""
 
 #: core/elementor/modules/flip-box/widgets/flip-box.php:300
 #: core/elementor/modules/slides/widgets/slides.php:845
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:185
-#: themes/hester/customizer/settings/settings-slider.php:54
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:190
+#: themes/hester/customizer/settings/settings-slider.php:58
 msgid "Slide"
 msgstr ""
 
@@ -1552,7 +1647,7 @@ msgstr ""
 
 #: core/elementor/modules/flip-box/widgets/flip-box.php:304
 #: core/elementor/modules/slides/widgets/slides.php:846
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:186
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:191
 msgid "Fade"
 msgstr ""
 
@@ -1687,14 +1782,14 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:338
 #: core/elementor/modules/slides/widgets/slides.php:1093
 #: core/elementor/modules/tabs/widgets/tabs.php:777
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:298
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:298
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:511
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:416
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:682
-#: themes/hester/customizer/settings/settings-features.php:117
-#: themes/hester/customizer/settings/settings-info.php:190
-#: themes/hester/customizer/settings/settings-services.php:133
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:303
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:303
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:516
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:421
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:687
+#: themes/hester/customizer/settings/settings-features.php:121
+#: themes/hester/customizer/settings/settings-info.php:194
+#: themes/hester/customizer/settings/settings-services.php:138
 msgid "Title"
 msgstr ""
 
@@ -1723,14 +1818,14 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:1344
 #: core/elementor/modules/tabs/widgets/tabs.php:961
 #: core/elementor/modules/tabs/widgets/tabs.php:992
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:204
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:235
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:355
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:386
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:695
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:726
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:867
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:898
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:209
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:240
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:360
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:391
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:700
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:731
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:872
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:903
 msgid "Text Color"
 msgstr ""
 
@@ -1747,10 +1842,10 @@ msgstr ""
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:429
 #: core/elementor/modules/pricing/widgets/pricing.php:1285
 #: core/elementor/modules/slides/widgets/slides.php:1226
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:69
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:167
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:658
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:830
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:74
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:172
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:663
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:835
 msgid "Button"
 msgstr ""
 
@@ -1769,8 +1864,8 @@ msgstr ""
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:51
 #: core/elementor/modules/posts/widgets/posts.php:483
 #: core/elementor/modules/search/widgets/search.php:54
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:129
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:238
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:134
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:243
 msgid "Source"
 msgstr ""
 
@@ -1811,19 +1906,19 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:898
 #: core/elementor/modules/posts/widgets/posts.php:1109
 #: core/elementor/modules/pricing/widgets/pricing.php:285
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:76
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:81
 msgid "Text"
 msgstr ""
 
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:164
 #: core/elementor/modules/tabs/widgets/tabs.php:153
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:102
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:107
 msgid "Justified"
 msgstr ""
 
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:190
 #: core/elementor/modules/pricing/widgets/pricing.php:382
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:126
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:131
 msgid "Icon Position"
 msgstr ""
 
@@ -1831,7 +1926,7 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:789
 #: core/elementor/modules/pricing/widgets/pricing.php:386
 #: core/elementor/modules/pricing/widgets/pricing.php:790
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:130
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:135
 msgid "Before"
 msgstr ""
 
@@ -1839,13 +1934,13 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:777
 #: core/elementor/modules/pricing/widgets/pricing.php:390
 #: core/elementor/modules/pricing/widgets/pricing.php:794
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:131
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:136
 msgid "After"
 msgstr ""
 
 #: core/elementor/modules/off-canvas/widgets/off-canvas.php:206
 #: core/elementor/modules/pricing/widgets/pricing.php:1316
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:142
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:147
 msgid "Icon Spacing"
 msgstr ""
 
@@ -1866,11 +1961,11 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:1695
 #: core/elementor/modules/tabs/widgets/tabs.php:754
 #: core/elementor/modules/tabs/widgets/tabs.php:806
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:326
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:488
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:540
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:659
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:711
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:331
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:493
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:545
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:664
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:716
 msgid "Hover Color"
 msgstr ""
 
@@ -1892,11 +1987,11 @@ msgid "Use -1 to show all matching posts."
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:119
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:43
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:51
-#: themes/hester/customizer/settings/settings-blog.php:169
-#: themes/hester/customizer/settings/settings-info.php:124
-#: themes/hester/customizer/settings/settings-services.php:89
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:48
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:56
+#: themes/hester/customizer/settings/settings-blog.php:173
+#: themes/hester/customizer/settings/settings-info.php:128
+#: themes/hester/customizer/settings/settings-services.php:94
 msgid "Columns"
 msgstr ""
 
@@ -1961,7 +2056,7 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:307
 #: core/elementor/modules/posts/widgets/posts.php:1906
 #: core/elementor/modules/slides/widgets/slides.php:1475
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:81
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:86
 msgid "Pagination"
 msgstr ""
 
@@ -2028,9 +2123,9 @@ msgid "No more posts to show"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:466
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:75
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:121
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:230
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:80
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:126
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:235
 msgid "Query"
 msgstr ""
 
@@ -2050,9 +2145,9 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:517
 #: core/elementor/modules/posts/widgets/posts.php:529
 #: core/elementor/modules/posts/widgets/posts.php:619
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:87
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:135
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:244
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:92
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:140
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:249
 msgid "Manual Selection"
 msgstr ""
 
@@ -2079,9 +2174,9 @@ msgid "Enter post IDs separated by commas."
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:543
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:156
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:311
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:429
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:161
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:316
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:434
 msgid "Order"
 msgstr ""
 
@@ -2100,8 +2195,8 @@ msgstr ""
 #: core/elementor/modules/posts/widgets/posts.php:563
 #: core/elementor/modules/posts/widgets/posts.php:756
 #: core/elementor/modules/posts/widgets/posts.php:936
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:297
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:415
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:302
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:420
 msgid "Date"
 msgstr ""
 
@@ -2115,8 +2210,8 @@ msgid "Author"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:567
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:302
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:420
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:307
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:425
 msgid "Random"
 msgstr ""
 
@@ -2125,8 +2220,8 @@ msgid "Comment Count"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:569
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:303
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:421
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:308
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:426
 msgid "Menu Order"
 msgstr ""
 
@@ -2148,8 +2243,8 @@ msgid "Authors"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:646
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:148
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:257
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:153
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:262
 msgid "Exclude Categories"
 msgstr ""
 
@@ -2158,14 +2253,14 @@ msgid "Include Tags"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:676
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:178
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:287
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:183
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:292
 msgid "Exclude Tags"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:691
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:229
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:338
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:234
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:343
 msgid "Exclude"
 msgstr ""
 
@@ -2174,8 +2269,8 @@ msgid "Exclude By IDs"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:730
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:203
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:312
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:208
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:317
 msgid "Offset"
 msgstr ""
 
@@ -2223,8 +2318,8 @@ msgstr ""
 #: core/elementor/modules/slides/widgets/slides.php:318
 #: core/elementor/modules/tabs/widgets/tabs.php:94
 #: core/elementor/modules/tabs/widgets/tabs.php:105
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:452
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:623
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:457
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:628
 msgid "Content"
 msgstr ""
 
@@ -2269,7 +2364,7 @@ msgid "Date Modified"
 msgstr ""
 
 #: core/elementor/modules/posts/widgets/posts.php:939
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:103
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:108
 msgid "Categories"
 msgstr ""
 
@@ -2480,14 +2575,14 @@ msgid "Featured / Highlight"
 msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:153
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:257
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:366
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:262
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:371
 msgid "Yes"
 msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:154
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:258
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:367
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:263
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:372
 msgid "No"
 msgstr ""
 
@@ -2570,10 +2665,10 @@ msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:213
 #: core/elementor/modules/tabs/widgets/tabs.php:829
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:299
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:563
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:417
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:734
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:304
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:568
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:422
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:739
 msgid "Price"
 msgstr ""
 
@@ -2582,8 +2677,8 @@ msgid "Currency Format"
 msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:235
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:285
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:403
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:290
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:408
 msgid "Sale"
 msgstr ""
 
@@ -2612,7 +2707,7 @@ msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:271
 #: core/elementor/modules/pricing/widgets/pricing.php:1036
-#: themes/hester/customizer/settings/settings-features.php:95
+#: themes/hester/customizer/settings/settings-features.php:99
 msgid "Features"
 msgstr ""
 
@@ -2721,8 +2816,8 @@ msgstr ""
 
 #: core/elementor/modules/pricing/widgets/pricing.php:1148
 #: core/elementor/modules/slides/widgets/slides.php:410
-#: themes/hester/customizer/settings/settings-info.php:147
-#: themes/hester/customizer/settings/settings-slider.php:269
+#: themes/hester/customizer/settings/settings-info.php:151
+#: themes/hester/customizer/settings/settings-slider.php:273
 msgid "Style"
 msgstr ""
 
@@ -2810,8 +2905,8 @@ msgid "Pages"
 msgstr ""
 
 #: core/elementor/modules/search/widgets/search.php:61
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:36
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:44
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:41
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:49
 msgid "Products"
 msgstr ""
 
@@ -2839,7 +2934,7 @@ msgstr ""
 #: core/elementor/modules/search/widgets/search.php:235
 #: core/elementor/modules/search/widgets/search.php:277
 #: core/elementor/modules/slides/widgets/slides.php:149
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:462
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:467
 msgid "Background"
 msgstr ""
 
@@ -2946,8 +3041,8 @@ msgid "Background Video"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:257
-#: themes/hester/customizer/settings/settings-slider.php:144
-#: themes/hester/customizer/settings/settings-slider.php:188
+#: themes/hester/customizer/settings/settings-slider.php:148
+#: themes/hester/customizer/settings/settings-slider.php:192
 msgid "Video URL"
 msgstr ""
 
@@ -2956,7 +3051,7 @@ msgid "Blend Mode"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:327
-#: themes/hester/customizer/settings/settings-slider.php:96
+#: themes/hester/customizer/settings/settings-slider.php:100
 msgid "Slide Subtitle"
 msgstr ""
 
@@ -3043,13 +3138,13 @@ msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:733
 #: core/elementor/modules/slides/widgets/slides.php:1411
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:66
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:444
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:71
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:449
 msgid "Arrows"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:734
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:75
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:80
 msgid "Dots"
 msgstr ""
 
@@ -3062,12 +3157,12 @@ msgid "Space Between Slides"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:776
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:106
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:111
 msgid "Autoplay"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:786
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:126
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:131
 msgid "Pause on Hover"
 msgstr ""
 
@@ -3076,12 +3171,12 @@ msgid "Pause on Interaction"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:814
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:115
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:120
 msgid "Autoplay Speed"
 msgstr ""
 
 #: core/elementor/modules/slides/widgets/slides.php:831
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:139
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:144
 msgid "Infinite Loop"
 msgstr ""
 
@@ -3188,11 +3283,6 @@ msgstr ""
 msgid "Tab Spacing"
 msgstr ""
 
-#: core/elementor/modules/tabs/widgets/tabs.php:296
-#: core/elementor/modules/tabs/widgets/tabs.php:550
-msgid "Active"
-msgstr ""
-
 #: core/elementor/modules/tabs/widgets/tabs.php:359
 msgid "Tab Content"
 msgstr ""
@@ -3226,35 +3316,35 @@ msgid "Product Content"
 msgstr ""
 
 #: core/elementor/modules/tabs/widgets/tabs.php:726
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:460
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:631
-#: themes/hester/customizer/settings/settings-blog.php:144
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:465
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:636
+#: themes/hester/customizer/settings/settings-blog.php:148
 msgid "Category"
 msgstr ""
 
 #: core/elementor/modules/tabs/widgets/tabs.php:838
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:572
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:743
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:577
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:748
 msgid "Price Color"
 msgstr ""
 
 #: core/elementor/modules/tabs/widgets/tabs.php:858
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:592
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:763
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:597
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:768
 msgid "Del Price Color"
 msgstr ""
 
 #: core/elementor/modules/tabs/widgets/tabs.php:891
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:301
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:625
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:419
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:797
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:306
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:630
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:424
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:802
 msgid "Rating"
 msgstr ""
 
 #: core/elementor/modules/tabs/widgets/tabs.php:911
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:645
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:817
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:650
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:822
 msgid "Fill Color"
 msgstr ""
 
@@ -3266,279 +3356,279 @@ msgstr ""
 msgid "Product Badge"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:21
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:26
 msgid "Woo - Add To Cart"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:42
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:47
 msgid "Product"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:49
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:54
 msgid "Select Product"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:58
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:63
 msgid "Quantity"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:78
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:83
 msgid "Add To Cart"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:319
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:324
 msgid "View Cart Text"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:554
+#: core/elementor/modules/woocommerce/widgets/woo-add-to-cart.php:560
 msgid "Please select a product"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:19
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:24
 msgid "Woo - Categories"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:64
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:69
 msgid "Categories Count"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:83
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:88
 msgctxt "Posts Query Control"
 msgid "Source"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:86
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:91
 msgid "Show All"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:88
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:93
 msgid "By Parent"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:115
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:120
 msgid "Only Top Level"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:119
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:124
 msgid "Parent"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:132
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:137
 msgid "Hide Empty"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:141
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:293
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:411
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:146
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:298
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:416
 msgid "Order by"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:145
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:150
 msgid "Name"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:146
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:151
 msgid "Slug"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:148
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:153
 msgid "Count"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:160
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:315
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:433
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:165
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:320
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:438
 msgid "ASC"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:161
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:316
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:434
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:166
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:321
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:439
 msgid "DESC"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-categories.php:171
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:326
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:496
+#: core/elementor/modules/woocommerce/widgets/woo-categories.php:176
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:331
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:501
 msgid "Item"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:23
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:28
 msgid "Woo - Products"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:72
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:380
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:77
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:385
 msgid "Products Count"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:90
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:95
 msgid "Pagination Position"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:133
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:242
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:138
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:247
 msgid "All Products"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:134
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:243
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:139
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:248
 msgid "Custom Query"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:143
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:252
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:148
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:257
 msgid "Cat Filter Rule"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:147
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:256
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:152
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:261
 msgid "Match Categories"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:159
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:268
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:164
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:273
 msgid "Select Categories"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:173
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:282
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:178
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:287
 msgid "Tag Filter Rule"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:177
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:286
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:182
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:291
 msgid "Match Tags"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:189
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:298
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:194
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:303
 msgid "Select Tags"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:206
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:315
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:211
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:320
 msgid "Number of post to displace or pass over."
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:216
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:241
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:325
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:350
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:221
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:246
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:330
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:355
 msgid "Select Products"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:245
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:354
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:250
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:359
 msgid "Select products to exclude from the query."
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:255
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:364
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:260
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:369
 msgid "Exclude Current Product"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:261
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:370
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:266
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:375
 msgid "Enable this option to remove current product from the query."
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:271
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:389
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:276
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:394
 msgid "Advanced"
-msgstr ""
-
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:279
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:397
-msgid "Filter By"
 msgstr ""
 
 #: core/elementor/modules/woocommerce/widgets/woo-products.php:284
 #: core/elementor/modules/woocommerce/widgets/woo-slider.php:402
+msgid "Filter By"
+msgstr ""
+
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:289
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:407
 msgid "Featured"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:300
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:418
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:305
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:423
 msgid "Popularity"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-products.php:810
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:982
+#: core/elementor/modules/woocommerce/widgets/woo-products.php:815
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:987
 msgid "Badge"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:23
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:28
 msgid "Woo - Carousel"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:59
-#: themes/hester/customizer/settings/settings-slider.php:28
-#: themes/hester/customizer/settings/settings-slider.php:52
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:64
+#: themes/hester/customizer/settings/settings-slider.php:32
+#: themes/hester/customizer/settings/settings-slider.php:56
 msgid "Slider"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:84
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:89
 msgid "Products To Display"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:95
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:100
 msgid "Products To Scroll"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:149
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:154
 msgid "Transition Speed (ms)"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:158
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:163
 msgid "Spacing Between Slides (px)"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:163
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:168
 msgid "Space between product items."
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:170
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:175
 msgid "Auto Height"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:174
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:179
 msgid "Adjust slider height automatically based on active product card."
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:181
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:186
 msgid "Transition Effect"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:187
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:192
 msgid "Cube"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:188
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:193
 msgid "Cover Flow"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:197
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:202
 msgid "Free Mode (Scroll)"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:201
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:206
 msgid "Enable free mode to allow continuous scrolling instead of sliding between fixed slides"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:208
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:213
 msgid "Mouse Wheel Control"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:218
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:223
 msgid "Touch Swipe"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:473
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:478
 msgid "Color: Hover"
 msgstr ""
 
-#: core/elementor/modules/woocommerce/widgets/woo-slider.php:483
+#: core/elementor/modules/woocommerce/widgets/woo-slider.php:488
 msgid "Background: Hover"
 msgstr ""
 
@@ -3550,214 +3640,214 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:39
+#: core/widgets/class-hester-core-custom-list-widget.php:44
 msgctxt "Widget"
 msgid "A list of items with optional icon and separator."
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:48
+#: core/widgets/class-hester-core-custom-list-widget.php:53
 msgctxt "Widget"
 msgid "[Hester] Custom List"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:175
-#: core/widgets/class-hester-core-posts-list-widget.php:201
-#: core/widgets/class-hester-core-social-links-widget.php:140
+#: core/widgets/class-hester-core-custom-list-widget.php:180
+#: core/widgets/class-hester-core-posts-list-widget.php:206
+#: core/widgets/class-hester-core-social-links-widget.php:146
 msgctxt "Widget"
 msgid "Title:"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:182
+#: core/widgets/class-hester-core-custom-list-widget.php:187
 msgctxt "Widget"
 msgid "Text Before:"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:192
-#: core/widgets/class-hester-core-custom-list-widget.php:246
+#: core/widgets/class-hester-core-custom-list-widget.php:197
+#: core/widgets/class-hester-core-custom-list-widget.php:251
 #: core/widgets/widgets.php:159
 msgctxt "Widget"
 msgid "HTML tags allowed."
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:212
+#: core/widgets/class-hester-core-custom-list-widget.php:217
 msgctxt "Widget"
 msgid "List Item"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:229
+#: core/widgets/class-hester-core-custom-list-widget.php:234
 #: core/widgets/widgets.php:144
 msgctxt "Widget"
 msgid "Icon"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:234
+#: core/widgets/class-hester-core-custom-list-widget.php:239
 msgctxt "Widget"
 msgid "Enter icon SVG code."
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:240
+#: core/widgets/class-hester-core-custom-list-widget.php:245
 #: core/widgets/widgets.php:152
 msgctxt "Widget"
 msgid "Item Description"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:254
+#: core/widgets/class-hester-core-custom-list-widget.php:259
 #: core/widgets/widgets.php:170
 msgctxt "Widget"
 msgid "Add bottom separator"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:258
+#: core/widgets/class-hester-core-custom-list-widget.php:263
 #: core/widgets/widgets.php:173
 msgctxt "Widget"
 msgid "Remove"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:272
+#: core/widgets/class-hester-core-custom-list-widget.php:277
 msgctxt "Widget"
 msgid "No Items Found"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:276
+#: core/widgets/class-hester-core-custom-list-widget.php:281
 msgctxt "Widget"
 msgid "Please add new items to see more options"
 msgstr ""
 
-#: core/widgets/class-hester-core-custom-list-widget.php:280
+#: core/widgets/class-hester-core-custom-list-widget.php:285
 msgid "Add New"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:42
+#: core/widgets/class-hester-core-posts-list-widget.php:47
 msgctxt "Widget"
 msgid "Displays a configurable list of your site’s posts."
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:51
+#: core/widgets/class-hester-core-posts-list-widget.php:56
 msgctxt "Widget"
 msgid "[Hester] Posts List"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:208
+#: core/widgets/class-hester-core-posts-list-widget.php:213
 msgctxt "Widget"
 msgid "Number of posts to show:"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:215
+#: core/widgets/class-hester-core-posts-list-widget.php:220
 msgctxt "hester-core"
 msgid "Display thumbnail"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:218
+#: core/widgets/class-hester-core-posts-list-widget.php:223
 msgctxt "hester-core"
 msgid "Display post date"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:221
+#: core/widgets/class-hester-core-posts-list-widget.php:226
 msgctxt "hester-core"
 msgid "Display post categories"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:225
+#: core/widgets/class-hester-core-posts-list-widget.php:230
 msgctxt "hester-core"
 msgid "Sort by:"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:227
+#: core/widgets/class-hester-core-posts-list-widget.php:232
 msgctxt "Widget"
 msgid "Date (Latest posts)"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:228
+#: core/widgets/class-hester-core-posts-list-widget.php:233
 msgctxt "Widget"
 msgid "Modified (Recently updated)"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:229
+#: core/widgets/class-hester-core-posts-list-widget.php:234
 msgctxt "Widget"
 msgid "Comment count (Most popular)"
 msgstr ""
 
-#: core/widgets/class-hester-core-posts-list-widget.php:230
+#: core/widgets/class-hester-core-posts-list-widget.php:235
 msgctxt "Widget"
 msgid "Menu Order (Custom order)"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:41
+#: core/widgets/class-hester-core-social-links-widget.php:47
 msgctxt "Widget"
 msgid "Displays a list of social icon links."
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:50
+#: core/widgets/class-hester-core-social-links-widget.php:56
 msgctxt "Widget"
 msgid "[Hester] Social Links"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:150
+#: core/widgets/class-hester-core-social-links-widget.php:156
 msgctxt "Widget"
 msgid "Menu:"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:154
+#: core/widgets/class-hester-core-social-links-widget.php:160
 msgctxt "Widget"
 msgid "&mdash; Select &mdash;"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:168
+#: core/widgets/class-hester-core-social-links-widget.php:174
 msgctxt "Widget"
 msgid "Style:"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:172
+#: core/widgets/class-hester-core-social-links-widget.php:178
 msgctxt "Widget"
 msgid "Minimal"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:173
+#: core/widgets/class-hester-core-social-links-widget.php:179
 msgctxt "Widget"
 msgid "Rounded"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:179
+#: core/widgets/class-hester-core-social-links-widget.php:185
 msgctxt "Widget"
 msgid "Align:"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:183
+#: core/widgets/class-hester-core-social-links-widget.php:189
 msgctxt "Widget"
 msgid "Left"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:184
+#: core/widgets/class-hester-core-social-links-widget.php:190
 msgctxt "Widget"
 msgid "Center"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:185
+#: core/widgets/class-hester-core-social-links-widget.php:191
 msgctxt "Widget"
 msgid "Right"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:191
+#: core/widgets/class-hester-core-social-links-widget.php:197
 msgctxt "Widget"
 msgid "Size:"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:195
+#: core/widgets/class-hester-core-social-links-widget.php:201
 msgctxt "Widget"
 msgid "Small"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:196
+#: core/widgets/class-hester-core-social-links-widget.php:202
 msgctxt "Widget"
 msgid "Standard"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:197
+#: core/widgets/class-hester-core-social-links-widget.php:203
 msgctxt "Widget"
 msgid "Large"
 msgstr ""
 
-#: core/widgets/class-hester-core-social-links-widget.php:198
+#: core/widgets/class-hester-core-social-links-widget.php:204
 msgctxt "Widget"
 msgid "Extra Large"
 msgstr ""
@@ -3767,512 +3857,549 @@ msgctxt "Widget"
 msgid "New Item"
 msgstr ""
 
-#: hester-core.php:241
-msgid "Please activate one of Peregrine themes before activating Hester Core."
+#: hester-core.php:286
+msgid "Please activate one of Peregrine Themes before activating Hester Core."
 msgstr ""
 
-#: themes/hester/customizer/default.php:55
-#: themes/hester/customizer/default.php:90
-#: themes/hester/customizer/default.php:125
+#: hester-core.php:320
+msgid "Dismissing..."
+msgstr ""
+
+#: hester-core.php:321 hester-core.php:346
+msgid "Dismiss"
+msgstr ""
+
+#: hester-core.php:322
+msgid "Failed to dismiss notice. Please try again."
+msgstr ""
+
+#: hester-core.php:335
+msgid "Dismiss notice"
+msgstr ""
+
+#: hester-core.php:336
+msgid "Dismiss notice."
+msgstr ""
+
+#: hester-core.php:339
+msgid "Welcome to Hester Core!"
+msgstr ""
+
+#: hester-core.php:340
+#, php-format
+msgid "This plugin provides multiple Elementor widgets and other features for themes by %s."
+msgstr ""
+
+#: hester-core.php:340
+msgid "Peregrine Themes"
+msgstr ""
+
+#: hester-core.php:343
+msgid "Open Hester Dashboard"
+msgstr ""
+
+#: themes/hester/customizer/default.php:60
+#: themes/hester/customizer/default.php:95
+#: themes/hester/customizer/default.php:130
 msgid "Make a Website"
 msgstr ""
 
-#: themes/hester/customizer/default.php:56
-#: themes/hester/customizer/default.php:59
-#: themes/hester/customizer/default.php:91
-#: themes/hester/customizer/default.php:94
-#: themes/hester/customizer/default.php:126
-#: themes/hester/customizer/default.php:129
+#: themes/hester/customizer/default.php:61
+#: themes/hester/customizer/default.php:64
+#: themes/hester/customizer/default.php:96
+#: themes/hester/customizer/default.php:99
+#: themes/hester/customizer/default.php:131
+#: themes/hester/customizer/default.php:134
 msgid "#"
 msgstr ""
 
-#: themes/hester/customizer/default.php:58
-#: themes/hester/customizer/default.php:93
-#: themes/hester/customizer/default.php:128
+#: themes/hester/customizer/default.php:63
+#: themes/hester/customizer/default.php:98
+#: themes/hester/customizer/default.php:133
 msgid "Download"
 msgstr ""
 
-#: themes/hester/customizer/default.php:152
+#: themes/hester/customizer/default.php:157
 msgid "Startup Business"
 msgstr ""
 
-#: themes/hester/customizer/default.php:153
-#: themes/hester/customizer/default.php:162
-#: themes/hester/customizer/default.php:171
-#: themes/hester/customizer/default.php:180
+#: themes/hester/customizer/default.php:158
+#: themes/hester/customizer/default.php:167
+#: themes/hester/customizer/default.php:176
+#: themes/hester/customizer/default.php:185
 msgid "Ante ipsum primis in as enda saepe, aspe."
 msgstr ""
 
-#: themes/hester/customizer/default.php:161
+#: themes/hester/customizer/default.php:166
 msgid "Online Shop"
 msgstr ""
 
-#: themes/hester/customizer/default.php:170
+#: themes/hester/customizer/default.php:175
 msgid "Easy Blogging"
 msgstr ""
 
-#: themes/hester/customizer/default.php:179
+#: themes/hester/customizer/default.php:184
 msgid "100% Satisfaction"
 msgstr ""
 
-#: themes/hester/customizer/default.php:209
+#: themes/hester/customizer/default.php:214
 msgid "SERVICES"
 msgstr ""
 
-#: themes/hester/customizer/default.php:210
+#: themes/hester/customizer/default.php:215
 msgid "What We Offer"
 msgstr ""
 
-#: themes/hester/customizer/default.php:218
+#: themes/hester/customizer/default.php:223
 msgid "Website Designing"
 msgstr ""
 
-#: themes/hester/customizer/default.php:219
-#: themes/hester/customizer/default.php:229
-#: themes/hester/customizer/default.php:239
+#: themes/hester/customizer/default.php:224
+#: themes/hester/customizer/default.php:234
+#: themes/hester/customizer/default.php:244
 msgid "Dolores sit ipsum velit purus aliquet, massa fringilla leo orci sit ipsum euelit amet magnis."
 msgstr ""
 
-#: themes/hester/customizer/default.php:228
+#: themes/hester/customizer/default.php:233
 msgid "SEO Optimization"
 msgstr ""
 
-#: themes/hester/customizer/default.php:238
+#: themes/hester/customizer/default.php:243
 msgid "Lifetime Updates"
 msgstr ""
 
-#: themes/hester/customizer/default.php:258
+#: themes/hester/customizer/default.php:263
 msgid "WHY CHOOSE US"
 msgstr ""
 
-#: themes/hester/customizer/default.php:259
+#: themes/hester/customizer/default.php:264
 msgid "Our Features"
 msgstr ""
 
-#: themes/hester/customizer/default.php:267
+#: themes/hester/customizer/default.php:272
 msgid "Market Research"
 msgstr ""
 
-#: themes/hester/customizer/default.php:274
+#: themes/hester/customizer/default.php:279
 msgid "Content Writing"
 msgstr ""
 
-#: themes/hester/customizer/default.php:281
+#: themes/hester/customizer/default.php:286
 msgid "Keyword Analysis"
 msgstr ""
 
-#: themes/hester/customizer/default.php:288
+#: themes/hester/customizer/default.php:293
 msgid "24/7 Support"
 msgstr ""
 
-#: themes/hester/customizer/default.php:320
+#: themes/hester/customizer/default.php:325
 msgid "OUR BLOGS"
 msgstr ""
 
-#: themes/hester/customizer/default.php:321
+#: themes/hester/customizer/default.php:326
 msgid "Latest News"
 msgstr ""
 
-#: themes/hester/customizer/default.php:328
+#: themes/hester/customizer/default.php:333
 msgid "OUR PRODUCTS"
 msgstr ""
 
-#: themes/hester/customizer/default.php:329
+#: themes/hester/customizer/default.php:334
 msgid "Latest Products"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:7
+#: themes/hester/customizer/settings/settings-blog.php:11
 msgid "Blog Section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:20
+#: themes/hester/customizer/settings/settings-blog.php:24
 msgid "Enable Blog section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:37
-#: themes/hester/customizer/settings/settings-features.php:37
-#: themes/hester/customizer/settings/settings-info.php:50
-#: themes/hester/customizer/settings/settings-products.php:70
-#: themes/hester/customizer/settings/settings-services.php:30
+#: themes/hester/customizer/settings/settings-blog.php:41
+#: themes/hester/customizer/settings/settings-features.php:41
+#: themes/hester/customizer/settings/settings-info.php:54
+#: themes/hester/customizer/settings/settings-products.php:74
+#: themes/hester/customizer/settings/settings-services.php:35
 msgid "Section Sub Heading"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:54
-#: themes/hester/customizer/settings/settings-features.php:54
-#: themes/hester/customizer/settings/settings-info.php:72
-#: themes/hester/customizer/settings/settings-products.php:87
-#: themes/hester/customizer/settings/settings-services.php:47
+#: themes/hester/customizer/settings/settings-blog.php:58
+#: themes/hester/customizer/settings/settings-features.php:58
+#: themes/hester/customizer/settings/settings-info.php:76
+#: themes/hester/customizer/settings/settings-products.php:91
+#: themes/hester/customizer/settings/settings-services.php:52
 msgid "Section Heading"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:79
-#: themes/hester/customizer/settings/settings-features.php:78
-#: themes/hester/customizer/settings/settings-info.php:102
-#: themes/hester/customizer/settings/settings-products.php:112
-#: themes/hester/customizer/settings/settings-services.php:72
+#: themes/hester/customizer/settings/settings-blog.php:83
+#: themes/hester/customizer/settings/settings-features.php:82
+#: themes/hester/customizer/settings/settings-info.php:106
+#: themes/hester/customizer/settings/settings-products.php:116
+#: themes/hester/customizer/settings/settings-services.php:77
 msgid "Section Description"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:98
+#: themes/hester/customizer/settings/settings-blog.php:102
 msgid "Post Settings"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:116
+#: themes/hester/customizer/settings/settings-blog.php:120
 msgid "Post Number"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:117
+#: themes/hester/customizer/settings/settings-blog.php:121
 msgid "Set the number of visible posts."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:145
+#: themes/hester/customizer/settings/settings-blog.php:149
 msgid "Display posts from selected category only. Leave empty to include all."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:172
-#: themes/hester/customizer/settings/settings-info.php:127
-#: themes/hester/customizer/settings/settings-services.php:92
+#: themes/hester/customizer/settings/settings-blog.php:176
+#: themes/hester/customizer/settings/settings-info.php:131
+#: themes/hester/customizer/settings/settings-services.php:97
 msgid "Auto columns"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:173
-#: themes/hester/customizer/settings/settings-info.php:128
-#: themes/hester/customizer/settings/settings-services.php:93
+#: themes/hester/customizer/settings/settings-blog.php:177
+#: themes/hester/customizer/settings/settings-info.php:132
+#: themes/hester/customizer/settings/settings-services.php:98
 msgid "2 columns"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-blog.php:174
-#: themes/hester/customizer/settings/settings-info.php:129
-#: themes/hester/customizer/settings/settings-services.php:94
+#: themes/hester/customizer/settings/settings-blog.php:178
+#: themes/hester/customizer/settings/settings-info.php:133
+#: themes/hester/customizer/settings/settings-services.php:99
 msgid "3 columns"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:7
+#: themes/hester/customizer/settings/settings-extra.php:12
 msgid "Extra section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:20
+#: themes/hester/customizer/settings/settings-extra.php:25
 msgid "Enable Extra section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:33
+#: themes/hester/customizer/settings/settings-extra.php:38
 msgid "Select a page"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:34
+#: themes/hester/customizer/settings/settings-extra.php:39
 msgid "Page"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:35
+#: themes/hester/customizer/settings/settings-extra.php:40
 msgid "Select a page to display content from in Extra section."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:48
+#: themes/hester/customizer/settings/settings-extra.php:53
 msgid "Background color and font color options"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-extra.php:49
+#: themes/hester/customizer/settings/settings-extra.php:54
 msgid "Manage Top/Bottom Spacing"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:7
+#: themes/hester/customizer/settings/settings-features.php:11
 msgid "Feature section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:20
+#: themes/hester/customizer/settings/settings-features.php:24
 msgid "Enable Feature section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:97
+#: themes/hester/customizer/settings/settings-features.php:101
 msgid "Feature"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:100
-#: themes/hester/customizer/settings/settings-info.php:173
-#: themes/hester/customizer/settings/settings-services.php:116
-#: themes/hester/customizer/settings/settings-slider.php:57
+#: themes/hester/customizer/settings/settings-features.php:104
+#: themes/hester/customizer/settings/settings-info.php:177
+#: themes/hester/customizer/settings/settings-services.php:121
+#: themes/hester/customizer/settings/settings-slider.php:61
 msgid "[live_title]"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:101
+#: themes/hester/customizer/settings/settings-features.php:105
 msgid "Add new Feature"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:106
-#: themes/hester/customizer/settings/settings-info.php:179
-#: themes/hester/customizer/settings/settings-services.php:122
-#: themes/hester/customizer/settings/settings-slider.php:63
+#: themes/hester/customizer/settings/settings-features.php:110
+#: themes/hester/customizer/settings/settings-info.php:183
+#: themes/hester/customizer/settings/settings-services.php:127
+#: themes/hester/customizer/settings/settings-slider.php:67
 #, php-format
 msgid "Upgrade to %s to be able to add more items and unlock other premium features!"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-features.php:125
-#: themes/hester/customizer/settings/settings-info.php:200
-#: themes/hester/customizer/settings/settings-services.php:143
+#: themes/hester/customizer/settings/settings-features.php:129
+#: themes/hester/customizer/settings/settings-info.php:204
+#: themes/hester/customizer/settings/settings-services.php:148
 msgid "Add Link?"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:8
+#: themes/hester/customizer/settings/settings-info.php:12
 msgid "Info section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:21
+#: themes/hester/customizer/settings/settings-info.php:25
 msgid "Enable info"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:22
+#: themes/hester/customizer/settings/settings-info.php:26
 msgid "Add info section , generally display below the slider."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:32
+#: themes/hester/customizer/settings/settings-info.php:36
 msgid "Overlap slider?"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:33
+#: themes/hester/customizer/settings/settings-info.php:37
 msgid "On/Off section overlapping over slider."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:130
+#: themes/hester/customizer/settings/settings-info.php:134
 msgid "4 columns"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:150
+#: themes/hester/customizer/settings/settings-info.php:154
 msgid "Default style"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:151
-#: themes/hester/customizer/settings/settings-slider.php:272
+#: themes/hester/customizer/settings/settings-info.php:155
+#: themes/hester/customizer/settings/settings-slider.php:276
 msgid "1 style"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:168
+#: themes/hester/customizer/settings/settings-info.php:172
 msgid "Info content"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:170
+#: themes/hester/customizer/settings/settings-info.php:174
 msgid "Info"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:174
+#: themes/hester/customizer/settings/settings-info.php:178
 msgid "Add new info"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:217
-#: themes/hester/customizer/settings/settings-services.php:160
+#: themes/hester/customizer/settings/settings-info.php:221
+#: themes/hester/customizer/settings/settings-services.php:165
 msgid "Link Text"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-info.php:229
+#: themes/hester/customizer/settings/settings-info.php:233
 msgid "Set Active"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:14
+#: themes/hester/customizer/settings/settings-products.php:18
 #, php-format
 msgid "To have access to a shop section please install and configure %1$s."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:15
+#: themes/hester/customizer/settings/settings-products.php:19
 msgid "WooCommerce plugin"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:39
+#: themes/hester/customizer/settings/settings-products.php:43
 msgid "Products Section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:52
+#: themes/hester/customizer/settings/settings-products.php:56
 msgid "Enable Products"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:53
+#: themes/hester/customizer/settings/settings-products.php:57
 msgid "Show woocommerce product to homepage."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:125
+#: themes/hester/customizer/settings/settings-products.php:129
 msgid "Show products group by categories"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:126
+#: themes/hester/customizer/settings/settings-products.php:130
 msgid "Number of products to show"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:127
+#: themes/hester/customizer/settings/settings-products.php:131
 msgid "Number of columns to show"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-products.php:135
+#: themes/hester/customizer/settings/settings-products.php:139
 msgid "Need more features?"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:6
+#: themes/hester/customizer/settings/settings-services.php:11
 msgid "Service section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:19
+#: themes/hester/customizer/settings/settings-services.php:24
 msgid "Enable Services"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:20
+#: themes/hester/customizer/settings/settings-services.php:25
 msgid "Enable/Disable service section"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:111
+#: themes/hester/customizer/settings/settings-services.php:116
 msgid "Services"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:113
+#: themes/hester/customizer/settings/settings-services.php:118
 msgid "Service"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-services.php:117
+#: themes/hester/customizer/settings/settings-services.php:122
 msgid "Add new Service"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:11
+#: themes/hester/customizer/settings/settings-slider.php:15
 msgid "Enable front page sections"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:12
+#: themes/hester/customizer/settings/settings-slider.php:16
 msgid "Enable disable front page sections."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:41
+#: themes/hester/customizer/settings/settings-slider.php:45
 msgid "EnableSlider"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:42
+#: themes/hester/customizer/settings/settings-slider.php:46
 msgid "Add a slider to your homepage."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:58
+#: themes/hester/customizer/settings/settings-slider.php:62
 msgid "Add new slide"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:69
+#: themes/hester/customizer/settings/settings-slider.php:73
 msgid "Slide image"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:74
+#: themes/hester/customizer/settings/settings-slider.php:78
 msgid "Slide background"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:78
+#: themes/hester/customizer/settings/settings-slider.php:82
 msgid "Solid Color"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:79
+#: themes/hester/customizer/settings/settings-slider.php:83
 msgid "Gradient"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:84
+#: themes/hester/customizer/settings/settings-slider.php:88
 msgid "Slide Accent color"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:88
+#: themes/hester/customizer/settings/settings-slider.php:92
 msgid "Slide Text color"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:92
+#: themes/hester/customizer/settings/settings-slider.php:96
 msgid "Slide Title"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:104
+#: themes/hester/customizer/settings/settings-slider.php:108
 msgid "Button 1 text"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:108
+#: themes/hester/customizer/settings/settings-slider.php:112
 msgid "Button 1 URL"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:112
+#: themes/hester/customizer/settings/settings-slider.php:116
 msgid "Button 1 Style"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:113
-#: themes/hester/customizer/settings/settings-slider.php:126
+#: themes/hester/customizer/settings/settings-slider.php:117
+#: themes/hester/customizer/settings/settings-slider.php:130
 msgid "Add predefined classes btn-primary, btn-secondary, btn-white. Add `btn-outline` class to outline the button"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:117
+#: themes/hester/customizer/settings/settings-slider.php:121
 msgid "Button 2 text"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:121
+#: themes/hester/customizer/settings/settings-slider.php:125
 msgid "Button 2 URL"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:125
+#: themes/hester/customizer/settings/settings-slider.php:129
 msgid "Button 2 Style"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:130
+#: themes/hester/customizer/settings/settings-slider.php:134
 msgid "Align"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:139
+#: themes/hester/customizer/settings/settings-slider.php:143
 msgid "Slide side content source"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:141
+#: themes/hester/customizer/settings/settings-slider.php:145
 msgid "Choose what you want to display on left or right side of the slider. You can display either Image or put a shortcode."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:145
-#: themes/hester/customizer/settings/settings-slider.php:175
+#: themes/hester/customizer/settings/settings-slider.php:149
+#: themes/hester/customizer/settings/settings-slider.php:179
 msgid "Shortcode"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:176
+#: themes/hester/customizer/settings/settings-slider.php:180
 msgid "Put plugin shortcode here."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:189
+#: themes/hester/customizer/settings/settings-slider.php:193
 msgid "Youtube or vimeo video URL"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:201
+#: themes/hester/customizer/settings/settings-slider.php:205
 msgid "Open content in popup"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:202
+#: themes/hester/customizer/settings/settings-slider.php:206
 msgid "Enable this to open Slider side content in a popup box."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:219
+#: themes/hester/customizer/settings/settings-slider.php:223
 msgid "Choose a popup Icon"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:220
+#: themes/hester/customizer/settings/settings-slider.php:224
 msgid "Select an icon , clicking upon will open that popup."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:254
+#: themes/hester/customizer/settings/settings-slider.php:258
 msgid "Slider shape"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:255
+#: themes/hester/customizer/settings/settings-slider.php:259
 msgid "Choose a slider shape. Upgrade to PRO for more options."
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:259
+#: themes/hester/customizer/settings/settings-slider.php:263
 msgid "Wave"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:273
+#: themes/hester/customizer/settings/settings-slider.php:277
 msgid "2 style"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:290
+#: themes/hester/customizer/settings/settings-slider.php:294
 msgid "Slider Height"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:335
+#: themes/hester/customizer/settings/settings-slider.php:339
 msgid "Slider Title Typography"
 msgstr ""
 
-#: themes/hester/customizer/settings/settings-slider.php:336
+#: themes/hester/customizer/settings/settings-slider.php:340
 msgid "Adds a separate font for styling of slide title, so you can create stylish typographic elements."
 msgstr ""
 
-#: themes/hester/hester.php:54
+#: themes/hester/hester.php:57
 msgid "Front Page"
 msgstr ""

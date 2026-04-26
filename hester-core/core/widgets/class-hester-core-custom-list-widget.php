@@ -195,7 +195,7 @@ class Hester_Core_Custom_List_Widget extends WP_Widget {
 						sprintf(
 							// _x( 'HTML tags and %1$sdynamic strings%2$s allowed.', 'Widget', 'hester-core' ),
 							_x( 'HTML tags allowed.', 'Widget', 'hester-core' ),
-							'<a href="http://docs.peregrine-themes.com/" rel="nofollow noreferrer" target="_blank">',
+							'<a href="https://docs.peregrine-themes.com/" rel="nofollow noreferrer" target="_blank">',
 							'</a>'
 						)
 					);

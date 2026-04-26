@@ -207,7 +207,7 @@ class Hester_Core_Social_Links_Widget extends WP_Widget {
 
 			<?php
 			if ( function_exists( 'hester_help_link' ) ) {
-				hester_help_link( array( 'link' => 'http://docs.peregrine-themes.com/' ) );
+				hester_help_link( array( 'link' => 'https://docs.peregrine-themes.com/' ) );
 			}
 			?>
 

@@ -4,7 +4,7 @@ Tags: demos, elementor, widgets, woocommerce
 Requires at least: 5.9
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin Name: Hester Core
@@ -72,6 +72,11 @@ Hester Core is a companion plugin for the [Peregrine Themes](https://peregrine-t
 Hester Core adds 13 powerful Elementor widgets for the page builder, including Slides, Posts Grid, Pricing Tables, WooCommerce widgets (Products, Categories, Add to Cart, Carousel), and more. All widgets are fully customizable with advanced styling controls.
 
 == Changelog ==
+
+= 1.1.5 =
+* Added AJAX functionality for dismissing welcome notice.
+* Added Hester Theme Library functionality for browsing and installing themes.
+* Enhanced demo and theme libraries with HesterToast integration.
 
 = 1.1.4 =.
 * Removed welcome banner notice image.

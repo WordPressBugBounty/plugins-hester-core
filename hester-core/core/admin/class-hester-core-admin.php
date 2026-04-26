@@ -75,6 +75,9 @@ final class Hester_Core_Admin {
 
 		// Demo Library.
 		require_once HESTER_CORE_PLUGIN_DIR . 'core/admin/demo-library/class-hester-demo-library.php';
+
+		// Theme Library.
+		require_once HESTER_CORE_PLUGIN_DIR . 'core/admin/theme-library/class-hester-theme-library.php';
 	}
 
 	/**
@@ -190,14 +193,40 @@ final class Hester_Core_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function enqueue() {
+	public function enqueue( $hook ) {
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$suffix     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$theme_name = hester_core()->theme_name;
 
 		wp_enqueue_style(
 			'hester-core-dashicon',
 			HESTER_CORE_PLUGIN_URL . 'assets/css/admin-dashicon' . $suffix . '.css',
 			null,
+			HESTER_CORE_VERSION
+		);
+
+		// Load shared toast assets on all Hester admin pages.
+		$is_hester_page = (
+			'toplevel_page_' . $theme_name . '-dashboard' === $hook ||
+			false !== strpos( $hook, 'hester_page_' )
+		);
+
+		if ( ! $is_hester_page ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'hester-toast',
+			HESTER_CORE_PLUGIN_URL . 'assets/js/hester-toast' . $suffix . '.js',
+			array(),
+			HESTER_CORE_VERSION,
+			true
+		);
+
+		wp_enqueue_style(
+			'hester-toast',
+			HESTER_CORE_PLUGIN_URL . 'assets/css/hester-toast' . $suffix . '.css',
+			array(),
 			HESTER_CORE_VERSION
 		);
 	}

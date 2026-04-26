@@ -1,4 +1,9 @@
-= 1.1.4 =.
+= 1.1.5 =
+* Added AJAX functionality for dismissing welcome notice.
+* Added Hester Theme Library functionality for browsing and installing themes.
+* Enhanced demo and theme libraries with HesterToast integration.
+
+= 1.1.4 =
 * Removed welcome banner notice image.
 * Improved Elementor widgets style.
 

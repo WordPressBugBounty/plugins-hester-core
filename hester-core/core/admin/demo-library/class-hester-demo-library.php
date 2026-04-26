@@ -123,7 +123,7 @@ final class Hester_Demo_Library {
 		wp_enqueue_script(
 			'hester-demo-library',
 			plugin_dir_url( __FILE__ ) . 'assets/js/demo-library' . $suffix . '.js',
-			array( 'jquery', 'wp-util', 'updates' ),
+			array( 'jquery', 'wp-util', 'updates', 'hester-toast' ),
 			$this->version,
 			true
 		);
