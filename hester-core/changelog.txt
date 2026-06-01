@@ -1,3 +1,9 @@
+= 1.1.6 =
+* Tested up to WordPress 7.0
+* After switch theme clean cache.
+* Support added for all themes by "Peregrine Themes".
+* Check authorization before allowing to export data.
+
 = 1.1.5 =
 * Added AJAX functionality for dismissing welcome notice.
 * Added Hester Theme Library functionality for browsing and installing themes.

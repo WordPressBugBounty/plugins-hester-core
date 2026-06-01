@@ -69,10 +69,9 @@ final class Hester_Demo_Exporter {
 	public function export() {
 
 		// Check if user has permission for this.
-		/*
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			return;
-		}*/
+		}
 
 		// Export Customizer.
 		if ( isset( $_REQUEST['hester-core-customizer-export'] ) ) {

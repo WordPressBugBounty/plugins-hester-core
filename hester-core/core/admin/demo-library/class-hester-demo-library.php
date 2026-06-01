@@ -286,42 +286,26 @@ final class Hester_Demo_Library {
 			if ( is_array( $this->templates ) && ! empty( $this->templates ) ) {
 				foreach ( $this->templates as $id => $template ) {
 
-					// Skip demos that require a newer version of Hester Core.
-					if ( defined( 'HESTER_CORE_VERSION' ) && isset( $template['hester-core-version'] ) && version_compare( HESTER_CORE_VERSION, $template['hester-core-version'] ) < 0 ) {
+					$should_skip = false;
+
+					// Automatically checks constants like HESTER_CORE_VERSION or THEMENAME_THEME_VERSION.
+					foreach ( $template as $key => $value ) {
+						if ( preg_match( '/-(theme|core)-version$/', $key ) ) {
+							$constant_name = strtoupper( str_replace( '-', '_', $key ) );
+							if ( defined( $constant_name ) && version_compare( constant( $constant_name ), $value, '<' ) ) {
+								$should_skip = true;
+								break;
+							}
+						}
+					}
+
+					// Allow filtering the skip condition for custom rules.
+					if ( apply_filters( 'hester_core_demo_should_skip', $should_skip, $template, $id ) ) {
 						unset( $this->templates[ $id ] );
 						continue;
 					}
 
-					// Skip demos that require a newer version of Hester Theme.
-					if ( defined( 'HESTER_THEME_VERSION' ) && isset( $template['hester-theme-version'] ) && version_compare( HESTER_THEME_VERSION, $template['hester-theme-version'] ) < 0 ) {
-						unset( $this->templates[ $id ] );
-						continue;
-					}
-
-					// Skip demos that require a newer version of Bloglo Theme.
-					if ( defined( 'BLOGLO_THEME_VERSION' ) && isset( $template['bloglo-theme-version'] ) && version_compare( BLOGLO_THEME_VERSION, $template['bloglo-theme-version'] ) < 0 ) {
-						unset( $this->templates[ $id ] );
-						continue;
-					}
-
-					// Skip demos that require a newer version of BlogHash Theme.
-					if ( defined( 'BLOGHASH_THEME_VERSION' ) && isset( $template['bloghash-theme-version'] ) && version_compare( BLOGHASH_THEME_VERSION, $template['bloghash-theme-version'] ) < 0 ) {
-						unset( $this->templates[ $id ] );
-						continue;
-					}
-					// Skip demos that require a newer version of Shopwell Theme.
-					if ( defined( 'SHOPWELL_THEME_VERSION' ) && isset( $template['shopwell-theme-version'] ) && version_compare( SHOPWELL_THEME_VERSION, $template['shopwell-theme-version'] ) < 0 ) {
-						unset( $this->templates[ $id ] );
-						continue;
-					}
-
-					// Skip demos that require a newer version of Blogsy Theme.
-					if ( defined( 'BLOGSY_THEME_VERSION' ) && isset( $template['blogsy-theme-version'] ) && version_compare( BLOGSY_THEME_VERSION, $template['blogsy-theme-version'] ) < 0 ) {
-						unset( $this->templates[ $id ] );
-						continue;
-					}
-
-					// Remove the demos that are not specified for the active theme
+					// Remove the demos that are not specified for the active theme.
 					if ( isset( $template['for_themes'] ) && ! in_array( strtolower( $theme->name ), $template['for_themes'] ) ) {
 						unset( $this->templates[ $id ] );
 						continue;

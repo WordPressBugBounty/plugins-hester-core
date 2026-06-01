@@ -4,12 +4,12 @@
  * Description: The official companion plugin for Peregrine Themes. Adds widgets, customization options, Elementor widgets, and demo import features.
  * Author:      Peregrine Themes
  * Author URI:  https://peregrine-themes.com
- * Version:     1.1.5
+ * Version:     1.1.6
  * Text Domain: hester-core
  * Domain Path: /languages
  * Requires at least: 5.9
  * Requires PHP: 7.4
- * Tested up to: 6.9
+ * Tested up to: 7.0
  *
  * Hester Core is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,7 +97,7 @@ final class Hester_Core {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.1.5';
+	public $version = '1.1.6';
 
 	/**
 	 * Active theme template slug (e.g. "hester", "bloglo").
@@ -140,7 +140,19 @@ final class Hester_Core {
 	 *
 	 * @since 1.0.0
 	 */
-	private function __construct() {}
+	private function __construct() {
+		add_action( 'after_switch_theme', array( $this, 'after_theme_switch' ) );
+	}
+
+	/**
+	 * After theme switch.
+	 *
+	 * @since 1.1.6
+	 */
+	public function after_theme_switch() {
+		// Delete theme demos transient.
+		delete_transient( 'hester_core_demo_templates' );
+	}
 
 	/**
 	 * Defines plugin constants.
@@ -268,7 +280,21 @@ if ( hester_core_is_supported_theme() ) {
  * @return bool
  */
 function hester_core_is_supported_theme() {
-	return in_array( wp_get_theme()->template, HESTER_CORE_SUPPORTED_THEMES, true );
+	$theme        = wp_get_theme();
+	$parent_theme = $theme->parent() ? $theme->parent() : $theme;
+
+	// Check explicit list (for backwards compatibility).
+	if ( in_array( $parent_theme->template, HESTER_CORE_SUPPORTED_THEMES, true ) ) {
+		return true;
+	}
+
+	// Automatically support any theme authored by Peregrine Themes.
+	if ( strpos( $parent_theme->get( 'Author' ), 'Peregrine Themes' ) !== false ) {
+		return true;
+	}
+
+	// Allow filtering for external themes or special cases.
+	return apply_filters( 'hester_core_is_supported_theme', false, $theme );
 }
 
 // -------------------------------------------------------------------------
