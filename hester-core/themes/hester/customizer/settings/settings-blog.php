@@ -112,7 +112,7 @@ function hester_customizer_blog_options( array $options ) {
 
 	// Post count.
 	$options['setting']['hester_blog_posts_number'] = array(
-		'transport'         => 'postMessage',
+		'transport'         => 'refresh',
 		'sanitize_callback' => 'hester_sanitize_range',
 		'control'           => array(
 			'type'        => 'hester-range',

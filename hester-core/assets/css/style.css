@@ -353,6 +353,7 @@ body .item--content *:first-child:is(.description) {
 
 .is-starter-slider-s2 .starter__slider-subtitle {
     position: relative;
+    color: var(--hester-primary);
     z-index: 0;
 }
 
@@ -380,7 +381,7 @@ body .item--content *:first-child:is(.description) {
     z-index: 0;
     opacity: 0;
     visibility: hidden;
-    background-color: var(--hester-white);
+    background-color: currentColor;
 }
 
 .is-starter-slider-s2 .text-md-end .starter__slider-subtitle::after,

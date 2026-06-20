@@ -7,17 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'hester_section_blog' ) ) {
 	function hester_section_blog() {
 
-		$show_section   = hester()->options->get( 'hester_enable_blog' );
-		$numberOfPosts  = (int) hester()->options->get( 'hester_blog_posts_number' );
-		$fromCategories = hester()->options->get( 'hester_blog_posts_category' );
-		$args           = array(
+		$show_section    = hester()->options->get( 'hester_enable_blog' );
+		$number_of_posts = (int) hester()->options->get( 'hester_blog_posts_number' ) >= 3 ? 3 : (int) hester()->options->get( 'hester_blog_posts_number' );
+		$from_categories = array_filter( array_map( 'absint', (array) hester()->options->get( 'hester_blog_posts_category' ) ) );
+		$args            = array(
 			'post_type'           => 'post',
-			'posts_per_page'      => $numberOfPosts,
+			'posts_per_page'      => $number_of_posts,
 			'suppress_filters'    => 0,
 			'ignore_sticky_posts' => true,
 		);
-		if ( ! empty( $fromCategories ) ) {
-			$args['category_name'] = implode( ',', $fromCategories );
+		if ( ! empty( $from_categories ) ) {
+			$args['category__in'] = $from_categories;
 		}
 		$posts         = new WP_Query( $args );
 		$section_style = '';

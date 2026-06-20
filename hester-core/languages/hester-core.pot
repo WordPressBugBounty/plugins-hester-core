@@ -15,40 +15,52 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: core/admin/class-hester-core-admin.php:123
+#: core/admin/class-hester-core-admin.php:129
 msgid "Hester"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:135
+#: core/admin/class-hester-core-admin.php:141
 msgid "About"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:145
+#: core/admin/class-hester-core-admin.php:151
 msgid "Plugins"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:168
+#: core/admin/class-hester-core-admin.php:174
 msgid "Changelog"
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:244
+#: core/admin/class-hester-core-admin.php:250
 msgid "Changelog file not found."
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:246
+#: core/admin/class-hester-core-admin.php:252
 msgid "Changelog file not readable."
 msgstr ""
 
-#: core/admin/class-hester-core-admin.php:261
+#: core/admin/class-hester-core-admin.php:267
 msgid "Hester Core Plugin Changelog"
 msgstr ""
 
+#: core/admin/class-hester-core-admin.php:352
+msgid "Invalid upload."
+msgstr ""
+
+#: core/admin/class-hester-core-admin.php:358
+msgid "Could not read SVG file."
+msgstr ""
+
+#: core/admin/class-hester-core-admin.php:366
+msgid "This SVG file contains unsafe content."
+msgstr ""
+
 #: core/admin/demo-library/class-hester-demo-importer.php:106
-#: core/admin/demo-library/class-hester-demo-library.php:378
+#: core/admin/demo-library/class-hester-demo-library.php:362
 msgid "You do not have permission to import a demo."
 msgstr ""
 
@@ -213,7 +225,7 @@ msgstr ""
 #: core/admin/demo-library/class-hester-demo-library.php:157
 #: core/admin/theme-library/class-hester-theme-library-page.php:178
 #: core/admin/theme-library/class-hester-theme-library-page.php:297
-#: core/admin/theme-library/class-hester-theme-library.php:150
+#: core/admin/theme-library/class-hester-theme-library.php:155
 msgid "Preview"
 msgstr ""
 
@@ -724,7 +736,7 @@ msgid "Preview Theme"
 msgstr ""
 
 #: core/admin/theme-library/class-hester-theme-library-page.php:158
-#: core/admin/theme-library/class-hester-theme-library.php:148
+#: core/admin/theme-library/class-hester-theme-library.php:150
 #: core/elementor/modules/tabs/widgets/tabs.php:296
 #: core/elementor/modules/tabs/widgets/tabs.php:550
 msgid "Active"
@@ -739,14 +751,14 @@ msgstr ""
 #: core/admin/theme-library/class-hester-theme-library-page.php:171
 #: core/admin/theme-library/class-hester-theme-library-page.php:207
 #: core/admin/theme-library/class-hester-theme-library-page.php:259
-#: core/admin/theme-library/class-hester-theme-library.php:149
+#: core/admin/theme-library/class-hester-theme-library.php:154
 msgid "Customize"
 msgstr ""
 
 #: core/admin/theme-library/class-hester-theme-library-page.php:174
 #: core/admin/theme-library/class-hester-theme-library-page.php:209
 #: core/admin/theme-library/class-hester-theme-library-page.php:262
-#: core/admin/theme-library/class-hester-theme-library.php:146
+#: core/admin/theme-library/class-hester-theme-library.php:148
 msgid "Activate"
 msgstr ""
 
@@ -769,31 +781,39 @@ msgstr ""
 msgid "Installing..."
 msgstr ""
 
+#: core/admin/theme-library/class-hester-theme-library.php:146
+msgid "Theme installation successful!"
+msgstr ""
+
 #: core/admin/theme-library/class-hester-theme-library.php:147
+msgid "Installation failed"
+msgstr ""
+
+#: core/admin/theme-library/class-hester-theme-library.php:149
 msgid "Activating..."
 msgstr ""
 
 #: core/admin/theme-library/class-hester-theme-library.php:151
-msgid "Installation failed"
+msgid "Theme activated successfully!"
 msgstr ""
 
 #: core/admin/theme-library/class-hester-theme-library.php:152
 msgid "Activation failed"
 msgstr ""
 
-#: core/admin/theme-library/class-hester-theme-library.php:280
+#: core/admin/theme-library/class-hester-theme-library.php:282
 msgid "You do not have permission to activate themes."
 msgstr ""
 
-#: core/admin/theme-library/class-hester-theme-library.php:286
+#: core/admin/theme-library/class-hester-theme-library.php:288
 msgid "Invalid theme slug."
 msgstr ""
 
-#: core/admin/theme-library/class-hester-theme-library.php:292
+#: core/admin/theme-library/class-hester-theme-library.php:294
 msgid "Theme is not installed."
 msgstr ""
 
-#: core/admin/theme-library/class-hester-theme-library.php:300
+#: core/admin/theme-library/class-hester-theme-library.php:302
 msgid "Theme activated successfully."
 msgstr ""
 
@@ -3857,44 +3877,44 @@ msgctxt "Widget"
 msgid "New Item"
 msgstr ""
 
-#: hester-core.php:286
+#: hester-core.php:312
 msgid "Please activate one of Peregrine Themes before activating Hester Core."
 msgstr ""
 
-#: hester-core.php:320
+#: hester-core.php:362
 msgid "Dismissing..."
 msgstr ""
 
-#: hester-core.php:321 hester-core.php:346
+#: hester-core.php:363 hester-core.php:398
 msgid "Dismiss"
 msgstr ""
 
-#: hester-core.php:322
+#: hester-core.php:364
 msgid "Failed to dismiss notice. Please try again."
 msgstr ""
 
-#: hester-core.php:335
+#: hester-core.php:377
 msgid "Dismiss notice"
 msgstr ""
 
-#: hester-core.php:336
+#: hester-core.php:378
 msgid "Dismiss notice."
 msgstr ""
 
-#: hester-core.php:339
+#: hester-core.php:381
 msgid "Welcome to Hester Core!"
 msgstr ""
 
-#: hester-core.php:340
+#: hester-core.php:387
 #, php-format
 msgid "This plugin provides multiple Elementor widgets and other features for themes by %s."
 msgstr ""
 
-#: hester-core.php:340
+#: hester-core.php:388
 msgid "Peregrine Themes"
 msgstr ""
 
-#: hester-core.php:343
+#: hester-core.php:395
 msgid "Open Hester Dashboard"
 msgstr ""
 

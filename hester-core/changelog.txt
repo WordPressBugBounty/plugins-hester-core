@@ -1,3 +1,12 @@
+= 1.1.9 =
+* Added SVG sanitizer library by https://github.com/darylldoyle/svg-sanitizer for sanitizing SVG images when uploaded.
+
+= 1.1.8 =
+* Fixed plugin version mismatch issue in SVN.
+
+= 1.1.7 =
+* Update blog and extra section settings for improved functionality and consistency.
+
 = 1.1.6 =
 * Tested up to WordPress 7.0
 * After switch theme clean cache.

@@ -6,13 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'hester_section_extra' ) ) {
 	function hester_section_extra() {
-		$show_section = hester()->options->get( 'hester_enable_extra' );
+		$show_section = hester_option( 'enable_extra' );
 
-		$page_slug = hester()->options->get( 'hester_section_extra_page' );
+		$page_id = hester_option( 'section_extra_page' );
 
 		$page = '';
-		if ( '' != $page_slug ) {
-			$page = get_page_by_path( $page_slug );
+		if ( '' != $page_id ) {
+			$page = get_post( $page_id );
 		}
 
 		$section_style = '';
@@ -33,8 +33,8 @@ if ( ! function_exists( 'hester_section_extra' ) ) {
 					<div class="hester-flex-row">
 						<div class="col-xs-12">
 							<?php
-							if ( $page != '' ) {
-								echo apply_filters( 'the_content', $page->post_content );
+							if ( is_object( $page ) ) {
+								echo get_the_content( '', '', $page );
 							}
 							?>
 						</div>

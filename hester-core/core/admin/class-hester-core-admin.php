@@ -7,6 +7,8 @@
  * @since   1.0.0
  */
 
+use HesterCoreVendor\enshrined\svgSanitize\Sanitizer;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -59,8 +61,9 @@ final class Hester_Core_Admin {
 		// Fetch recommended plugins remotely.
 		add_filter( 'hester_recommended_plugins', array( $this, 'recommended_plugins' ) );
 
-		// Allow SVG uploads
-		add_filter( 'upload_mimes', array( $this, 'allow_svg_uploads' ), 10, 1, );
+		// Allow SVG uploads.
+		add_filter( 'upload_mimes', array( $this, 'allow_svg_uploads' ), 10, 1 );
+		add_filter( 'wp_handle_upload_prefilter', array( $this, 'sanitize_svg_upload' ), 10 );
 
 		// Hester Core Admin loaded.
 		do_action( 'hester_core_admin_loaded' );
@@ -78,6 +81,9 @@ final class Hester_Core_Admin {
 
 		// Theme Library.
 		require_once HESTER_CORE_PLUGIN_DIR . 'core/admin/theme-library/class-hester-theme-library.php';
+
+		// SVG Sanitizer.
+		require_once HESTER_CORE_PLUGIN_DIR . 'lib/svg-sanitize/src/svg-sanitize.php';
 	}
 
 	/**
@@ -207,8 +213,8 @@ final class Hester_Core_Admin {
 
 		// Load shared toast assets on all Hester admin pages.
 		$is_hester_page = (
-			'toplevel_page_' . $theme_name . '-dashboard' === $hook ||
-			false !== strpos( $hook, 'hester_page_' )
+		'toplevel_page_' . $theme_name . '-dashboard' === $hook ||
+		false !== strpos( $hook, 'hester_page_' )
 		);
 
 		if ( ! $is_hester_page ) {
@@ -324,8 +330,48 @@ final class Hester_Core_Admin {
 
 		return $mimes;
 	}
-}
 
+	/**
+	 * Sanitize uploaded SVG files.
+	 *
+	 * @since 1.1.9
+	 * @param array $file Uploaded file data.
+	 * @return array|WP_Error Sanitized file or error.
+	 */
+	public function sanitize_svg_upload( $file ) {
+		if ( empty( $file['name'] ) ) {
+			return $file;
+		}
+
+		$ext = strtolower( pathinfo( $file['name'], PATHINFO_EXTENSION ) );
+		if ( 'svg' !== $ext ) {
+			return $file;
+		}
+
+		if ( empty( $file['tmp_name'] ) || ! file_exists( $file['tmp_name'] ) ) {
+			$file['error'] = __( 'Invalid upload.', 'hester-core' );
+			return $file;
+		}
+
+		$dirty_svg = file_get_contents( $file['tmp_name'] );
+		if ( false === $dirty_svg || '' === $dirty_svg ) {
+			$file['error'] = __( 'Could not read SVG file.', 'hester-core' );
+			return $file;
+		}
+
+		$sanitizer = new Sanitizer();
+		$clean_svg = $sanitizer->sanitize( $dirty_svg );
+
+		if ( empty( $clean_svg ) ) {
+			$file['error'] = __( 'This SVG file contains unsafe content.', 'hester-core' );
+			return $file;
+		}
+
+		file_put_contents( $file['tmp_name'], $clean_svg );
+
+		return $file;
+	}
+}
 /**
  * The function which returns the one Hester_Core_Admin instance.
  *

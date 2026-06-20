@@ -22,7 +22,7 @@ if ( ! function_exists( 'hester_section_slider' ) ) {
 		$slides        = hester()->options->get( 'hester_slider_slides' );
 		$section_style = 'style="' . $section_style . '"';
 		$slides_count  = count( $slides ) > 1 ? true : false;
-		// this.length > 1 ? true : false > { "delay": 8000 }
+
 		$slider_options = '
             "slidesPerView": 1,
             "direction": "vertical",
@@ -63,9 +63,7 @@ if ( ! function_exists( 'hester_section_slider' ) ) {
 						$side_content  = '';
 						if ( $slide->alignment != 'center' ) {
 							if ( $slide->side_content_source == 'image' && ( isset( $slide->side_image ) && $slide->side_image['url'] != '' ) ) {
-
 								$side_content = $slide->open_in_popup ? esc_url( $slide->side_image['url'] ) : '<img src="' . esc_url_raw( $slide->side_image['url'] ) . '">';
-								// var_dump($side_content); echo "ererer";die;
 							} elseif ( $slide->side_content_source == 'shortcode' && $slide->side_shortcode != '' ) {
 								$side_content = do_shortcode( $slide->side_shortcode );
 							} elseif ( $slide->side_content_source == 'url' && $slide->url != '' ) {
